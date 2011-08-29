@@ -1,0 +1,16 @@
+TargetProcess Mashups Library
+=============================
+
+Mashups allow you to quickly extend TargetProcess UI with almost any 
+functionality you want. There are several places on each page 
+where you can add some new UI, or you can modify the existing UI.
+
+This repository contains some example Mashups both for immediate use 
+and as starting points for developing your own Mashups.
+
+Current Mashups
+---------------
+
+**UserStory Templates**
+Provides a means to pre-populate the description field when adding 
+new UserStories with template data.

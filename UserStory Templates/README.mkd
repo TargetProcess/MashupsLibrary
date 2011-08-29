@@ -1,0 +1,33 @@
+UserStory Templates Mashup
+==========================
+
+The UserStory Templates Mashup is a simple Mashup for 
+[TargetProcess](http://www.targetprocess.com) that pulls the
+contents of a template file and gives that as a starting point 
+for the description of your User Stories.
+
+How To Install and Use the Mashup
+---------------------------------
+
+1. Download the Mashup file either by cloning this repository or
+   downloading a ZIP.
+2. Extract/copy the "UserStory Template" folder to your 
+   _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
+3. Edit the contents of the _template.html_ file to contain what 
+   you would like as the template for your stories.  HTML markup 
+   is 100% supported in this file.
+4. Sit back and enjoy!
+
+Troubleshooting
+---------------
+
+**I don't have a _JavaScript/Mashups/_ folder in my TP install path!**
+1. Make sure that you are running TargetProcess version 2.22 or newer.
+2. By default, this folder can be found at _C:\inetpub\wwwroot\TargetProcess2\wwwroot\JavaScript\Mashups_
+
+**The description field is still blank when I go to add a new UserStory!**
+1. Ensure that the name of the folder in _JavaScript/Mashups/_ is **exactly**
+   _UserStory Templates_.  Also ensure the template file is called _template.html_. 
+   Adjust any file/folder names accordingly.
+2. Check your browser for any JavaScript errors.  If you find one, feel free 
+   to report the error so that it can be corrected.
