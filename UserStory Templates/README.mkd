@@ -22,10 +22,13 @@ Troubleshooting
 ---------------
 
 **I don't have a _JavaScript/Mashups/_ folder in my TP install path!**
+
 1. Make sure that you are running TargetProcess version 2.22 or newer.
 2. By default, this folder can be found at _C:\inetpub\wwwroot\TargetProcess2\wwwroot\JavaScript\Mashups_
 
+
 **The description field is still blank when I go to add a new UserStory!**
+
 1. Ensure that the name of the folder in _JavaScript/Mashups/_ is **exactly**
    _UserStory Templates_.  Also ensure the template file is called _template.html_. 
    Adjust any file/folder names accordingly.
