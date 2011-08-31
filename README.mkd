@@ -13,6 +13,7 @@ Current Mashups
 
 
 **UserStory Templates**
+
 Provides a means to pre-populate the description field when adding 
 new UserStories with template data. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/UserStory%20Templates.zip)
 
