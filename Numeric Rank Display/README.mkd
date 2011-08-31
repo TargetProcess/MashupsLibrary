@@ -1,0 +1,35 @@
+Numeric Rank Display Mashup
+===========================
+
+The Numeric Rank Display Mashup is a simple mashup for
+[TargetProcess](http://www.targetprocess.com) that replaces the
+progress-bar style of displaying Rank with a numeric text 
+representation of rank.  This Mashup works with User Story, Bug, 
+and Feature lists.
+
+[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/Numeric%20Rank%20Display.zip)
+
+How To Install and Use the Mashup
+---------------------------------
+
+1. Download the Mashup file either by cloning this repository or
+   downloading a ZIP.
+2. Extract/copy the "Numeric Rank Display" folder to your 
+   _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
+3. Sit back and enjoy!
+
+Troubleshooting
+---------------
+
+**I don't have a _JavaScript/Mashups/_ folder in my TP install path!**
+
+1. Make sure that you are running TargetProcess version 2.22 or newer.
+2. By default, this folder can be found at _C:\inetpub\wwwroot\TargetProcess2\wwwroot\JavaScript\Mashups_
+
+**My User Story/Bug/Feature list shows my ranks skipping from [number] to [some non-adjacent number]!**
+
+This is because Ranks in TargetProcess are a numerical value calculated 
+from 1 to infinity and calculated *inclusive* of all User Stories, Bugs, 
+and Features.  Because you cannot see all Bugs, Features, and Stories on 
+a single page, your Rank may appear to skip certain digits.  Don't worry, 
+though, these Ranks are assigned on a different page.

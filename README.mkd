@@ -11,6 +11,13 @@ and as starting points for developing your own Mashups.
 Current Mashups
 ---------------
 
+
 **UserStory Templates**
 Provides a means to pre-populate the description field when adding 
-new UserStories with template data.
+new UserStories with template data. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/UserStory%20Templates.zip)
+
+
+**Numeric Rank Display**
+
+Replaces the progress-bar style display of Ranks with a numeric 
+text representation of a User Story/Bug/Feature's rank. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Numeric%20Rank%20Display.zip)
