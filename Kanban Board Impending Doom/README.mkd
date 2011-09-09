@@ -1,0 +1,33 @@
+Kanban Board Impending Doom
+===========================
+
+The Kanban Board Impending Doom is an advanced Mashup for 
+[TargetProcess](http://www.targetprocess.com) that 
+colors cards on the Kanban board according to the value of a Date pulled from a Custom Field. 
+The Mashup colors cards Green, Yellow, and Red depending on the amount 
+of time remaining for the card.
+
+[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Board%20Impending%20Doom.zip)
+
+
+How To Install and Use the Mashup
+---------------------------------
+
+1. Download the Mashup file either by cloning this repository or
+   downloading a ZIP.
+2. Extract/copy the "UserStory Template" folder to your 
+   _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
+3. Add a custom field called 'Due Date' of type 'Date' to your
+   Process and populate the field accordingly among your Stories,
+   Bugs, and Features.
+4. Open the Kanban Board, sit back, and enjoy!
+
+Troubleshooting
+---------------
+
+**I don't have a _JavaScript/Mashups/_ folder in my TP install path!**
+
+1. Make sure that you are running TargetProcess version 2.22 or newer.
+2. By default, this folder can be found at _C:\inetpub\wwwroot\TargetProcess2\wwwroot\JavaScript\Mashups_
+
+

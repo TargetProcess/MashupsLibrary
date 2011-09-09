@@ -22,3 +22,11 @@ new UserStories with template data. [(Download)](https://github.com/downloads/Ta
 
 Replaces the progress-bar style display of Ranks with a numeric 
 text representation of a User Story/Bug/Feature's rank. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Numeric%20Rank%20Display.zip)
+
+
+**Kanban Board Impending Doom**
+
+Colors cards on the Kanban board according to the value of a Date pulled from a Custom Field.  To use, add a Custom Field 
+called 'Due Date' of type 'Date' to your Process.  The Mashup colors cards Green, Yellow, and Red depending on the amount 
+of time remaining for the card. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Board%20Impending%20Doom.zip)
+
