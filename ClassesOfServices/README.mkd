@@ -16,9 +16,9 @@ How To Install and Use the Mashup
 2. Extract/copy the _ClassesOfServices_ folder to your _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
 3. Customize colors for tags. Open _ClassesOfServices.js_ file and change/add values:
 
-	var colors = {
-		'urgent':'#f25350',
-		'sup':'#ffecb3'
-	};
+    var colors = {
+        'urgent':'#f25350',
+        'sup':'#ffecb3'
+    };
 
 4. Open the Kanban Board, add some tags to cards and enjoy!
