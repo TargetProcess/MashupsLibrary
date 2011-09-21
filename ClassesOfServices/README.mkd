@@ -3,7 +3,7 @@ Kanban Board Classes of Services
 
 The Kanban Board Classes of Services mashup colors cards according to tags.
 
-In this example all stories or bugs with tag _urgent_ are red, and all stories and bugs with tag _sup_ are yellow
+In this example all stories or bugs with tag _urgent_ are red, and all stories and bugs with tag _sup_ are yellow. All other cards are green.
 
 ![Kanban Board](http://farm7.static.flickr.com/6170/6169543690_4193c89765_b.jpg)
 
@@ -25,4 +25,4 @@ How To Install and Use the Mashup
     };
 ```
 
-4. Open the Kanban Board, add some tags to cards and enjoy!
+Open the Kanban Board, add some tags to User Stories or Bugs and enjoy!
