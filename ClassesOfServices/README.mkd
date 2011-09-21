@@ -3,10 +3,12 @@ Kanban Board Classes of Services
 
 The Kanban Board Classes of Services mashup colors cards according to tags.
 
-[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/ClassesOfServices.zip)
-
+In this example all stories or bugs with tag _urgent_ are red, and all stories and bugs with tag _sup_ are yellow
 
 ![Kanban Board](http://farm7.static.flickr.com/6170/6169543690_4193c89765_b.jpg)
+
+
+[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/ClassesOfServices.zip)
 
 
 How To Install and Use the Mashup
@@ -16,9 +18,11 @@ How To Install and Use the Mashup
 2. Extract/copy the _ClassesOfServices_ folder to your _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
 3. Customize colors for tags. Open _ClassesOfServices.js_ file and change/add values:
 
+''' javascript
     var colors = {
         'urgent':'#f25350',
         'sup':'#ffecb3'
     };
+'''
 
 4. Open the Kanban Board, add some tags to cards and enjoy!
