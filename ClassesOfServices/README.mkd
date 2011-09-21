@@ -13,8 +13,8 @@ How To Install and Use the Mashup
 ---------------------------------
 
 1. Download the Mashup file either by cloning this repository or downloading a ZIP.
-2. Extract/copy the “ClassesOfServices” folder to your _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
-3. Customize colors for tags. Open ClassesOfServices.js file and change/add values:
+2. Extract/copy the _ClassesOfServices_ folder to your _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
+3. Customize colors for tags. Open _ClassesOfServices.js_ file and change/add values:
 
 	var colors = {
 		'urgent':'#f25350',
