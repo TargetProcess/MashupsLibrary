@@ -12,23 +12,13 @@ The Kanban Board Classes of Services mashup colors cards according to tags.
 How To Install and Use the Mashup
 ---------------------------------
 
-1. Download the Mashup file either by cloning this repository or
-   downloading a ZIP.
-2. Extract/copy the “ClassesOfServices” folder to your 
-   _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
+1. Download the Mashup file either by cloning this repository or downloading a ZIP.
+2. Extract/copy the “ClassesOfServices” folder to your _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
 3. Customize colors for tags. Open ClassesOfServices.js file and change/add values:
 
-var colors = {
-  'urgent':'#f25350',
-  'sup':'#ffecb3'
-};
+	var colors = {
+		'urgent':'#f25350',
+		'sup':'#ffecb3'
+	};
 
 4. Open the Kanban Board, add some tags to cards and enjoy!
-
-Troubleshooting
----------------
-
-**I don't have a _JavaScript/Mashups/_ folder in my TP install path!**
-
-1. Make sure that you are running TargetProcess version 2.22 or newer.
-2. By default, this folder can be found at _C:\inetpub\wwwroot\TargetProcess2\wwwroot\JavaScript\Mashups_
