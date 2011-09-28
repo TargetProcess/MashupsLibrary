@@ -1,4 +1,4 @@
-tau.mashups.add(
+tau.mashups.addDependency('libs/jquery/jquery').addMashup(
     function (config) {
         function kanbanBoardImpendingDoom() {}
         kanbanBoardImpendingDoom.prototype = {
