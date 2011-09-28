@@ -30,3 +30,19 @@ Colors cards on the Kanban board according to the value of a Date pulled from a 
 called 'Due Date' of type 'Date' to your Process.  The Mashup colors cards Green, Yellow, and Red depending on the amount 
 of time remaining for the card. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Board%20Impending%20Doom.zip)
 
+
+**Classes of Service**
+
+Clors cards on the Kanban board according to tags.  For example, stories or bugs tagged _urgent_ can be colored red and 
+all stories and bugs tagged _sup_ are colored yellow.  Colors and tags are customizable in the _.js_ file.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/ClassesOfServices.zip)
+
+
+**Highlighter**
+
+Mashup that highlights chunks of text in the page according to the search input.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Highlighter.zip)
+
+
+**TopMenu**
+
+A simple Mashup that shows how to add tabs to the end of your navigation bar linking to custom URLs.  Fully customizable 
+via the _.cfg_ file.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/TopMenu.zip)
