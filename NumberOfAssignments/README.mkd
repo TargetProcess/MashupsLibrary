@@ -4,7 +4,7 @@ Kanban Board Number of Assignments
 The Kanban Board Number of Assignments mashup add list of users in a project along with numbers of bugs and user stories assigned to the user.
 
 
-![Kanban Board](http://farm7.static.flickr.com/6170/6169543690_4193c89765_b.jpg)
+![Kanban Board](https://github.com/TargetProcess/MashupsLibrary/raw/master/NumberOfAssignments/NumberOfAssignments.png)
 
 
 [Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/NumberOfAssignments.zip)
