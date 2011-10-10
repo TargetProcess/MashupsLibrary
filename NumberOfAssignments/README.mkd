@@ -1,0 +1,17 @@
+Kanban Board Number of Assignments
+===========================
+
+The Kanban Board Number of Assignments mashup add list of users in a project along with numbers of bugs and user stories assigned to the user.
+
+
+![Kanban Board](http://farm7.static.flickr.com/6170/6169543690_4193c89765_b.jpg)
+
+
+[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/NumberOfAssignments.zip)
+
+
+How To Install and Use the Mashup
+---------------------------------
+
+1. Download the Mashup file either by cloning this repository or downloading a ZIP.
+2. Extract/copy the NumberOfAssignments folder to your _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
