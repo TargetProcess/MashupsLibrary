@@ -1,4 +1,4 @@
-tau.mashups.addDependency('lib/jquery/jquery').addMashup(
+tau.mashups.addDependency('libs/jquery/jquery').addMashup(
 function (config) {
     function userStoryTemplate() {}
         userStoryTemplate.prototype = {
