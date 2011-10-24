@@ -46,3 +46,11 @@ Mashup that highlights chunks of text in the page according to the search input.
 
 A simple Mashup that shows how to add tabs to the end of your navigation bar linking to custom URLs.  Fully customizable 
 via the _.cfg_ file.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/TopMenu.zip)
+
+
+**NumberOfAssignments**
+
+The Kanban Board Number of Assignments mashup add list of users in a project along with numbers of bugs and user stories assigned to the user.
+[(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/NumberOfAssignments.zip)
+
+
