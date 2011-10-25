@@ -1,0 +1,45 @@
+Entity Templates Mashup
+=======================
+
+The Entity Templates Mashup is a simple Mashup for 
+[TargetProcess](http://www.targetprocess.com) that pulls the
+contents of a template file and gives that as a starting point 
+for the description of the following entities in TargetProcess:
+    - User Stories
+    - Bugs
+    - Features
+    - Tasks
+    - Requests
+
+[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/Entity%20Templates.zip)
+
+How To Install and Use the Mashup
+---------------------------------
+
+1. Download the Mashup file either by cloning this repository or
+   downloading a ZIP.
+2. Extract/copy the "UserStory Template" folder to your 
+   _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
+3. Add your templates as HTML files in the _/JavaScript/Mashups/Entity Templates_ folder.  
+   Create the file with the name of the entity you wish to add a template to, for example 
+   _UserStory.html_, _Feature.html_, _Bug.html_, _Task.html_, or _Request.html_.  Ensure 
+   that your files are named accordingly.  HTML markup is 100% supported.
+4. Sit back and enjoy!
+
+Troubleshooting
+---------------
+
+**I don't have a _JavaScript/Mashups/_ folder in my TP install path!**
+
+1. Make sure that you are running TargetProcess version 2.22 or newer.
+2. By default, this folder can be found at _C:\inetpub\wwwroot\TargetProcess2\wwwroot\JavaScript\Mashups_
+
+
+**The description field is still blank when I go to add a new <whatever>!**
+
+1. Make sure you're running TargetProcess version 2.22 or newer.
+2. Ensure that the name of the folder in _JavaScript/Mashups/_ is **exactly**
+   _Entity Templates_.  Also ensure the template file is named accordingly. 
+   Adjust any file/folder names accordingly.
+3. Check your browser for any JavaScript errors.  If you find one, feel free 
+   to report the error so that it can be corrected.

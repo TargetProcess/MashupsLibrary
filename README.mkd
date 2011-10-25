@@ -54,3 +54,16 @@ The Kanban Board Number of Assignments mashup add list of users in a project alo
 [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/NumberOfAssignments.zip)
 
 
+**Entity Templates**
+
+An expanded version of the UserStory Templates mashup, this mashup pulls 
+the contents of a template file and gives that as a starting point 
+for the description of the following entities in TargetProcess:
+    - User Stories
+    - Bugs
+    - Features
+    - Tasks
+    - Requests
+
+[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/Entity%20Templates.zip)
+
