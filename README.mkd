@@ -59,11 +59,22 @@ The Kanban Board Number of Assignments mashup add list of users in a project alo
 An expanded version of the UserStory Templates mashup, this mashup pulls 
 the contents of a template file and gives that as a starting point 
 for the description of the following entities in TargetProcess:
-    - User Stories
-    - Bugs
-    - Features
-    - Tasks
-    - Requests
 
-[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/Entity%20Templates.zip)
+    -   User Stories
+    -   Bugs
+    -   Features
+    -   Tasks
+    -   Requests
+
+[(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Entity%20Templates.zip)
+
+
+** DoneEntitiesByMonthReport **
+
+The Done Entities By Month Report mashup adds a report to TargetProcess that 
+provides a visual way to see how many stories, bugs, issues, and features were 
+completed or closed over the past year grouped by months.
+[(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/DoneEntitiesByMonthReport.zip)
+
+
 
