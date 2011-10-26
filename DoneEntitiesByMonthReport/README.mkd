@@ -1,7 +1,7 @@
 Done Entities by Projects and by Months this Year
 =======================
 
-This mashup shows in a visual way how many stories, bugs, issues or features were completed or closed last year.
+This mashup shows in a visual way how many stories, bugs, issues or features were completed or closed last year by months.
 
 ![Kanban Board](https://github.com/TargetProcess/MashupsLibrary/raw/master/DoneEntitiesByMonthReport/screenshot.png)
 
@@ -11,8 +11,8 @@ How To Install and Use the Mashup
 
 1. Download the Mashup file either by cloning this repository or
    downloading a ZIP.
-2. Extract/copy the "UserStory Template" folder to your 
+2. Extract/copy the *DoneEntitiesByMonthReport* folder to your 
    _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
-3. Navigate to Reports section and find Done Entities By Month link.
+3. Navigate to Reports section and find **Done Entities By Month** link.
 4. Select User Story entity and enjoy the report.
 
