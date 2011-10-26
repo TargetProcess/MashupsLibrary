@@ -1,0 +1,13 @@
+table.u-done-entities td {width: 100px !important; vertical-align: top; font: 12px Arial; padding: 3px 2px !important}
+table.u-done-entities tr:hover {background: #E3F5D7 !important}
+table.u-done-entities tr {border-bottom: 1px solid #eee	 !important}
+table.u-done-entities th {padding: 5px 10px}
+table.u-done-entities {border-collapse: collapse}
+.done {margin-left: 1px; margin-top: 1px; width: 8px; height: 8px; float: left;-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+-khtml-border-radius: 4px;
+border-radius: 4px;}
+.UserStory {background: #507CB6; }
+.Bug {background: #C30; }
+.Issue {background: orange; }
+.Feature {background: green; }
