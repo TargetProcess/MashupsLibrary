@@ -77,4 +77,11 @@ completed or closed over the past year grouped by months.
 [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/DoneEntitiesByMonthReport.zip)
 
 
+**NewUILinkScrubber**
+
+The NewUI Link Scrubber mashup rewrites all links in TargetProcess 
+to point view pages to the New UI style.  This makes the New View UI's the default in 
+TargetProcess.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/NewUILinkScrubber.zip)
+
+
 

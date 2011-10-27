@@ -1,0 +1,29 @@
+New UI Link Scrubber
+====================
+
+The NewUILinkScrubber Mashup is a Mashup for 
+[TargetProcess](http://www.targetprocess.com) that rewrites all links in TargetProcess 
+to point view pages to the New UI style.  This makes the New View UI's the default in 
+TargetProcess.  This change applies to *all* users and is not capable of being toggled 
+per-user.
+
+[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/NewUILinkScrubber.zip)
+
+How To Install and Use the Mashup
+---------------------------------
+
+1. Download the Mashup file either by cloning this repository or
+   downloading a ZIP.
+2. Extract/copy the "NewUILinkScrubber" folder to your 
+   _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
+3. Sit back and enjoy!
+
+Troubleshooting
+---------------
+
+**I don't have a _JavaScript/Mashups/_ folder in my TP install path!**
+
+1. Make sure that you are running TargetProcess version 2.22 or newer.
+2. By default, this folder can be found at _C:\inetpub\wwwroot\TargetProcess2\wwwroot\JavaScript\Mashups_
+
+
