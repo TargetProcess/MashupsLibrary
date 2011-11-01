@@ -5,11 +5,13 @@ The Entity Templates Mashup is a simple Mashup for
 [TargetProcess](http://www.targetprocess.com) that pulls the
 contents of a template file and gives that as a starting point 
 for the description of the following entities in TargetProcess:
-    - User Stories
-    - Bugs
-    - Features
-    - Tasks
-    - Requests
+
+-   User Stories
+-   Bugs
+-   Features
+-   Tasks
+-   Requests
+-   Test Cases
 
 [Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/Entity%20Templates.zip)
 
@@ -24,7 +26,10 @@ How To Install and Use the Mashup
    Create the file with the name of the entity you wish to add a template to, for example 
    _UserStory.html_, _Feature.html_, _Bug.html_, _Task.html_, or _Request.html_.  Ensure 
    that your files are named accordingly.  HTML markup is 100% supported.
-4. Sit back and enjoy!
+   **An important note on Test Cases:** Test Cases require **two** HTML files to fully
+   apply a template - one for the steps box and one for the success box.  These files should 
+   be called _TestCaseSteps.html_ and _TestCaseSuccess.html_, respectively.
+5. Sit back and enjoy!
 
 Troubleshooting
 ---------------

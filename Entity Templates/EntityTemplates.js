@@ -20,6 +20,10 @@ function (config) {
                     case 'Project_QA_Bug_Edit':
                         this.getTemplateAndPlace('Bug','ctl00_mainArea_bugDetails_BugDetails_DescriptionTextBox_ckeditor');
                         break;
+                    case 'Project_QA_TestCase_Edit':
+                        this.getTemplateAndPlace('TestCaseSteps','ctl00_mainArea_be_TestCaseDetails_Steps_ckeditor');
+                        this.getTemplateAndPlace('TestCaseSuccess','ctl00_mainArea_be_TestCaseDetails_Success_ckeditor');
+                        break;
                 }
             },
             getTemplateAndPlace: function(entity, target) {

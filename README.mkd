@@ -65,6 +65,7 @@ for the description of the following entities in TargetProcess:
 -   Features
 -   Tasks
 -   Requests
+-   Test Cases
 
 [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Entity%20Templates.zip)
 
