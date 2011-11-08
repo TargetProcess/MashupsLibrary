@@ -85,4 +85,9 @@ to point view pages to the New UI style.  This makes the New View UI's the defau
 TargetProcess.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/NewUILinkScrubber.zip)
 
 
+**DetailsHider**
+
+The Details Hider Mashup is a very, very, very simple that removes the system 
+messages at the bottom of each page (such as page generation time, the Whats New link, 
+and the free version notification).  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/DetailsHider.zip)
 
