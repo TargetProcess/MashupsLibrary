@@ -22,7 +22,7 @@ tau.mashups
 		var getAssignments = function(projectName, entityName, callback){
 			$.ajax({
                 type: 'GET',
-                url: appHostAndPath+'/api/v1/'+entityName+'?where=(EntityState.IsFinal eq "false") and (EntityState.IsInitial eq "false") and (EntityState.Name ne "Planned") and (EntityState.Name ne "Merged") and (Project.Name eq "'+escape(projectName)+'")&include=[Assignments[GeneralUser[id,FirstName,LastName]]]&take=1000&format=json',
+                url: appHostAndPath+'/api/v1/'+entityName+'?where=(EntityState.IsFinal eq "false") and (EntityState.IsInitial eq "false") and (EntityState.Name ne "Tested") and (EntityState.Name ne "Planned") and (EntityState.Name ne "Release branch") and (Project.Name eq "'+escape(projectName)+'")&include=[Assignments[GeneralUser[id,FirstName,LastName]]]&take=1000&format=json',
                 contentType: 'application/json',
                 dataType: 'json',
                 success: callback
@@ -61,10 +61,10 @@ tau.mashups
 					for (var key in joined)
 					{
 						if (joined.hasOwnProperty(key)){
-							test.push('<span style="display: inline-block; position: relative; width: 80px;">');
+							test.push('<span style="display: inline-block; position: relative; width: 60px;">');
 							test.push('<img src="../../../avatar.ashx?size=30&UserId='+key+'" title="'+joined[key].name+'"></img>')
-							test.push('<span style="position: absolute; top: 0pt; right: 0pt;"><img src="../../../img/BugS.gif"/>'+(joined[key].bugsCount || 0)+'</span>');
-							test.push('<span style="position: absolute; bottom: 0pt; right: 0pt;"><img src="../../../img/UserStoryS.gif"/>'+(joined[key].usCount || 0)+'</span>');
+                            test.push('<span style="background: none repeat scroll 0 0 #CC060D; border-radius: 3px 3px 3px 3px; color: #FFFFFF; font-size: 11px; font-weight:bold; height: 10px; line-height: 10px; padding: 2px; position: absolute; left: 48px; top: 0;    width: 16px;">'+(joined[key].bugsCount || 0)+'</span>');
+							test.push('<span style="background: none repeat scroll 0 0 #507cb6; border-radius: 3px 3px 3px 3px; color: #FFFFFF; font-size: 11px; font-weight:bold; height: 10px; line-height: 10px; padding: 2px; position: absolute; left: 48px; bottom: 0; width: 16px;">'+(joined[key].usCount || 0)+'</span>');
 							test.push('</span>');
 						}
 					}
