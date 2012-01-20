@@ -1,0 +1,125 @@
+Kanban Board Column Grouper
+===========================
+
+The Kanban Board column grouper Mashup allows you to group together 
+swimlanes on your Kanban board and have grouped WIP limits for your 
+swimlanes in aggregate.
+
+![Kanban Board Column Grouper](https://raw.github.com/TargetProcess/MashupsLibrary/master/Kanban%20Board%20Column%20Grouper/screenshot.png)
+
+
+[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Board%20Column%20Grouper.zip)
+
+
+How To Configure the Column Groups
+----------------------------------
+
+In the _Kanban Board Column Grouper.js_ file is a code block that by default looks
+like this: 
+
+```javascript
+var columnConfiguration = {
+        /* Project matching RegEx -> Project configuration */
+        'Private Universe #[0-9]+'   : {
+            /* Grouped Column Name */
+            'Development'   : {
+                /* Grouped limit */
+                'limit'     : 4,
+                /* Swimlanes to be in the group - spelling counts :) */
+                'columns'   : ['Waiting', 'In Progress']
+            },
+            'Testing'       : {
+                'limit'     : 2,
+                'columns'   : ['Ready for Testing', 'In Testing']
+            },
+            'Release'       : {
+                'limit'     : 6,
+                'columns'   : ['Ready for Release', 'Staging']
+            }
+        }
+	};
+```
+
+This columnConfiguration variable is what holds the grouping information.  These groups 
+can be specified on a per-project basis.
+
+The first level in this object is the Project name - which can be spcified either as a 
+plain string, or as a JavaScript Regular Expression.  Note that the Mashup will use the 
+_first_ matching configuration object for a project.  If you wish to specify a catch-all 
+configuration, you may add an object with ``'.*'`` as the project name, thereby matching all 
+projects.
+
+Inside each project object is the configuration object, which maps a name of a column 
+group (in the above example `Development`, `Testing`, and `Release`) to the group's 
+WIP limit and an array of the swimlane columns that are to be a part of the group.  If you 
+specify `null` as the limit, the columns will group but will not have any WIP limit feedback.
+
+*Note* that all columns that do not fall into a column group will appear at the far _right_ 
+side of the Kanban board.  Also please note that groups and columns are arranged in the order 
+they appear in the column configuration object.
+
+An example of a columnConfiguration object that has multiple project configurations is:
+
+```javascript
+var columnConfiguration = {
+        /* Project matching RegEx -> Project configuration */
+        'Private Universe #[0-9]+'   : {
+            /* Grouped Column Name */
+            'Development'   : {
+                /* Grouped limit */
+                'limit'     : 4,
+                /* Swimlanes to be in the group - spelling counts :) */
+                'columns'   : ['Waiting', 'In Progress']
+            },
+            'Testing'       : {
+                'limit'     : 2,
+                'columns'   : ['Ready for Testing', 'In Testing']
+            },
+            'Release'       : {
+                'limit'     : 6,
+                'columns'   : ['Ready for Release', 'Staging']
+            }
+        },
+        '(Awesome|Great) Project'   : {
+            'Planning'      : {
+                'limit'     : null,
+                'columns'   : ['Waiting', 'Estimating']
+            },
+            'Development'   : {
+                'limit'     : 8,
+                'columns'   : ['In Progress', 'Ready']
+            },
+        },
+        /* our catch-all configuration */
+        '.*'                : {
+            'Dev'           : {
+                'limit'     : 4,
+                'columns'   : ['Planning', 'Work, work']
+            },
+            'QA'            : {
+                'limit'     : null,
+                'columns'   : ['Unit Tests', 'Manual Tests']
+            }
+        }
+	};
+```
+
+
+How To Install and Use the Mashup
+---------------------------------
+
+1. Download the Mashup file either by cloning this repository or
+   downloading a ZIP.
+2. Extract/copy the "Kanban Board Column Grouper" folder to your 
+   _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
+3. Open the "Kanban Board Column Grouper.js" file and adjust the 
+   configuration according to the above specifications.
+4. Open the Kanban Board, sit back, and enjoy!
+
+Troubleshooting
+---------------
+
+**I don't have a _JavaScript/Mashups/_ folder in my TP install path!**
+
+1. Make sure that you are running TargetProcess version 2.22 or newer.
+2. By default, this folder can be found at _C:\inetpub\wwwroot\TargetProcess2\wwwroot\JavaScript\Mashups_

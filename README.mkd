@@ -91,3 +91,11 @@ The Details Hider Mashup is a very, very, very simple that removes the system
 messages at the bottom of each page (such as page generation time, the Whats New link, 
 and the free version notification).  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/DetailsHider.zip)
 
+
+**Kanban Board Column Grouper**
+
+The Kanban Board column grouper Mashup allows you to group together 
+swimlanes on your Kanban board and have grouped WIP limits for your 
+swimlanes in aggregate.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Board%20Column%20Grouper.zip)
+
+
