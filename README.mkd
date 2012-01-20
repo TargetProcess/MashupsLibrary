@@ -12,49 +12,49 @@ Current Mashups
 ---------------
 
 
-**UserStory Templates**
+[**UserStory Templates**](https://github.com/TargetProcess/MashupsLibrary/tree/master/UserStory%20Templates)
 
 Provides a means to pre-populate the description field when adding 
 new UserStories with template data. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/UserStory%20Templates.zip)
 
 
-**Numeric Rank Display**
+[**Numeric Rank Display**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Numeric%20Rank%20Display)
 
 Replaces the progress-bar style display of Ranks with a numeric 
 text representation of a User Story/Bug/Feature's rank. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Numeric%20Rank%20Display.zip)
 
 
-**Kanban Board Impending Doom**
+[**Kanban Board Impending Doom**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Kanban%20Board%20Impending%20Doom)
 
 Colors cards on the Kanban board according to the value of a Date pulled from a Custom Field.  To use, add a Custom Field 
 called 'Due Date' of type 'Date' to your Process.  The Mashup colors cards Green, Yellow, and Red depending on the amount 
 of time remaining for the card. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Board%20Impending%20Doom.zip)
 
 
-**Classes of Service**
+[**Classes of Service**](https://github.com/TargetProcess/MashupsLibrary/tree/master/ClassesOfServices)
 
 Clors cards on the Kanban board according to tags.  For example, stories or bugs tagged _urgent_ can be colored red and 
 all stories and bugs tagged _sup_ are colored yellow.  Colors and tags are customizable in the _.js_ file.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/ClassesOfServices.zip)
 
 
-**Highlighter**
+[**Highlighter**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Highlighter)
 
 Mashup that highlights chunks of text in the page according to the search input.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Highlighter.zip)
 
 
-**TopMenu**
+[**TopMenu**](https://github.com/TargetProcess/MashupsLibrary/tree/master/TopMenu)
 
 A simple Mashup that shows how to add tabs to the end of your navigation bar linking to custom URLs.  Fully customizable 
 via the _.cfg_ file.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/TopMenu.zip)
 
 
-**NumberOfAssignments**
+[**NumberOfAssignments**](https://github.com/TargetProcess/MashupsLibrary/tree/master/NumberOfAssignments)
 
 The Kanban Board Number of Assignments mashup add list of users in a project along with numbers of bugs and user stories assigned to the user.
 [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/NumberOfAssignments.zip)
 
 
-**Entity Templates**
+[**Entity Templates**](https://github.com/TargetProcess/MashupsLibrary/tree/master/NumberOfAssignments)
 
 An expanded version of the UserStory Templates mashup, this mashup pulls 
 the contents of a template file and gives that as a starting point 
@@ -70,7 +70,7 @@ for the description of the following entities in TargetProcess:
 [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Entity%20Templates.zip)
 
 
-**DoneEntitiesByMonthReport**
+[**DoneEntitiesByMonthReport**](https://github.com/TargetProcess/MashupsLibrary/tree/master/DoneEntitiesByMonthReport)
 
 The Done Entities By Month Report mashup adds a report to TargetProcess that 
 provides a visual way to see how many stories, bugs, issues, and features were 
@@ -78,21 +78,21 @@ completed or closed over the past year grouped by months.
 [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/DoneEntitiesByMonthReport.zip)
 
 
-**NewUILinkScrubber**
+[**NewUILinkScrubber**](https://github.com/TargetProcess/MashupsLibrary/tree/master/NewUILinkScrubber)
 
 The NewUI Link Scrubber mashup rewrites all links in TargetProcess 
 to point view pages to the New UI style.  This makes the New View UI's the default in 
 TargetProcess.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/NewUILinkScrubber.zip)
 
 
-**DetailsHider**
+[**DetailsHider**](https://github.com/TargetProcess/MashupsLibrary/tree/master/DetailsHider)
 
 The Details Hider Mashup is a very, very, very simple that removes the system 
 messages at the bottom of each page (such as page generation time, the Whats New link, 
 and the free version notification).  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/DetailsHider.zip)
 
 
-**Kanban Board Column Grouper**
+[**Kanban Board Column Grouper**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Kanban%20Board%20Column%20Grouper)
 
 The Kanban Board column grouper Mashup allows you to group together 
 swimlanes on your Kanban board and have grouped WIP limits for your 
