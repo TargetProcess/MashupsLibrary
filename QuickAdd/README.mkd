@@ -1,0 +1,28 @@
+Quick Add
+====================
+
+Quick Add mashup allows to add User Stories, Bugs and Features really quickly and in a batch. It adds a Quick Add link everywhere. When you click it, you see input area. Type as many Features, Stories and Bugs as you want. For example, this text will create 1 Feature, 2 User Stories and 1 Bug:
+
+Feature: Search
+Story: Advanced search
+Story: Basic search
+Bug: Something wrong
+
+NOTES:
+1. If you have several projects selected, it will add entities into the first selected project
+2. Hierarchy is not supported, every entity is independent
+
+
+
+How To Install and Use the Mashup
+---------------------------------
+
+1. Download the Mashup file either by cloning this repository or
+   downloading a ZIP.
+2. Extract/copy the "QuickAdd" folder to your 
+   _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
+3. Sit back and enjoy!
+
+
+
+
