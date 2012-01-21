@@ -35,7 +35,7 @@ tau.mashups
 			var name = lines[i].slice(type.length);
 			type = type.slice(0, -1); // remove :
 			
-			//TODO: implement algorithm that will recognize data and add it hiearchically and by type
+			//TODO: implement algorithm that will recognize data and add it hierarchically
 			items.push({"Type" : getResourceName(type), "Name": name});
 		}
 		return items;
