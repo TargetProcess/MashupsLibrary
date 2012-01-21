@@ -1,3 +1,6 @@
+// created by Michael Dubakov. I still (slightly) remember how to code
+// @mdubakov
+
 tau.mashups
 .addDependency('libs/jquery/jquery')
 .addMashup(function ($, config) {
