@@ -4,7 +4,7 @@
 tau.mashups
 .addDependency('libs/jquery/jquery')
 .addMashup(function ($, config) {
-	$('#main').prepend("<div id='m_quickAddBlock' style='width: 400px;'><a href='#' id='m_quickAddLink'>Quick Add</a></div><br style='clear:both'>");
+	$('#main').prepend("<div id='m_quickAddBlock' style='width: 400px; margin-left: 10px'><a href='#' id='m_quickAddLink'>Quick Add</a></div>");
 
 	function getQueryParams(qs) {
 		qs = qs.split("+").join(" ");
