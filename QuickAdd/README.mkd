@@ -8,6 +8,8 @@ Story: Advanced search
 Story: Basic search  
 Bug: Something wrong  
 
+![Quick Add](https://github.com/TargetProcess/MashupsLibrary/raw/master/QuickAdd/QuickAdd.png)
+
 NOTES:  
 1. If you have several projects selected, it will add entities into the first selected project  
 2. Hierarchy is not supported, every entity is independent  
