@@ -1,10 +1,16 @@
 // created by Michael Dubakov. I still (slightly) remember how to code
 // @mdubakov
 
+require(['tau/configurator'], function(c) {
+	c.setApplicationPath(window.appHostAndPath);
+	// we will use fancy store API from tau.js
+	var store = c.getStore();
+
+
 tau.mashups
 .addDependency('libs/jquery/jquery')
 .addMashup(function ($, config) {
-	$('#main').prepend("<div id='m_quickAddBlock' style='width: 400px; margin-left: 10px'><a href='#' id='m_quickAddLink'>Quick Add</a></div>");
+	$('#main').prepend("<div id='m_quickAddBlock' style='width: 400px;'><a href='#' id='m_quickAddLink'>Quick Add</a></div><br style='clear:both'>");
 
 	function getQueryParams(qs) {
 		qs = qs.split("+").join(" ");
@@ -68,18 +74,13 @@ tau.mashups
 				success: function(data){
 					var projectId = parseInt(data.SelectedProjects[0].Id);
 					//add entities
-					$.each(stories, function(index, value) {                   
-						$.ajax({
-							type: 'POST',
-							url: appHostAndPath+'/api/v1/' + value.Type,                            
-							dataType: 'json',
-							processData: false, //otherwise wrong content-type
-							contentType: 'application/json',
-							data: JSON.stringify({Name:value.Name, Project:{Id:projectId}})
-						}).done(function( msg ) {
-							$("#m_quickAddBlock").prepend("<div id='savedOK' style='color: #000; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); padding: 3px; background: #A5C956; border: 1px solid #A5C956;'>Entity saved: "+msg.Name+"</div>");
-							$("#savedOK").fadeOut(3000)
-						});
+					$.each(stories, function(index, value) {     
+						store.save(value.Type, { $set: {name:value.Name, project:{id:projectId}}}).done({ 
+							success: function() {
+								$("#m_quickAddBlock").prepend("<div id='savedOK' style='color: #000; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); padding: 3px; background: #A5C956; border: 1px solid #A5C956;'>Entity saved: "+value.Name+"</div>");
+								$("#savedOK").fadeOut(3000)
+							} 
+						});	
 					});
 					                            
 				}
@@ -112,4 +113,6 @@ tau.mashups
 		$("#m_addEntityAction").die();
 		$("#addText").die();
 	}
+});
+
 });
