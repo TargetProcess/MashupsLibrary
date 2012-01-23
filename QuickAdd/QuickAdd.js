@@ -63,7 +63,7 @@ tau.mashups
 		$("#m_addEntityAction").live("click", function(e) {
                   
 			var $_GET = getQueryParams(document.location.search); // extract acid      
-			var stories = parseEntities($("#addText").val());
+			var entities = parseEntities($("#addText").val());
 			
 	        $.ajax({
 				// get list of selected projects first
@@ -74,10 +74,10 @@ tau.mashups
 				success: function(data){
 					var projectId = parseInt(data.SelectedProjects[0].Id);
 					//add entities
-					$.each(stories, function(index, value) {     
-						store.save(value.Type, { $set: {name:value.Name, project:{id:projectId}}}).done({ 
+					$.each(entities, function(index, entity) {     
+						store.save(entity.Type, { $set: {name:entity.Name, project:{id:projectId}}}).done({ 
 							success: function() {
-								$("#m_quickAddBlock").prepend("<div id='savedOK' style='color: #000; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); padding: 3px; background: #A5C956; border: 1px solid #A5C956;'>Entity saved: "+value.Name+"</div>");
+								$("#m_quickAddBlock").prepend("<div id='savedOK' style='color: #000; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); padding: 3px; background: #A5C956; border: 1px solid #A5C956;'>Entity saved: "+entity.Name+"</div>");
 								$("#savedOK").fadeOut(3000)
 							} 
 						});	
