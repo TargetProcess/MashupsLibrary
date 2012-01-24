@@ -1,0 +1,66 @@
+Kanban Board Tag and Custom Field Card Colorer
+==============================================
+
+The Kanban Board Tag and Custom Field Card Colorer mashup colors the cards on your Kanban Board 
+according to both tags and custom fields.  This mashup will determine a base color for your cards based on the 
+first match of either tags and custom fields that it finds.  The cards are ultimately colored a particular shade of 
+this base color, depending on the entity's business value or priority.  There are also some fail-safe mechanisms that 
+will ensure that you are never given black text over a dark-colored card.
+
+[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/KanbanTagCustomFieldColorer.zip)
+
+
+Customizing Colors
+------------------
+
+In order to color your cards, the Mashup must know what you would like to color them.  At the top of the file, find 
+this block of code:
+
+```
+    /* an object of tags : colors
+     * this determines the colors of your tags */
+	var tagColors = {
+		'redball':'#ff0000',
+	 	'blocked':'#ff00ff'
+	};
+```
+
+This object holds the coloring information for tag-based matching.  It is simply an object where the key is the tag name and 
+the color is the base color, in hex.
+
+To customize the coloring information for custom-field-based matching, find this block:
+
+```
+    /* an object of custom fields : possible values
+     *   possible values is another object of value : color mappings
+     * this determines the colors based on custom field values */
+    var customFieldMappings = {
+        'Story Type' : {
+            'Blue':'#0000ff',
+            'Green':'#00ff00',
+            'Gray':'#c0c0c0'
+        }
+    };
+```
+
+This object is a collection where the key is the *exact* name of a Custom Field that we want to match upon.  The value for this 
+key is another object that holds a list of values (as keys) and colors (as values) that we will color on.
+
+Another, entirely optional, customization is the "stepping value" that determines the shading of colors based upon priority.  For 
+most people, the default value should be sufficient.  If you wish to disable this feature, simply change this value to _0_.
+
+```
+    /* a stepping value to determine the proper priority-based shading */
+    var priorityShadeStepping = 40;
+```
+
+
+How To Install and Use the Mashup
+---------------------------------
+
+1. Download the Mashup file either by cloning this repository or downloading a ZIP.
+2. Extract/copy the _KanbanTagCustomFieldColorer_ folder to your _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
+3. Customize colors for your cards according to the instructions above.
+4. Open the Kanban Board, enjoy.
+5. ?
+6. Profit
