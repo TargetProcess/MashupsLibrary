@@ -99,3 +99,10 @@ swimlanes on your Kanban board and have grouped WIP limits for your
 swimlanes in aggregate.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Board%20Column%20Grouper.zip)
 
 
+[**Kanban Board Tag and Custom Field Card Colorer**](https://github.com/TargetProcess/MashupsLibrary/tree/master/KanbanTagCustomFieldColorer)
+
+The Kanban Board Tag and Custom Field Card Colorer mashup colors the cards on your Kanban Board 
+according to both tags and custom fields.  This mashup will determine a base color for your cards based on the 
+first match of either tags and custom fields that it finds.  The cards are ultimately colored a particular shade of 
+this base color, depending on the entity's business value or priority.  There are also some fail-safe mechanisms that 
+will ensure that you are never given black text over a dark-colored card. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/KanbanTagCustomFieldColorer.zip)
