@@ -89,6 +89,8 @@ tau.mashups
             if ((tableHead != null) && (config != null)) {
                 /* remove the original "WIP" header */
                 $(tableHead).find('th.kanban-swimlane-wip-header').remove();
+                /* modify the "planned" state if one exists */
+                $(tableHead).find('tr:eq(1)').prepend($(tableHead).find('tr:first > th.kanban-swimlane-header-wrap').attr('rowspan',null).remove());
                 var columnOrder = [];
                 /* and place our new grouped headers */
                 $.each(config, function(column, setup) {
