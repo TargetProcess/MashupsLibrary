@@ -51,8 +51,10 @@ projects.
 
 Inside each project object is the configuration object, which maps a name of a column 
 group (in the above example `Development`, `Testing`, and `Release`) to the group's 
-WIP limit and an array of the swimlane columns that are to be a part of the group.  If you 
-specify `null` as the limit, the columns will group but will not have any WIP limit feedback.
+WIP limit and an array of the swimlane columns that are to be a part of the group.  Please 
+note that when you specify the columns to be grouped, they are *case-sensitive* and most definitely 
+*spelling does count*.  It is also worth mentioning that if you specify `null` as the limit, 
+the columns will group but will not have any limit feedback.
 
 *Note* that all columns that do not fall into a column group will appear at the far _right_ 
 side of the Kanban board.  Also please note that groups and columns are arranged in the order 
