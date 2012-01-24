@@ -2,15 +2,27 @@ tau.mashups
 .addDependency('libs/jquery/jquery')
 .addMashup(function() {
 
-	
+
 	$('a:contains("Planning")').after($('<a id="done_by_month" href="#">Done Entities By Month</a>'));
-	
+
 	$('#done_by_month').click(showReport)
 	function showReport() {
-		$('head').append('<link rel="stylesheet" href="' + Application.baseUrl + '/JavaScript/Mashups/DoneEntitiesByMonthReport/style.css" type="text/css" />');
+		$('head').append('<style type="text/css">table.u-done-entities td {width: 100px !important; vertical-align: top; font: 12px Arial; padding: 3px 2px !important} \
+		table.u-done-entities tr:hover {background: #E3F5D7 !important} \
+		table.u-done-entities tr {border-bottom: 1px solid #eee !important} \
+		table.u-done-entities th {padding: 5px 10px} \
+		table.u-done-entities {border-collapse: collapse} \
+		.done {margin-left: 1px; margin-top: 1px; width: 8px; height: 8px; float: left;-moz-border-radius: 4px; \
+		-webkit-border-radius: 4px; \
+		-khtml-border-radius: 4px; \
+		border-radius: 4px;} \
+		.UserStory {background: #507CB6 !important; } \
+		.Bug {background: #C30 !important; } \
+		.Issue {background: orange !important; } \
+		.Feature {background: green !important; }</style>');
 		$("td.col-two").html('').append(
 			$('<h1>Completed Entities by projects by months in 2011</h1><select id="rep-entityType"><option value="">- Select Entity -</option><option value="UserStory"> User Stories</option><option value="Bug">Bugs</option><option value="Issue">Issues</option><option value="Feature">Features</option></select><br><br><div id="entities-by-month-rep"></div>'));
-			
+
 		$("#rep-entityType").die();
 		$("#rep-entityType").live("change", function() {
 			currentEntity = $("#rep-entityType").val();
@@ -42,7 +54,7 @@ tau.mashups
 	$.getJSON(url + getUrl("Project"), initProjects);
 
 	function initProjects(data) {
-		
+
 		for (i = 0; i < data.Items.length; i++) {
 			if (data.Items[i]) {
 				proj = data.Items[i];
@@ -63,7 +75,7 @@ tau.mashups
 	}
 
 	function buildReport() {
-		$("#entities-by-month-rep").html("<img src='"+Application.baseUrl+"/JavaScript/Mashups/DoneEntitiesByMonthReport/totoro.gif'> Small Totoro is collecting the data...").fadeIn('slow');
+		$("#entities-by-month-rep").html("<img src='https://github.com/TargetProcess/MashupsLibrary/raw/master/DoneEntitiesByMonthReport/totoro.gif'> Small Totoro is collecting the data...").fadeIn('slow');
 		initEmptyMatrix();
 		loadData();
 	}
@@ -110,9 +122,9 @@ tau.mashups
 		for (m = 0; m < 12; m ++) {
 			tr.append($("<th>").text(months[m]));
 		}
-		
+
 		table.append(tr);
-		
+
 		// build data
 		for (i = 0; i < projects.length; i++) {
 			tr = $("<tr>").append($("<td>").text(projectNames[i]));
@@ -128,5 +140,5 @@ tau.mashups
 		}		
 		$("#entities-by-month-rep").append(table).fadeIn('slow');
 	}
-	
+
 });
