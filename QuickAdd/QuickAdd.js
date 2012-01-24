@@ -30,28 +30,79 @@ tau.mashups
 			Bug  : "Bugs",	   		
 		}[entityType] || null
 	}
+
+
+	function noPlural(entityType) {
+		return {
+			Features  : "Feature",
+			UserStories  : "UserStory",
+			Bugs  : "Bug",	   		
+		}[entityType] || null
+	}
 	         
 	function parseEntities(text) {
 		var items = [];
 		var lines = text.split("\n");
 		for (var i = 0; i < lines.length; i++) {
-			var typeArr = $.trim(lines[i]).match(/^.+:/); // search for Story:
-			if (typeArr == null) continue;
-			var type = typeArr[0];
-			var name = lines[i].slice(type.length);
-			type = type.slice(0, -1); // remove :
+			var entity = buildOperators(lines[i]);
 			
 			//TODO: implement algorithm that will recognize data and add it hierarchically
-			items.push({"Type" : getResourceName(type), "Name": name});
+			items.push(entity);
 		}
 		return items;
+	}
+
+
+	// returns array of objects {operator, value}
+	function buildOperators(str) {
+		
+		var commands = str.split('>');
+		var entity = {};
+
+		for (var i = 0; i < commands.length; i++) {
+			s = $.trim(commands[i]);
+			var operator = s.match(/^.+:/);
+			if (operator == null) continue;
+			var val = $.trim(s.substr(operator[0].length));
+			operator = operator[0].slice(0, -1); // remove :
+
+			if (i == 0) {
+				entity["Type"] = getResourceName(operator);	
+				entity["Name"] = val;	
+			} else {
+				entity[operator] = val;
+			}
+			
+		}
+
+		return entity;
+	}
+
+	function handleState(entity, processId, fn) {     
+		
+		if (!entity.state) {
+			fn();
+			return;
+		} 
+	    $.ajax({
+			// get list of selected projects first
+			type: 'GET',
+			url: appHostAndPath+"/api/v1/EntityStates?where=(EntityType.Name%20eq%20'"+noPlural(entity.Type)+"')%20and%20(Process.Id%20eq%20'"+processId+"')%20and%20(Name%20eq%20'"+entity.state+"')",
+			contentType: 'application/json',
+			dataType: 'json',
+			success: function(data){
+				var stateId = (data.Items.length > 0) ? data.Items[0].Id : null;
+				fn(stateId);
+			}
+		});        
+		
 	}
 	          
 	// quick add
 	$("#m_quickAddLink").live("click", function(){
 		
 		var addAction = $("<div class='main-controls left'><button type='button' class='button' id='m_addEntityAction' style='margin-right: 10px'>Add</button> <a href='#' style='margin-top: 5px' id='cancelAdd'>Cancel</a></div>");
-		var addText = $('<span class="secondaryInfo">You can add several Stories, Features and Bugs at once. For example:<br>Feature: super search<br>Bug: something wrong<br>Story: As a bee I want to fly</span><br><textarea id="addText" rows="4" cols="120" style="margin-bottom: 10px"></textarea>');
+		var addText = $('<span class="secondaryInfo">You can add several Stories, Features and Bugs at once. For example:<br>Feature: super search<br>Bug: something wrong<br>Story: As a bee I want to fly &gt; state:Planned</span><br><textarea id="addText" rows="4" cols="120" style="margin-bottom: 10px"></textarea>');
 		addText.val("Story: ");
 		
 		
@@ -62,7 +113,7 @@ tau.mashups
 		
 		$("#m_addEntityAction").live("click", function(e) {
                   
-			var $_GET = getQueryParams(document.location.search); // extract acid      
+			var $_GET = getQueryParams(document.location.search); // extract acid 
 			var entities = parseEntities($("#addText").val());
 			
 	        $.ajax({
@@ -73,14 +124,25 @@ tau.mashups
 				dataType: 'json',
 				success: function(data){
 					var projectId = parseInt(data.SelectedProjects[0].Id);
+					var processId = parseInt(data.Processes[0].Id);
+					
 					//add entities
-					$.each(entities, function(index, entity) {     
-						store.save(entity.Type, { $set: {name:entity.Name, project:{id:projectId}}}).done({ 
-							success: function() {
-								$("#m_quickAddBlock").prepend("<div id='savedOK' style='color: #000; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); padding: 3px; background: #A5C956; border: 1px solid #A5C956;'>Entity saved: "+entity.Name+"</div>");
-								$("#savedOK").fadeOut(3000)
-							} 
-						});	
+					$.each(entities, function(index, entity) {  
+						var fn = function(entityState) {
+							//debugger;
+							var entityToPost = {name:entity.Name, project:{id:projectId}};
+							if (entityState) {
+								entityToPost = 	{name:entity.Name, project:{id:projectId}, entitystate:{id:entityState}};
+							}
+							store.save(entity.Type, { $set: entityToPost}).done({ 
+								success: function() {
+									$("#m_quickAddBlock").prepend("<div id='savedOK' style='color: #000; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); padding: 3px; background: #A5C956; border: 1px solid #A5C956;'>Entity saved: "+entity.Name+"</div>");
+									$("#savedOK").fadeOut(3000)
+								} 
+							});	
+						}   
+						handleState(entity, processId, fn);
+						
 					});
 					                            
 				}
