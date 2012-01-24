@@ -127,6 +127,7 @@ tau.mashups
 					var processId = parseInt(data.Processes[0].Id);
 					
 					//add entities
+					//TODO: refactor this into general logic for all properties
 					$.each(entities, function(index, entity) {  
 						var fn = function(entityState) {
 							//debugger;
