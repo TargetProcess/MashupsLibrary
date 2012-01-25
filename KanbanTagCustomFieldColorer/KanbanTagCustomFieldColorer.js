@@ -98,11 +98,11 @@ tau.mashups
             var itemId = item.find('.kanban-item-id').first().html();
             var restCall = null;
             /* determine what kind of entity we're querying the REST API on */
-            if (el.id().match(/kanban-item-userstory-\d+/)) {
+            if (item.id().match(/kanban-item-userstory-\d+/)) {
                 restCall = 'UserStories';
-            } else if (el.id().match(/kanban-item-bug-\d+/)) {
+            } else if (item.id().match(/kanban-item-bug-\d+/)) {
                 restCall = 'Bugs';
-            } else if (el.id().match(/kanban-item-feature-\d+/)) {
+            } else if (item.id().match(/kanban-item-feature-\d+/)) {
                 restCall = 'Features';
             }
             /* Obviously we can't do anything if we don't know what API call to make */
