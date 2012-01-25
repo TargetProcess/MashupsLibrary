@@ -118,6 +118,19 @@ How To Install and Use the Mashup
    configuration according to the above specifications.
 4. Open the Kanban Board, sit back, and enjoy!
 
+
+Installing the Mashup with TargetProcess OnDemand
+-------------------------------------------------
+
+1. In your OnDemand site, navigate to ```Settings > (System Settings) > Mashups```
+2. Click "Add New Mashup"
+3. In the "Name" field, enter a name unique to this Mashup - for example "Kanban Column Grouper"
+4. In the "Placeholders" field, enter ```Project_Planning_Kanban_KanbanBoard```
+5. Copy and paste the contents of the [Kanban Board Column Grouper.js](https://raw.github.com/TargetProcess/MashupsLibrary/master/Kanban%20Board%20Column%20Grouper/KanbanBoardColumnGrouper.js) file in the "Code" box.
+6. Configure the Mashup according to the instructions above.
+7. Click Save
+
+
 Troubleshooting
 ---------------
 

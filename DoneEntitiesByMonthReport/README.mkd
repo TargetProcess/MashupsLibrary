@@ -16,3 +16,13 @@ How To Install and Use the Mashup
 3. Navigate to Reports section and find **Done Entities By Month** link.
 4. Select User Story entity and enjoy the report.
 
+
+Installing the Mashup with TargetProcess OnDemand
+-------------------------------------------------
+
+1. In your OnDemand site, navigate to ```Settings > (System Settings) > Mashups```
+2. Click "Add New Mashup"
+3. In the "Name" field, enter a name unique to this Mashup - for example "Done Entities By Month Report"
+4. In the "Placeholders" field, enter ```Project_Reports_Reports,Project_Reports_Report```
+5. Copy and paste the contents of the [DoneEntitiesByMonthReport.js](https://raw.github.com/TargetProcess/MashupsLibrary/master/DoneEntitiesByMonthReport/DoneEntitiesByMonthReport.js) file in the "Code" box.
+6. Click Save

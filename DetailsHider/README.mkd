@@ -17,6 +17,18 @@ How To Install and Use the Mashup
    _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
 3. Sit back and enjoy!
 
+
+Installing the Mashup with TargetProcess OnDemand
+-------------------------------------------------
+
+1. In your OnDemand site, navigate to ```Settings > (System Settings) > Mashups```
+2. Click "Add New Mashup"
+3. In the "Name" field, enter a name unique to this Mashup - for example "Details Hider"
+4. In the "Placeholders" field, enter ```footerPlaceholder```
+5. Copy and paste the contents of the [DetailsHider.js](https://raw.github.com/TargetProcess/MashupsLibrary/master/DetailsHider/DetailsHider.js) file in the "Code" box.
+6. Click Save
+
+
 Troubleshooting
 ---------------
 

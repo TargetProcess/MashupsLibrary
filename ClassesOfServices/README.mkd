@@ -1,5 +1,5 @@
 Kanban Board Classes of Services
-===========================
+================================
 
 The Kanban Board Classes of Services mashup colors cards according to tags.
 
@@ -26,3 +26,14 @@ How To Install and Use the Mashup
 ```
 
 Open the Kanban Board, add some tags to User Stories or Bugs and enjoy!
+
+
+Installing the Mashup with TargetProcess OnDemand
+-------------------------------------------------
+
+1. In your OnDemand site, navigate to ```Settings > (System Settings) > Mashups```
+2. Click "Add New Mashup"
+3. In the "Name" field, enter a name unique to this Mashup - for example "Classes of Service"
+4. In the "Placeholders" field, enter ```Project_Planning_Kanban_KanbanBoard```
+5. Copy and paste the contents of the [ClassesOfService.js](https://raw.github.com/TargetProcess/MashupsLibrary/master/ClassesOfServices/ClassesOfServices.js) file in the "Code" box.
+6. Click Save

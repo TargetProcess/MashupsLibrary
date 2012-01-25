@@ -13,6 +13,8 @@ for the description of the following entities in TargetProcess:
 -   Requests
 -   Test Cases
 
+*This Mashup is _not_ compatible with TargetProcess OnDemand*
+
 [Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/Entity%20Templates.zip)
 
 How To Install and Use the Mashup
