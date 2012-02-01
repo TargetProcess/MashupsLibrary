@@ -106,3 +106,10 @@ according to both tags and custom fields.  This mashup will determine a base col
 first match of either tags and custom fields that it finds.  The cards are ultimately colored a particular shade of 
 this base color, depending on the entity's business value or priority.  There are also some fail-safe mechanisms that 
 will ensure that you are never given black text over a dark-colored card. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/KanbanTagCustomFieldColorer.zip)
+
+
+[**Kanban Board Comment Counts**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Kanban%20Board%20Comment%20Counts)
+
+The Kanban Board comment count Mashup adds an icon with the current comment 
+count to each of your cards in similar fashion as to the task and bug count 
+icons. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Board%20Comment%20Counts.zip)
