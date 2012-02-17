@@ -126,15 +126,15 @@ tau.mashups
             if (config != null)
                 /* run through each group and check the limits */
                 $.each(config, function(column, setup) {
-                    if (setup.limit == null)
-                        return false; /* no need to be here and do this if we hvae no limit! */
-                    var count = 0;
-                    for (var i = 0; i < setup.columns.length; i++)
-                        count += getSwimlaneByName(board, setup.columns[i]).find('.kanban-item').length;
-                    if (count > setup.limit) /* overlimit */
-                        getGroupedHeaderByName(board,column).attr('style','color: white!important; background: #E44D4D;');
+                    if (setup.limit) {
+                    	var count = 0;
+                    	for (var i = 0; i < setup.columns.length; i++)
+                    	     count += getSwimlaneByName(board, setup.columns[i]).find('.kanban-item').length;
+                    	if (count > setup.limit) /* overlimit */
+                            getGroupedHeaderByName(board,column).attr('style','color: white!important; background: #E44D4D;');
                     else /* under limit */
                         getGroupedHeaderByName(board,column).css({'background-color':'', 'color':''});
+                  }
                 });
         });
     };
