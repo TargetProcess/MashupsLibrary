@@ -5,8 +5,8 @@ tau.mashups
 		var processResponse = function(resp){
 			var map = {};
 			for(var x=0,len=resp.Items.length; x<len;x++) {
-				for(var y=0,len1=resp.Items[x].Assignments.length;y<len1;y++) {
-					var assignment = resp.Items[x].Assignments[y];
+				for(var y=0,len1=resp.Items[x].Assignments.Items.length;y<len1;y++) {
+					var assignment = resp.Items[x].Assignments.Items.[y];
 					var id = assignment.GeneralUser.Id;
 					if (map[id]) {
 						map[id].count++;
