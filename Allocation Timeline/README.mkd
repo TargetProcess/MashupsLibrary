@@ -3,7 +3,7 @@ People Allocations on Projects Timeline by Months
 
 This mashup shows in a visual way what projects people are working on, when they started and when they are going to leave projects. Future allocations are shown as well.
 
-![Allocation Timeline](https://github.com/TargetProcess/MashupsLibrary/raw/master/AllocationTimeline/AllocationTimeline.png)
+![Allocation Timeline](https://github.com/TargetProcess/MashupsLibrary/raw/master/Allocation%20Timeline/AllocationTimeline.png)
 
 Installing the Mashup 
 -------------------------------------------------
