@@ -9,14 +9,13 @@ tau.mashups
 	function showReport() {
 		$('head').append('<style type="text/css"> \
 		table.board-timeline tr:hover {background: #E3F5D7 !important} \
-		table.board-timeline tr {border-bottom: 1px solid #eee !important} \
-		table.board-timeline td {height: 20px; border-left: 1px solid #eee !important} \
+		table.board-timeline tr {border-bottom: 1px dotted #eee !important} \
+		table.board-timeline td {height: 20px; border-left: 1px dotted #eee !important} \
 		table.board-timeline {border-collapse: collapse} \
-		.timeline-card {background: #A3D49C; border: 1px solid #82CA9C; color: white; overflow: hidden; position: absolute; font: 11px Arial; height: 12px; border-radius: 3px; padding: 3px 2px 1px 3px;} \
+		.timeline-card {background: #ACD473; border: 1px solid #8ACB29; color: white; overflow: hidden; position: absolute; font: 11px Arial; height: 12px; border-radius: 3px; padding: 2px; color: white; font-weight: bold; font-size: 11px;} \
 		</style>');
 		$("td.col-two").html('').append(
-			$('<h1>People allocations on projects</h1><div id="allocation-rep"></div>'));
-
+			$('<span class="tableTitle">People allocations on projects</span><br><br><div id="allocation-rep"></div>'));
   		$.getJSON(url + getUrl("People"), generateTimeline);
           	
 	}
@@ -56,7 +55,7 @@ tau.mashups
 				var tr = $("<tr>");	
 				for (var j=0; j < months.length+1; j++) {
                                         if (j == 0) {
-                                          tr.append($("<td>")
+                                          tr.append($("<td a_user_id='"+user.Id+"'>")
                                                     .append("<img style='float: left; margin-right: 10px' src='"+url+"/avatar.ashx?size=30&UserId="+user.Id+"' /> ")
                                                     .append(user.FirstName + " " + user.LastName)
                                                     .append("<br><span style='color: #BBB'>"+user.Role.Name + "</span>"));
@@ -100,6 +99,8 @@ tau.mashups
             	var shiftY = 0;
           	var projects = allocations[users[i].Id];
             	if (! projects) continue;
+            
+            	var totalUserAllocation = 0;
             	for (var p = 0; p < projects.length; p++) {
                        // need some more clever algorithm here
                   	var project = projects[p];
@@ -136,13 +137,26 @@ tau.mashups
                   
 	                var width = end.offset().left - start.offset().left + (endDate - startDate - 1) * dayUnit;
                   	var card = $("<div class='timeline-card'><i style='color: #333'>"+project.Allocation+"%</i> "+project.Project+"</div>")
-						.css("left", start.offset().left + dayUnit * (startDate-1))
-						.css("top", start.offset().top + shiftY * cardHeight)
+						.css("left", start.offset().left + dayUnit * (startDate-1) + 3)
+						.css("top", start.offset().top + shiftY * cardHeight + 3)
 						.css("width", width);
                   	$("#allocation-rep").append(card);
                   	shiftY++;
                   	start.css("height", shiftY * cardHeight);
+                  
+                  	totalUserAllocation=totalUserAllocation+project.Allocation;
+                  
+                  	
                 }
+            
+            var alarma = "#bbb";
+            if (totalUserAllocation > 100) alarma = "red";
+            if (totalUserAllocation == 0) alarma = "orange";
+            if (totalUserAllocation < 100 && totalUserAllocation > 50) alarma = "green";
+            
+            $("td[a_user_id='"+users[i].Id+"']").append(" <span style='color: "+alarma+"' >" + totalUserAllocation + "%</span>");
+            
+            	
           }
           	
   }
