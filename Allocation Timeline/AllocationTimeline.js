@@ -29,52 +29,51 @@ tau.mashups
 	var months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
   
   
-  
-		function generateTimeline(data) {
-                  	users = data.Items;
-			
-			var table = $("<table class='board-timeline' style='width: 100%'>");
-			var trh = $("<tr>");	
-	
-			for (var j=0; j < months.length+1; j++) {	
-                                if (j == 0) {
-                                  trh.append($("<th style='min-width: 210px'>").append("People"));
-                                  continue;
-                                }
-                          	var td = $("<th style='width: 8%'>").append( months[j-1]);
-				if (j == today.getMonth()+1) td.css("border-left", "1px solid red").css("color", "red");							
-				trh.append(td);
-			}
-			table.append(trh);
+	function generateTimeline(data) {
+              	users = data.Items;
+		
+		var table = $("<table class='board-timeline' style='width: 100%'>");
+		var trh = $("<tr>");	
 
-			for (var i = 0; i < users.length; i++) {
-                          	var user = users[i];
-                          	
-                          	allocations[user.Id] = new Array();
-                          
-				var tr = $("<tr>");	
-				for (var j=0; j < months.length+1; j++) {
-                                        if (j == 0) {
-                                          tr.append($("<td a_user_id='"+user.Id+"'>")
-                                                    .append("<img style='float: left; margin-right: 10px' src='"+url+"/avatar.ashx?size=30&UserId="+user.Id+"' /> ")
-                                                    .append(user.FirstName + " " + user.LastName)
-                                                    .append("<br><span style='color: #BBB'>"+user.Role.Name + "</span>"));
-                                          continue;
-                                        }
-					var td = $("<td x_y='"+j+"_"+user.Id+"'>");
-					if (j == today.getMonth()+1) td.css("border-left", "1px solid red !important");
-					tr.append(td);
-				}
-				table.append(tr);
-			}
-
-	                  $("#allocation-rep").append(table).fadeIn('slow');
-                  
-                  
-                  	$.getJSON(url + getUrl("ProjectAllocation"), generateAllocations);
-                  
-                  	return;
+		for (var j=0; j < months.length+1; j++) {	
+                            if (j == 0) {
+                              trh.append($("<th style='min-width: 210px'>").append("People"));
+                              continue;
+                            }
+                      	var td = $("<th style='width: 8%'>").append( months[j-1]);
+			if (j == today.getMonth()+1) td.css("border-left", "1px solid red").css("color", "red");							
+			trh.append(td);
 		}
+		table.append(trh);
+
+		for (var i = 0; i < users.length; i++) {
+                      	var user = users[i];
+                      	
+                      	allocations[user.Id] = new Array();
+                      
+			var tr = $("<tr>");	
+			for (var j=0; j < months.length+1; j++) {
+                                    if (j == 0) {
+                                      tr.append($("<td a_user_id='"+user.Id+"'>")
+                                                .append("<img style='float: left; margin-right: 10px' src='"+url+"/avatar.ashx?size=30&UserId="+user.Id+"' /> ")
+                                                .append(user.FirstName + " " + user.LastName)
+                                                .append("<br><span style='color: #BBB'>"+user.Role.Name + "</span>"));
+                                      continue;
+                                    }
+				var td = $("<td x_y='"+j+"_"+user.Id+"'>");
+				if (j == today.getMonth()+1) td.css("border-left", "1px solid red !important");
+				tr.append(td);
+			}
+			table.append(tr);
+		}
+
+                  $("#allocation-rep").append(table).fadeIn('slow');
+              
+              
+              	$.getJSON(url + getUrl("ProjectAllocation"), generateAllocations);
+              
+              	return;
+	}
                   
 
 	function getUrl(entityType) {
@@ -85,8 +84,7 @@ tau.mashups
 	}
   
   	function generateAllocations(data) {
-          
-       		//var allocations = data.Items;
+
           for (i = 0; i < data.Items.length; i++) {
                 var a = data.Items[i];
             if (allocations[a.User.Id]) {
@@ -97,7 +95,7 @@ tau.mashups
           
           for (var i = 0; i < users.length; i++) {
             	var shiftY = 0;
-          	var projects = allocations[users[i].Id];
+          		var projects = allocations[users[i].Id];
             	if (! projects) continue;
             
             	var totalUserAllocation = 0;
@@ -149,32 +147,25 @@ tau.mashups
                   	
                 }
             
-            var alarma = "#bbb";
-            if (totalUserAllocation > 100) alarma = "red";
-            if (totalUserAllocation == 0) alarma = "orange";
-            if (totalUserAllocation < 100 && totalUserAllocation > 50) alarma = "green";
+	            var alarma = "#bbb";
+	            if (totalUserAllocation > 100) alarma = "red";
+	            if (totalUserAllocation == 0) alarma = "orange";
+	            if (totalUserAllocation < 100 && totalUserAllocation > 50) alarma = "green";
+	            
+	            $("td[a_user_id='"+users[i].Id+"']").append(" <span style='color: "+alarma+"' >" + totalUserAllocation + "%</span>");
             
-            $("td[a_user_id='"+users[i].Id+"']").append(" <span style='color: "+alarma+"' >" + totalUserAllocation + "%</span>");
-            
-            	
-          }
-          	
-  }
+          }          	
+	}
   
-  function fixDate(d) {
-    if (d) {
-	  return new Date(parseInt(d.substr(6)));
-    }
-    return null;
-  }
+	function fixDate(d) {
+		if (d) {
+			return new Date(parseInt(d.substr(6)));
+		}
+		return null;
+	}
   
 	function getCell(x, y) {
 		return $('td[x_y="'+x+'_'+y+'"]') 
 	}
-
-	
-
-
-	
 
 });
