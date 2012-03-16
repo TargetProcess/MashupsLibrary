@@ -1,6 +1,8 @@
 TargetProcess Mashups Library
 =============================
 
+Mashups are supported from TargetProcess v.2.22 or higher.
+
 Mashups allow you to quickly extend TargetProcess UI with almost any 
 functionality you want. There are several places on each page 
 where you can add some new UI, or you can modify the existing UI.

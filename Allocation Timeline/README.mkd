@@ -1,0 +1,20 @@
+People Allocations on Projects Timeline by Months
+=======================
+
+This mashup works from __v.2.23.1__. Make sure that you fill Start and End dates for people in project Teams ```Settings > (Project Settings) > Teams```. Allocation for project will not be visible if there is no End Date specified for a person.
+
+Navigate to ```Reports > (People) > People\Projects Timeline``` to see the report.
+
+This mashup shows in a visual way what projects people are working on, when they started and when they are going to leave projects. Future allocations are shown as well.
+
+![Allocation Timeline](https://github.com/TargetProcess/MashupsLibrary/raw/master/Allocation%20Timeline/AllocationTimeline.png)
+
+Installing the Mashup 
+-------------------------------------------------
+
+1. In your OnDemand site, navigate to ```Settings > (System Settings) > Mashups```
+2. Click "Add New Mashup"
+3. In the "Name" field, enter a name unique to this Mashup - for example "Done Entities By Month Report"
+4. In the "Placeholders" field, enter ```Project_Reports_Reports,Project_Reports_Report```
+5. Copy and paste the contents of the [AllocationTimeline.js](https://raw.github.com/TargetProcess/MashupsLibrary/master/AllocationTimeline/AllocationTimeline.js) file in the "Code" box.
+6. Click Save
