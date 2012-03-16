@@ -14,15 +14,17 @@ for the description of the following entities in TargetProcess:
 -   Requests
 -   Test Cases
 
-[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/OnDemand%20Entity%20Templates.zip)
 
 How To Install and Use the Mashup
 ---------------------------------
 
 1. In your OnDemand site, navigate to ```Settings > (System Settings) > Mashups```
 2. Click "Add New Mashup"
-3. In the "Name" field, enter a name unique to this Mashup - for example "Details Hider"
-4. In the "Placeholders" field, enter ```footerPlaceholder```
-5. Copy and paste the contents of the [DetailsHider.js](https://raw.github.com/TargetProcess/MashupsLibrary/master/OnDemand%20Entity%20Templates/OnDemandEntityTemplates.js) file in the "Code" box.
-6. Click Save
+3. In the "Name" field, enter a name unique to this Mashup - for example "Entity Templates"
+4. In the "Placeholders" field, enter ```Project_Planning_UserStory_edit,Project_Planning_Feature_edit,Project_Planning_Task_edit,Project_HelpDesk_Request_edit,Project_QA_Bug_edit,Project_QA_TestCase_edit```
+5. Copy and paste the contents of the [OnDemandEntityTemplates.js](https://raw.github.com/TargetProcess/MashupsLibrary/master/OnDemand%20Entity%20Templates/OnDemandEntityTemplates.js) file in the "Code" box.
+6. Update the templates variable at the top of the code with your templates - be sure to escape properly!
+7. Click Save
+8. Enjoy and PROFIT!
+9. ???
 

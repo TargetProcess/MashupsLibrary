@@ -75,7 +75,7 @@ for the description of the following entities in TargetProcess:
 [**OnDemand Entity Templates**](https://github.com/TargetProcess/MashupsLibrary/OnDemand%20Entity%20TEmplates)
 
 The OnDemand Entity Templates Mashup is an adaptation of the Entity Templates Mashup (above) designed for the OnDemand version of 
-TargetProcess. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/OnDemand%20Entity%20Templates.zip)
+TargetProcess. 
 
 
 [**DoneEntitiesByMonthReport**](https://github.com/TargetProcess/MashupsLibrary/tree/master/DoneEntitiesByMonthReport)
