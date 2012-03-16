@@ -122,3 +122,12 @@ The Kanban Board comment count Mashup adds an icon with the current comment
 count to each of your cards in similar fashion as to the task and bug count 
 icons. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Board%20Comment%20Counts.zip)
 
+
+[**Extra Time Sheet Info**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Extra%20Time%20Sheet%20Info)
+
+The Extra Time Sheet Info Mashup is a simple Mashup for TargetProcess that adds
+more information to the listings in your time sheet.  Currently, the Mashup only adds the entity 
+ID to the row, but can be easily expanded to display more information, such as custom 
+fields. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Extra%20Time%20Sheet%20Info.zip)
+
+
