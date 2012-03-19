@@ -131,3 +131,7 @@ ID to the row, but can be easily expanded to display more information, such as c
 fields. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Extra%20Time%20Sheet%20Info.zip)
 
 
+[**Kanban Custom Priority Colorer**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Kanban%20Custom%20Priority%20Colorer)
+
+The Kanban Board Custom Priority Colorer mashup is a simple Mashup for TargetProcess that allows you to customize the 
+priority colors of cards.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Custom%20Priority%20Colorer.zip)

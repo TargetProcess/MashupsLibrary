@@ -1,0 +1,53 @@
+Kanban Custom Priority Colorer
+==============================
+
+The Kanban Board Custom Priority Colorer mashup is a simple Mashup for TargetProcess that allows you to customize the 
+priority colors of cards.
+
+[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Custom%20Priority%20Colorer.zip)
+
+
+Customizing Colors
+------------------
+
+In order to color your cards, the Mashup must know what you would like to color them.  At the top of the file, find 
+this block of code:
+
+```
+    /* an object of tags : colors
+     * this determines the colors of your priorities */
+	var priorityColors = {
+		1:'#ff0000',
+	 	2:'#ff00ff'
+        /*...*/
+	};
+```
+
+This object holds the coloring information for your priority colors.  The numbers correspond to the "Importance" figure specified in the 
+Business Values page in settings.  It is simply an object where the key is the importance number and the color is the base color, in hex.
+
+
+
+How To Install and Use the Mashup
+---------------------------------
+
+1. Download the Mashup file either by cloning this repository or downloading a ZIP.
+2. Extract/copy the _Kanban Custom Priority Colorer_ folder to your _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
+3. Customize colors for your cards according to the instructions above.
+4. Open the Kanban Board, enjoy.
+5. ?
+6. Profit
+
+
+Installing the Mashup with TargetProcess OnDemand
+-------------------------------------------------
+
+1. In your OnDemand site, navigate to ```Settings > (System Settings) > Mashups```
+2. Click "Add New Mashup"
+3. In the "Name" field, enter a name unique to this Mashup - for example "Kanban Tag Custom Field Colorer"
+4. In the "Placeholders" field, enter ```Project_Planning_Kanban_KanbanBoard```
+5. Copy and paste the contents of the [Kanban Custom Priority Colorer.js](https://github.com/TargetProcess/MashupsLibrary/raw/master/Kanban%20Custom%20Priority%20Colorer/Kanban%20Custom%20Priority%20Colorer.js) file in the "Code" box.
+6. Click Save
+7. ?
+8. Profit
+
