@@ -8,6 +8,8 @@ for the description of your User Stories.
 
 *This Mashup is _not_ compatible with TargetProcess OnDemand*
 
+*This Mashup is included in the [Entity Templates Mashup] (https://github.com/TargetProcess/MashupsLibrary/tree/master/Entity%20Templates)*
+
 [Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/UserStory%20Templates.zip)
 
 How To Install and Use the Mashup
