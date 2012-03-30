@@ -23,7 +23,7 @@ function (config) {
                 /* find what page we're on and proceed accordingly */
                 switch (tau.mashups.currentPlaceholder) {
                     case 'Project_Planning_UserStory_Edit':
-                        if (this.templates.UserStory != null) {
+                        if ((this.templates.UserStory != null) && ($('#ctl00_mainArea_usEdit_UsEdit_DescriptionTextBox_ckeditor').val() != '')){
                             $('#ctl00_mainArea_usEdit_UsEdit_DescriptionTextBox_ckeditor').val(this.templates.UserStory);
                             try {
                                 CKEDITOR.instances.ctl00_mainArea_usEdit_UsEdit_DescriptionTextBox_ckeditor.setData(this.templates.UserStory);
@@ -31,7 +31,7 @@ function (config) {
                         }
                         break;
                     case 'Project_Planning_Feature_Edit':
-                        if (this.templates.Feature != null) {
+                        if ((this.templates.Feature != null) && ($('#ctl00_mainArea_featureDetails_FeatureDetails_DescriptionTextBox_ckeditor').val() != '')) {
                             $('#ctl00_mainArea_featureDetails_FeatureDetails_DescriptionTextBox_ckeditor').val(this.templates.Feature);
                             try {
                                 CKEDITOR.instances.ctl00_mainArea_featureDetails_FeatureDetails_DescriptionTextBox_ckeditor.setData(this.templates.Feature);
@@ -39,7 +39,7 @@ function (config) {
                         }
                         break;
                     case 'Project_Planning_Task_Edit':
-                        if (this.templates.Task != null) {
+                        if ((this.templates.Task != null) && ($('#ctl00_mainArea_taskDetails_taskDetails_DescriptionTextBox_ckeditor').val() != '')) {
                             $('#ctl00_mainArea_taskDetails_taskDetails_DescriptionTextBox_ckeditor').val(this.templates.Task);
                             try {
                                 CKEDITOR.instances.ctl00_mainArea_taskDetails_taskDetails_DescriptionTextBox_ckeditor.setData(this.templates.Task);
@@ -47,13 +47,13 @@ function (config) {
                         }
                         break;
                     case 'Project_HelpDesk_Request_Edit':
-                        if (this.templates.Request != null) {
+                        if ((this.templates.Request != null) && ($('#ctl00_mainArea_RequestDetails_RequestDetails_DescriptionTextBox_ckeditor').val() != '')) {
                             $('#ctl00_mainArea_RequestDetails_RequestDetails_DescriptionTextBox_ckeditor').val(this.templates.Request);
                             CKEDITOR.instances.ctl00_mainArea_RequestDetails_RequestDetails_DescriptionTextBox_ckeditor.setData(this.templates.Request);
                         }
                         break;
                     case 'Project_QA_Bug_Edit':
-                        if (this.templates.Bug != null) {
+                        if ((this.templates.Bug != null) && ($('#ctl00_mainArea_bugDetails_BugDetails_DescriptionTextBox_ckeditor').val() != '')) {
                             $('#ctl00_mainArea_bugDetails_BugDetails_DescriptionTextBox_ckeditor').val(this.templates.Bug);
                             try {
                                 CKEDITOR.instances.ctl00_mainArea_bugDetails_BugDetails_DescriptionTextBox_ckeditor.setData(this.templates.Bug);
@@ -61,7 +61,7 @@ function (config) {
                         }
                         break;
                     case 'Project_QA_TestCase_Edit':
-                        if (this.templates.TestCase != null) {
+                        if ((this.templates.TestCase != null) && ($('#ctl00_mainArea_be_TestCaseDetails_Steps_ckeditor').val() != '') && ($('#ctl00_mainArea_be_TestCaseDetails_Success_ckeditor').val() != '')) {
                             $('#ctl00_mainArea_be_TestCaseDetails_Steps_ckeditor').val(this.templates.TestCase.Steps);
                             $('#ctl00_mainArea_be_TestCaseDetails_Success_ckeditor').val(this.templates.TestCase.Success);
                             try {
