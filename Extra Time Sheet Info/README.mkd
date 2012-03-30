@@ -5,6 +5,9 @@ The Extra Time Sheet Info Mashup is a simple Mashup for [TargetProcess](http://w
 that adds more information to the listings in your time sheet.  Currently, the Mashup only adds the entity 
 ID to the row, but can be easily expanded to display more information, such as custom fields.
 
+![Extra Time Sheet Info](https://github.com/TargetProcess/MashupsLibrary/raw/master/Extra%20Time%20Sheet%20Info/screenshot.png)
+
+
 [Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/Extra%20Time%20Sheet%20Info.zip)
 
 
