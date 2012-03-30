@@ -18,20 +18,13 @@ tau.mashups.addDependency('libs/jquery/jquery').addMashup(
 
                     /* We need to check and see what kind of Assignable we are so that we make the correct
                      * AJAX call to gather the custom field information */
-                    var itemId = el.find('.kanban-item-id').first().html();
-                    var itemType = null;
-                    if (el.id().match(/kanban-item-userstory-\d+/)) {
-                        itemType = 'UserStories';
-                    } else if (el.id().match(/kanban-item-bug-\d+/)) {
-                        itemType = 'Bugs';
-                    } else if (el.id().match(/kanban-item-feature-\d+/)) {
-                        itemType = 'Features';
-                    }
-
-                    /* Obviously we can't do anything if we don't know what API call to make */
-                    if (itemType == null)
+                    var m = el.id().match(/kanban-item-(\w+)-(\d+)/);
+                    if (m == null)
                         return;
 
+                    var itemId = m[2];
+                    var itemType = (m[1] == 'userstory') ? 'UserStories' : m[1].replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } )+'s';
+                    
                     /* utility function to handle the pulsing */
                     var pulseRed = function(el) {
                         el.animate({'background-color': '#ff9999'}, 800, null, function() {
@@ -59,7 +52,9 @@ tau.mashups.addDependency('libs/jquery/jquery').addMashup(
                                 }
                             }
                             if (date == null) {
-                                el.animate({'background-color': '#8DCC29'}, 2000);
+                                /* uncomment this next line if you want to colorize cards with no due date */
+                                //el.animate({'background-color': '#8DCC29'}, 2000);
+                                return;
                             }
                             date = new Date(Number(date.match(/\((\d+)-/)[1]));
                             el.children('.kanban-item-title').append('<div style="float: right; padding-right: 6px;">DUE '+date.format('\m/\d/\y')+'</div>');                            
