@@ -141,3 +141,16 @@ priority colors of cards.  [(Download)](https://github.com/downloads/TargetProce
 
 The Tag Linker Mashup allows you to link to other entities in TargetProcess through the use of tags.  Simply put `#(entity ID)` as a tag name 
 (for example: `requires#208`) and clicking on the tag will take you to that entity. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Tag%20Linker.zip)
+
+
+[**Auto Reply Customer Requests**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Auto%20Reply%20Customer%20Requests)
+
+The Auto Reply Customer Requests mashup is a simple mashup that automatically checks the "Requesters" checkbox for the notification settings on 
+requests. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Auto%20Reply%20Customer%20Requests.zip)
+
+
+[**Kanban Card Rotter**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Kanban%20Card%20Rotter)
+
+The Kanban Card Rotter mashup is an advanced mashup that "rots" cards on your Kanban board according to how long they have been in progress.  
+The more a card has exceeded your threshold, the more brown the cards will look.  If they have fully exceeded a maximum threshold, the mashup 
+will have them pulsate red.  The mashup allows you to visualize which cards have been in progress for long periods of time. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Card%20Rotter.zip)
