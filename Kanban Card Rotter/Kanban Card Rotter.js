@@ -82,7 +82,7 @@ tau.mashups
                     dataType: 'json',
                     success: function(resp) {
                         try {
-                            var startDate = new Date(Number(resp.StartDate.match(/Date\((\d+)-(\d+)\)/)[1]));
+                            var startDate = new Date(Number(resp.StartDate.match(/Date\((\d+)[-\+](\d+)\)/)[1]));
                         } catch (e) { return; }
                         var timeInProgress = new Date().getTime() - startDate.getTime();
                         /* Convert ms to days

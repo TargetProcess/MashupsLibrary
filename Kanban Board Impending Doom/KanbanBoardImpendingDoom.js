@@ -56,7 +56,7 @@ tau.mashups.addDependency('libs/jquery/jquery').addMashup(
                                 //el.animate({'background-color': '#8DCC29'}, 2000);
                                 return;
                             }
-                            date = new Date(Number(date.match(/\((\d+)-/)[1]));
+                            date = new Date(Number(date.match(/\((\d+)[-\+]/)[1]));
                             el.children('.kanban-item-title').append('<div style="float: right; padding-right: 6px;">DUE '+date.format('\m/\d/\y')+'</div>');                            
                             /* calculate the time difference */
                             var diff = date.getTime() - (new Date()).getTime();
