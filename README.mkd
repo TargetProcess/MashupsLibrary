@@ -160,3 +160,9 @@ will have them pulsate red.  The mashup allows you to visualize which cards have
 
 The Kanban Board Auto Assignment mashup is a simple mashup that will automatically assign entities on the Kanban board as their states 
 are changed.  The cards will be automatically assigned to the currently logged in user if there is no assignment for the upcoming state. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Board%20Auto%20Assignment.zip)
+
+
+[**Assigned Effort Report**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Assigned%20Effort%20Report)
+
+The Assigned Effort Report is a simple report that shows the total amount of open effort assigned to users across all projects and all roles.  You can then expand each user to see 
+a list of the assignments and their associated effort values and roles. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Assigned%20Effort%20Report.zip)
