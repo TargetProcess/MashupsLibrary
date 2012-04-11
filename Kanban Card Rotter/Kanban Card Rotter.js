@@ -3,10 +3,10 @@ tau.mashups
 	.addMashup(function(config) {
 
         /* the number of days a card is allowed to "rot" before we throw feedback */
-        var rottingDaysAllowed = 14;
+        var rottingDaysAllowed = 5;
 
         /* the number of days a card is allowed to "rot" before we make a huge stink */
-        var rottingDaysMaximumAllowed = 21;
+        var rottingDaysMaximumAllowed = 14;
 
 /************************************************************************
  * no need to go past here -- abandon hope all ye' who enter 
@@ -27,32 +27,24 @@ tau.mashups
 
             /* utility for getting a shaded color based on a starting color */
             shade: function(c, t, s) {
-                var colorInt = parseInt(c.match(/^#?([0-9a-f]{6})$/)[1],16);
-                var targetColorInt = parseInt(t.match(/^#?([0-9a-f]{6})$/)[1],16);
-                var R1 = ((colorInt & 0xFF0000) >> 16);
-                var G1 = ((colorInt & 0x00FF00) >> 8);
-                var B1 = ((colorInt & 0x0000FF) >> 0);
-                var R2 = ((targetColorInt & 0xFF0000) >> 16);
-                var G2 = ((targetColorInt & 0x00FF00) >> 8);
-                var B2 = ((targetColorInt & 0x0000FF) >> 0);
-                var newR = Math.round((R1 * (1 - s)) + (R2 * s));
-                var newG = Math.round((G1 * (1 - s)) + (G2 * s));
-                var newB = Math.round((B1 * (1 - s)) + (B2 * s));
-                return "#"+("000000"+((newR<<16) | (newG<<8) | (newB)).toString(16)).substr(-6);
+                var c1 = parseInt(c.match(/^#?([0-9a-f]{6})$/)[1],16);
+                var c2 = parseInt(t.match(/^#?([0-9a-f]{6})$/)[1],16);
+                var R = Math.round((((c1 & 0xFF0000) >> 16) * (1 - s)) + (((c2 & 0xFF0000) >> 16) * s));
+                var G = Math.round((((c1 & 0x00FF00) >> 8) * (1 - s)) + (((c2 & 0x00FF00) >> 8) * s));
+                var B = Math.round((((c1 & 0x0000FF) >> 0) * (1 - s)) + (((c2 & 0x0000FF) >> 0) * s));
+                return "#"+("000000"+((R<<16) | (G<<8) | (B)).toString(16)).substr(-6);
             },
 
             /* returns a "safe" off color based on the luminosity of the specified color */
             safeColor: function(c,t,s) {
-                if (m == null) m = ['#ffffff','#333333'];
-                if (t == null) t = 128;
                 var colorInt = parseInt(c.match(/^#?([0-9a-f]{6})$/)[1],16);
                 var R = (colorInt & 0xFF0000) >> 16;
                 var G = (colorInt & 0x00FF00) >> 8;
                 var B = (colorInt & 0x000000) >> 0;
-                if ((.299*R + .587*G + .114*B) < t)
-                    return s[0];
+                if ((.299*R + .587*G + .114*B) < 128)
+                    return '#d6d6d6';
                 else
-                    return s[1];
+                    return '#333333';
             },
 
             /* utility functions for rgb->hex */
@@ -98,8 +90,9 @@ tau.mashups
                             c[0].className = c[0].className.replace(/\bkanban-item-priority-\d/g,'');                            
                             /* rot the card according to our days in progress */                        
                             var shadeCoeff = (1 / (rottingDaysMaximumAllowed - rottingDaysAllowed)) * (daysInProgress - rottingDaysAllowed);
+                            var color = KanbanRotter.shade(KanbanRotter.rgb2hex(c.css('background-color')),'#663333',shadeCoeff);
                             /* and make it happen */
-                            c.animate({'background-color': KanbanRotter.shade(KanbanRotter.rgb2hex(c.css('background-color')),'#663333',shadeCoeff)},2000);
+                            c.animate({'background-color': color},2000).find('.name').animate({'color': KanbanRotter.safeColor(color)},1000);
                         }
                     }
                 });
@@ -125,11 +118,16 @@ tau.mashups
                 $.each(Tp.controls.kanbanboard.KanbanboardManager.getInstance().kanbanBoards, function() {
                     /* bind to reload button */            
                     $(this)[0].controller.uxKanbanBoardPanel.on('reload', function() {
-                        KanbanRotter.render();
+                        /* this pause is necessary from issue #13 */
+                        setTimeout(function() {
+                            KanbanRotter.render();
+                        },2000);
                     }); 
                     /* and bind to when cards change columns */
                     $(this)[0].controller.on('statechanged', function(b, c) {
-                        KanbanRotter.render();
+                        setTimeout(function() {
+                            KanbanRotter.render();
+                        },2000);
                     });
                 });
             }
