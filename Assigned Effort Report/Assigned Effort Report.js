@@ -28,43 +28,48 @@ tau.mashups
         var api_base = appHostAndPath+"/api/v1/";
 
         function loadData() {
-            $.getJSON(api_base+"Assignables?include=[Assignments[GeneralUser[FirstName,LastName,Role],Role],TimeSpent,TimeRemain,RoleEfforts[Effort,EffortToDo,Role],EntityType,EntityState,Name]&where=(EntityState.IsFinal%20eq%20'false')%20and%20(Effort%20gt%200)&format=json&take=1000", formatResult);
+            $.getJSON(api_base+"Assignables?include=[Assignments[GeneralUser[FirstName,LastName,Role],Role],RoleEfforts[Effort,EffortToDo,TimeSpent,TimeRemain,Role],EntityType,EntityState,Name]&where=(EntityState.IsFinal%20eq%20'false')%20and%20(Effort%20gt%200)&format=json&take=1000", formatResult);
         }
 
         function formatResult(data) {
-            var formattedData = {'users': {}, 'overallEffort': 0};
+            var fmtData = {'users': {}, 'overallEffort': 0};
             $.each(data.Items, function(k,item) {
-                $.each(item.Assignments.Items, function(l,assignment) {
-                    /* check to see if this user is in our formattedData object */
-                    if (formattedData.users[assignment.GeneralUser.Id] == null) {
+                $.each(item.Assignments.Items, function(l,asmt) {
+                    /* check to see if this user is in our fmtData object */
+                    if (fmtData.users[asmt.GeneralUser.Id] == null) {
                         /* create the first record */
-                        formattedData.users[assignment.GeneralUser.Id] = {
-                            'FirstName'     : assignment.GeneralUser.FirstName,
-                            'LastName'      : assignment.GeneralUser.LastName,
-                            'DefaultRole'   : assignment.GeneralUser.Role.Name,
+                        fmtData.users[asmt.GeneralUser.Id] = {
+                            'FirstName'     : asmt.GeneralUser.FirstName,
+                            'LastName'      : asmt.GeneralUser.LastName,
+                            'DefaultRole'   : asmt.GeneralUser.Role.Name,
                             'TotalEffort'   : 0,
                             'TotalToDo'     : 0,
+                            'TotalTimeSpt'  : 0,
+                            'TotalTimeRem'  : 0,
                             'Items'         : []
                         }
                     }
-                    var roleEffortItem = getRoleEffortItem(item, assignment.Role.Id);
-                    formattedData.users[assignment.GeneralUser.Id].TotalEffort += roleEffortItem.Effort;
-                    formattedData.users[assignment.GeneralUser.Id].TotalToDo += roleEffortItem.EffortToDo;
-                    formattedData.overallEffort += roleEffortItem.Effort;
-                    formattedData.users[assignment.GeneralUser.Id].Items.push({
+                    var roleEffortItem = getRoleEffortItem(item, asmt.Role.Id);
+                    console.log(roleEffortItem);
+                    fmtData.users[asmt.GeneralUser.Id].TotalEffort += roleEffortItem.Effort;
+                    fmtData.users[asmt.GeneralUser.Id].TotalToDo += roleEffortItem.EffortToDo;
+                    fmtData.users[asmt.GeneralUser.Id].TotalTimeSpt += roleEffortItem.TimeSpent;
+                    fmtData.users[asmt.GeneralUser.Id].TotalTimeRem += roleEffortItem.TimeRemain;
+                    fmtData.overallEffort += roleEffortItem.Effort;
+                    fmtData.users[asmt.GeneralUser.Id].Items.push({
                         'EntityId'      : item.Id,
                         'Name'          : item.Name,
                         'EntityType'    : item.EntityType.Name,
                         'EntityState'   : item.EntityState.Name,
-                        'Role'          : assignment.Role.Name,
+                        'Role'          : asmt.Role.Name,
                         'Effort'        : roleEffortItem.Effort,
-                        'TimeSpent'     : item.TimeSpent,
-                        'TimeRemain'    : item.TimeRemain
+                        'TimeSpent'     : roleEffortItem.TimeSpent,
+                        'TimeRemain'    : roleEffortItem.TimeRemain
                     });
                 });
             });
-            console.log(formattedData);
-            drawChart(formattedData);
+            console.log(fmtData);
+            drawChart(fmtData);
         }
 
         function getRoleEffortItem(item, roleId) {
@@ -99,6 +104,7 @@ tau.mashups
                 $.each(user.Items, function(k,item) {
                     innerTable.append('<tr><td><img src="{0}/img/{1}.gif"></td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td>'.f(appHostAndPath, item.EntityType, item.Name, item.EntityState, item.Role, item.Effort, item.TimeSpent, item.TimeRemain));
                 });
+                innerTable.append('<tr style="border-top: 1px solid #66666;"><th colspan="4" style="text-align: right;">Totals:</td><td>{0}</td><td>{1}</td><td>{2}</td></tr>'.f(user.TotalEffort, user.TotalTimeSpt, user.TotalTimeRem));
                 inner.append(innerTable);
                 tr.append(inner);
                 table.append(tr);
