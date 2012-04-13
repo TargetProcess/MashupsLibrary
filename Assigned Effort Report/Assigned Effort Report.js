@@ -10,7 +10,8 @@ tau.mashups
                 table.board-efforts {border-collapse: collapse} \
                 table.board-efforts td.more {background: url("'+appHostAndPath+'/img/icons/plus-small.png") center center no-repeat; width: 10px; } \
                 table.board-efforts td.more.less {background: url("'+appHostAndPath+'/img/icons/minus-small.png") center center no-repeat !important;} \
-                table.board-efforts td.bar {background: #ACD473; margin-top: 2px; border: 1px solid #8ACB29; color: white; overflow: hidden; position: absolute; font: 11px Arial; height: 12px; border-radius: 3px; padding: 2px; color: white; font-weight: bold; font-size: 11px;} \
+                table.board-efforts td.bar {background: #819f56; margin-top: 2px; border: 1px solid #8ACB29; color: white; overflow: hidden; position: absolute; font: 11px Arial; height: 12px; border-radius: 3px; padding: 0; color: white; font-weight: bold; font-size: 11px;} \
+                table.board-efforts td.bar div.innerBar {background: #ACD473; height: 100%; overflow: visible; padding: 0 0 0 2px;} \
                 table.board-efforts tr.innerData {height: 0px; overflow: hidden; display: none;} \
                 table.board-efforts-inner {float: right; width: 90%;} \
                 </style> \
@@ -27,11 +28,10 @@ tau.mashups
         var api_base = appHostAndPath+"/api/v1/";
 
         function loadData() {
-            $.getJSON(api_base+"Assignables?include=[Assignments[GeneralUser[FirstName,LastName,Role],Role],RoleEfforts[Effort,Role],EntityType,EntityState,Name]&where=(EntityState.IsFinal%20eq%20'false')%20and%20(Effort%20gt%200)&format=json&take=1000", formatResult);
+            $.getJSON(api_base+"Assignables?include=[Assignments[GeneralUser[FirstName,LastName,Role],Role],TimeSpent,TimeRemain,RoleEfforts[Effort,EffortToDo,Role],EntityType,EntityState,Name]&where=(EntityState.IsFinal%20eq%20'false')%20and%20(Effort%20gt%200)&format=json&take=1000", formatResult);
         }
 
         function formatResult(data) {
-            console.log(data);
             var formattedData = {'users': {}, 'overallEffort': 0};
             $.each(data.Items, function(k,item) {
                 $.each(item.Assignments.Items, function(l,assignment) {
@@ -43,29 +43,34 @@ tau.mashups
                             'LastName'      : assignment.GeneralUser.LastName,
                             'DefaultRole'   : assignment.GeneralUser.Role.Name,
                             'TotalEffort'   : 0,
+                            'TotalToDo'     : 0,
                             'Items'         : []
                         }
                     }
-                    var roleEffort = getRoleEffort(item, assignment.Role.Id);
-                    formattedData.users[assignment.GeneralUser.Id].TotalEffort += roleEffort;
-                    formattedData.overallEffort += roleEffort;
+                    var roleEffortItem = getRoleEffortItem(item, assignment.Role.Id);
+                    formattedData.users[assignment.GeneralUser.Id].TotalEffort += roleEffortItem.Effort;
+                    formattedData.users[assignment.GeneralUser.Id].TotalToDo += roleEffortItem.EffortToDo;
+                    formattedData.overallEffort += roleEffortItem.Effort;
                     formattedData.users[assignment.GeneralUser.Id].Items.push({
                         'EntityId'      : item.Id,
                         'Name'          : item.Name,
                         'EntityType'    : item.EntityType.Name,
                         'EntityState'   : item.EntityState.Name,
                         'Role'          : assignment.Role.Name,
-                        'Effort'        : roleEffort
+                        'Effort'        : roleEffortItem.Effort,
+                        'TimeSpent'     : item.TimeSpent,
+                        'TimeRemain'    : item.TimeRemain
                     });
                 });
             });
+            console.log(formattedData);
             drawChart(formattedData);
         }
 
-        function getRoleEffort(item, roleId) {
+        function getRoleEffortItem(item, roleId) {
             for (var i = 0; i < item.RoleEfforts.Items.length; ++i) {
                 if (item.RoleEfforts.Items[i].Role.Id == roleId)
-                    return item.RoleEfforts.Items[i].Effort;
+                    return item.RoleEfforts.Items[i];
             }
         }
 
@@ -81,22 +86,24 @@ tau.mashups
                 }));
                 tr.append("<td>{0}, {1} <em>({2})</em></td>".f(user.FirstName, user.LastName, user.DefaultRole));
                 var width = (user.TotalEffort / data.overallEffort) * 100;
-                tr.append($('<td></td>').html(user.TotalEffort).addClass('bar').css('width', width+"%"));
+                var innerWidth = (user.TotalToDo / user.TotalEffort) * 100;
+                console.log(innerWidth);
+                var innerBar = $('<div></div>').addClass('innerBar').css('width', innerWidth+"%").html(user.TotalEffort);
+                tr.append($('<td></td>').addClass('bar').css('width', width+"%").append(innerBar));
                 table.append(tr);
                 /* build the expanded data row */
                 tr = $('<tr class="innerData"></tr>');
                 var inner = $('<td></td>').attr('colspan','3');
                 var innerTable = $('<table class="board-efforts-inner"></table>');
-                innerTable.append($('<tr><th style="width: 33%;" colspan="2">Assignable</th><th style="width: 10%">State</th><th style="width: 10%">Role</th><th>Assigned Effort</th></tr>'));
+                innerTable.append($('<tr><th style="width: 33%;" colspan="2">Assignable</th><th style="width: 10%">State</th><th style="width: 10%">Role</th><th>Effort</th><th>Time Spent</th><th>Remaining</th></tr>'));
                 $.each(user.Items, function(k,item) {
-                    innerTable.append('<tr><td><img src="{0}/img/{1}.gif"></td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td>'.f(appHostAndPath, item.EntityType, item.Name, item.EntityState, item.Role, item.Effort));
+                    innerTable.append('<tr><td><img src="{0}/img/{1}.gif"></td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td>'.f(appHostAndPath, item.EntityType, item.Name, item.EntityState, item.Role, item.Effort, item.TimeSpent, item.TimeRemain));
                 });
                 inner.append(innerTable);
                 tr.append(inner);
                 table.append(tr);
             });
             $('div#assigned-effort-report').html('').append(table);
-            console.log(data);
         }
 
         /* add the link */
