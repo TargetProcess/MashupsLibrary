@@ -81,18 +81,6 @@ tau.mashups
         jQuery.fx.off = false; /* just in case :) */
 		$("div.kanban-item").each(function(){
 			var item = $(this);
-			var itemTags = item.find("div.kanban-tag");
-            var match = false;
-            var pri = null;
-            /* first go through our tags for matches */
-            itemTags.each(function() {
-                if (tagColors[$(this).text().toLowerCase()] != null) {
-                    colorTheCard(item,tagColors[$(this).text().toLowerCase()]);
-                    match = true;
-    			}
-            });
-            /* break here since we colored on tags */
-            if (match) return;
             /* We need to check and see what kind of Assignable we are so that we make the correct
              * AJAX call to gather the custom field information */
             var itemId = item.find('.kanban-item-id').first().html();
@@ -104,13 +92,15 @@ tau.mashups
                 restCall = 'Bugs';
             } else if (item.id().match(/kanban-item-feature-\d+/)) {
                 restCall = 'Features';
+            } else if (item.id().match(/kanban-item-task-\d+/)) {
+                restCall = 'Tasks';
             }
             /* Obviously we can't do anything if we don't know what API call to make */
             if (restCall == null) return;            
             /* AJAX call to the REST API to gather the due date custom field information */
             $.ajax({
                 type: 'GET',
-                url: appHostAndPath+'/api/v1/'+restCall+'/'+itemId+'?include=[CustomFields]&format=json',
+                url: appHostAndPath+'/api/v1/'+restCall+'/'+itemId+'?include=[CustomFields,Tags]&format=json',
                 context: $(this)[0],
                 contentType: 'application/json',
                 dataType: 'json',
@@ -122,9 +112,15 @@ tau.mashups
                             if (resp.CustomFields[i].Name == f) {
                                 if (v[resp.CustomFields[i].Value] != null) {
                                     colorTheCard(item,v[resp.CustomFields[i].Value]);
-                                    return false;
+                                    break;
                                 }
                             }
+                        }
+                    });
+                    $.each(tagColors, function(t,color) {
+                        if (resp.Tags.indexOf(t) != -1) {
+                            colorTheCard(item,color);
+                            break;
                         }
                     });
                 }
