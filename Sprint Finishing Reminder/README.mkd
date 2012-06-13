@@ -1,0 +1,19 @@
+Sprint Finishing Reminder
+=======================
+
+This mashup is a simple mashup that provides reminders when an interation or sprint is going to be ending soon.  It provides a reminder to use the 
+Finish Sprint functionality in TargetProcess to ensure properly calculated velocity figures and deal with incomplete work.
+
+![Sprint Finishing Reminder](https://github.com/TargetProcess/MashupsLibrary/raw/master/Sprint%20Finishing%20Reminder/screenshot.png)
+
+Installing the Mashup 
+-------------------------------------------------
+
+1. In your TargetProcess site, navigate to ```Settings > (System Settings) > Mashups```
+2. Click "Add New Mashup"
+3. In the "Name" field, enter a name unique to this Mashup - for example "Sprint Finishing Reminder"
+4. In the "Placeholders" field, enter ```footerPlaceholder``` if you wish the reminder to be on all pages or enter ```Default``` if you only want the reminder to appear on the Dashboard.
+5. Copy and paste the contents of the [Sprint Finishing Reminder.js](https://raw.github.com/TargetProcess/MashupsLibrary/master/Sprint%20Finishing%20Reminder/Sprint%20Finishing%20Reminder.js) file in the "Code" box.
+6. Click Save
+7. Get reminded of your finishing sprints!
+8. Profit!
