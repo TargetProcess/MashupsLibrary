@@ -18,6 +18,16 @@ How To Install and Use the Mashup
    _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
 3. Sit back and enjoy!
 
+How To Install and Use the Mashup with TargetProcess On-Demand
+--------------------------------------------------------------
+
+1. In your OnDemand site, navigate to ```Settings > (System Settings) > Mashups```
+2. Click "Add New Mashup"
+3. In the "Name" field, enter a name unique to this Mashup - for example "Done Entities By Month Report"
+4. In the "Placeholders" field, enter ```Project_Planning_UserStory_list,Project_QA_Bug_list,Project_Planning_Feature_list```
+5. Copy and paste the contents of the [NumericRankDisplay.js](https://raw.github.com/TargetProcess/MashupsLibrary/master/NumericRankDisplay/NumericRankDisplay.js) file in the "Code" box.
+6. Click Save
+
 Troubleshooting
 ---------------
 
