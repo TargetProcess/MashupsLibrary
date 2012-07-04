@@ -7,21 +7,24 @@ tau.mashups
 
 	$('#done_by_month').click(showReport)
 	function showReport() {
-		$('head').append('<style type="text/css">table.u-done-entities td {width: 100px !important; vertical-align: top; font: 12px Arial; padding: 3px 2px !important} \
-		table.u-done-entities tr:hover {background: #E3F5D7 !important} \
-		table.u-done-entities tr {border-bottom: 1px solid #eee !important} \
-		table.u-done-entities th {padding: 5px 10px} \
-		table.u-done-entities {border-collapse: collapse} \
-		.done {margin-left: 1px; margin-top: 1px; width: 8px; height: 8px; float: left;-moz-border-radius: 4px; \
-		-webkit-border-radius: 4px; \
-		-khtml-border-radius: 4px; \
-		border-radius: 4px;} \
-		.UserStory {background: #507CB6 !important; } \
-		.Bug {background: #C30 !important; } \
-		.Issue {background: orange !important; } \
-		.Feature {background: green !important; }</style>');
+		$('head').append('<style type="text/css">table.u-done-entities td {width: 100px !important; vertical-align: top; font: 12px Arial; padding: 3px 2px !important} '
+		+ 'table.u-done-entities tr:hover {background: #E3F5D7 !important} '
+		+ 'table.u-done-entities tr {border-bottom: 1px solid #eee !important} '
+		+ 'table.u-done-entities th {padding: 5px 10px} '
+		+ 'table.u-done-entities {border-collapse: collapse} '
+		+ '.done {margin-left: 1px; margin-top: 1px; width: 8px; height: 8px; float: left;-moz-border-radius: 4px; '
+		+ '-webkit-border-radius: 4px; '
+		+ '-khtml-border-radius: 4px; '
+		+ 'border-radius: 4px;} '
+		+ '.UserStory {background: #507CB6 !important; } '
+		+ '.Bug {background: #C30 !important; } '
+		+ '.Issue {background: orange !important; } '
+		+ '.Feature {background: green !important; }</style>');
+
 		$("td.col-two").html('').append(
-			$('<h1>Completed Entities by projects by months in 2011</h1><select id="rep-entityType"><option value="">- Select Entity -</option><option value="UserStory"> User Stories</option><option value="Bug">Bugs</option><option value="Issue">Issues</option><option value="Feature">Features</option></select><br><br><div id="entities-by-month-rep"></div>'));
+			$('<h1>Completed Entities by projects by months in 2011</h1><select id="rep-entityType">' 
+				+ '<option value="">- Select Entity -</option><option value="UserStory"> User Stories</option><option value="Bug">Bugs</option>' 
+				+ '<option value="Issue">Issues</option><option value="Feature">Features</option></select><br><br><div id="entities-by-month-rep"></div>'));
 
 		$("#rep-entityType").die();
 		$("#rep-entityType").live("change", function() {
