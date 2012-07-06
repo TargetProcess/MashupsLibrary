@@ -7,13 +7,13 @@ tau.mashups
 
 	$('#allocation-link').click(showReport)
 	function showReport() {
-		$('head').append('<style type="text/css"> \
-		table.board-timeline tr:hover {background: #E3F5D7 !important} \
-		table.board-timeline tr {border-bottom: 1px dotted #eee !important} \
-		table.board-timeline td {height: 20px; border-left: 1px dotted #eee !important} \
-		table.board-timeline {border-collapse: collapse} \
-		.timeline-card {background: #ACD473; border: 1px solid #8ACB29; color: white; overflow: hidden; position: absolute; font: 11px Arial; height: 12px; border-radius: 3px; padding: 2px; color: white; font-weight: bold; font-size: 11px;} \
-		</style>');
+		$('head').append('<style type="text/css"> '
+		+ 'table.board-timeline tr:hover {background: #E3F5D7 !important} '
+		+ 'table.board-timeline tr {border-bottom: 1px dotted #eee !important} '
+		+ 'table.board-timeline td {height: 20px; border-left: 1px dotted #eee !important} '
+		+ 'table.board-timeline {border-collapse: collapse} '
+		+ '.timeline-card {background: #ACD473; border: 1px solid #8ACB29; color: white; overflow: hidden; position: absolute; font: 11px Arial; height: 12px; border-radius: 3px; padding: 2px; color: white; font-weight: bold; font-size: 11px;} '
+		+ '</style>');
 		$("td.col-two").html('').append(
 			$('<span class="tableTitle">People allocations on projects</span><br><br><div id="allocation-rep"></div>'));
   		$.getJSON(url + getUrl("People"), generateTimeline);
