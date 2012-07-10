@@ -31,7 +31,7 @@ tau.mashups
 
         /* this is ugly. TODO: this should probably be changed once there's a real event to bind to */ 
         $('#main').bind('DOMSubtreeModified', renderTagLinks);
-        $(document).ready(function() { new TagLinker().render(); });
+        $(document).ready(renderTagLinks);
     }
 );
 
