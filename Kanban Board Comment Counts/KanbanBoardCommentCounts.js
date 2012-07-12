@@ -34,7 +34,7 @@ tau.mashups
                             }
                             $(this).append(tbd);
                         }
-                        $(this).find('.tasks-bugs').append('<a href="'+appHostAndPath+'/View.aspx?id='+itemId+'" class="commentCount">'+resp.Comments.length+'</a>');
+                        $(this).find('.tasks-bugs').append('<a href="'+appHostAndPath+'/View.aspx?id='+itemId+'" class="commentCount">'+resp.Comments.Items.length+'</a>');
                     }
                 }
             });
