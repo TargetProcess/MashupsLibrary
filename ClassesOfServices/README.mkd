@@ -11,27 +11,10 @@ In this example all stories or bugs with tag _urgent_ are red, and all stories a
 [Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/ClassesOfServices.zip)
 
 
-How To Install and Use the Mashup
----------------------------------
+Installing the Mashup with TargetProcess
+----------------------------------------
 
-1. Download the Mashup file either by cloning this repository or downloading a ZIP.
-2. Extract/copy the _ClassesOfServices_ folder to your _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
-3. Customize colors for tags. Open _ClassesOfServices.js_ file and change/add values:
-
-``` javascript
-    var colors = {
-        'urgent':'#f25350',
-        'sup':'#ffecb3'
-    };
-```
-
-Open the Kanban Board, add some tags to User Stories or Bugs and enjoy!
-
-
-Installing the Mashup with TargetProcess OnDemand
--------------------------------------------------
-
-1. In your OnDemand site, navigate to ```Settings > (System Settings) > Mashups```
+1. In your TP site, navigate to ```Settings > (System Settings) > Mashups```
 2. Click "Add New Mashup"
 3. In the "Name" field, enter a name unique to this Mashup - for example "Classes of Service"
 4. In the "Placeholders" field, enter ```Project_Planning_Kanban_KanbanBoard```

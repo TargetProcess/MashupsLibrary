@@ -23,10 +23,10 @@ How To Install and Use the Mashup
 4. Open the Kanban Board, sit back, and enjoy!
 
 
-Installing the Mashup with TargetProcess OnDemand
--------------------------------------------------
+Installing the Mashup with TargetProcess
+----------------------------------------
 
-1. In your OnDemand site, navigate to ```Settings > (System Settings) > Mashups```
+1. In your TP site, navigate to ```Settings > (System Settings) > Mashups```
 2. Click "Add New Mashup"
 3. In the "Name" field, enter a name unique to this Mashup - for example "Impending Doom"
 4. In the "Placeholders" field, enter ```Project_Planning_Kanban_KanbanBoard```

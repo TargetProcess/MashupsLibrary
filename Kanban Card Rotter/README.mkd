@@ -11,23 +11,10 @@ will have them pulsate red.  The mashup allows you to visualize which cards have
 [Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Card%20Rotter.zip)
 
 
-How To Install and Use the Mashup
----------------------------------
+Installing the Mashup with TargetProcess
+----------------------------------------
 
-1. Download the Mashup file either by cloning this repository or
-   downloading a ZIP.
-2. Extract/copy the "Kanban Card Rotter" folder to your 
-   _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
-3. Open the _Kanban Card Rotter.js_ file and look for the two variables at the top.
-4. Change the ```rottingDaysAllowed``` to the number of days you will allow before the cards begin to rot (turn brown)
-5. Change the ```rottingDaysMaximumAllowed``` to the upper threshold of days.  After a card has been in progress for this long it will begin to pulsate red.
-6. Open the Kanban Board, sit back, and enjoy!
-
-
-Installing the Mashup with TargetProcess OnDemand
--------------------------------------------------
-
-1. In your OnDemand site, navigate to ```Settings > (System Settings) > Mashups```
+1. In your TP site, navigate to ```Settings > (System Settings) > Mashups```
 2. Click "Add New Mashup"
 3. In the "Name" field, enter a name unique to this Mashup - for example "Card Rotter"
 4. In the "Placeholders" field, enter ```Project_Planning_Kanban_KanbanBoard```

@@ -12,21 +12,10 @@ Navigate to ```Reports > (People) > Assigned Effort Report``` to see the report.
 
 [Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/Assigned%20Effort%20Report.zip)
 
+Installing the Mashup 
+---------------------
 
-How To Install and Use the Mashup
----------------------------------
-
-1. Download the Mashup file either by cloning this repository or
-   downloading a ZIP.
-2. Extract/copy the "Assigned Effort Report" folder to your 
-   _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
-3. Sit back and enjoy!
-
-
-Installing the Mashup (OnDemand)
---------------------------------
-
-1. In your OnDemand site, navigate to ```Settings > (System Settings) > Mashups```
+1. In your TP site, navigate to ```Settings > (System Settings) > Mashups```
 2. Click "Add New Mashup"
 3. In the "Name" field, enter a name unique to this Mashup - for example "Assigned Effort Report"
 4. In the "Placeholders" field, enter ```Project_Reports_Reports,Project_Reports_Report```
