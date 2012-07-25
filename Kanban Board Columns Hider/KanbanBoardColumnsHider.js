@@ -6,11 +6,12 @@ tau.mashups
    var statesToHide = ["In Progress", "Fixed"];
    
    for (var i = 0; i < statesToHide.length; i++) {
-    var header = $(".kanban-swimlane-header-wrap span:contains('"+statesToHide[i]+"')").parent();
-    
+    var header = $(".kanban-swimlane-header-wrap span:contains('"+statesToHide[i]+"')").filter(function() {
+        return $(this).text().match("^"+statesToHide[i]) != null;
+    }).parent();
+
     //use header Id to construct column Id
-    var colId = header.id().replace("header-", ""); 
-    var col = $("#" + colId);
+    var col = $("#" + header.id().replace("header-", ""));
 
     //hide everything
     header.hide();
