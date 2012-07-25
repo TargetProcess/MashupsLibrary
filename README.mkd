@@ -17,43 +17,42 @@ Current Mashups
 [**UserStory Templates**](https://github.com/TargetProcess/MashupsLibrary/tree/master/UserStory%20Templates)
 
 Provides a means to pre-populate the description field when adding 
-new UserStories with template data. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/UserStory%20Templates.zip)
+new UserStories with template data.
 
 
 [**Numeric Rank Display**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Numeric%20Rank%20Display)
 
 Replaces the progress-bar style display of Ranks with a numeric 
-text representation of a User Story/Bug/Feature's rank. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Numeric%20Rank%20Display.zip)
+text representation of a User Story/Bug/Feature's rank. 
 
 
 [**Kanban Board Impending Doom**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Kanban%20Board%20Impending%20Doom)
 
 Colors cards on the Kanban board according to the value of a Date pulled from a Custom Field.  To use, add a Custom Field 
 called 'Due Date' of type 'Date' to your Process.  The Mashup colors cards Green, Yellow, and Red depending on the amount 
-of time remaining for the card. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Board%20Impending%20Doom.zip)
+of time remaining for the card. 
 
 
 [**Classes of Service**](https://github.com/TargetProcess/MashupsLibrary/tree/master/ClassesOfServices)
 
 Clors cards on the Kanban board according to tags.  For example, stories or bugs tagged _urgent_ can be colored red and 
-all stories and bugs tagged _sup_ are colored yellow.  Colors and tags are customizable in the _.js_ file.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/ClassesOfServices.zip)
+all stories and bugs tagged _sup_ are colored yellow.  Colors and tags are customizable in the _.js_ file. 
 
 
 [**Highlighter**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Highlighter)
 
-Mashup that highlights chunks of text in the page according to the search input.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Highlighter.zip)
+Mashup that highlights chunks of text in the page according to the search input. 
 
 
 [**TopMenu**](https://github.com/TargetProcess/MashupsLibrary/tree/master/TopMenu)
 
 A simple Mashup that shows how to add tabs to the end of your navigation bar linking to custom URLs.  Fully customizable 
-via the _.cfg_ file.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/TopMenu.zip)
+via the _.cfg_ file.  
 
 
 [**NumberOfAssignments**](https://github.com/TargetProcess/MashupsLibrary/tree/master/NumberOfAssignments)
 
 The Kanban Board Number of Assignments mashup add list of users in a project along with numbers of bugs and user stories assigned to the user.
-[(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/NumberOfAssignments.zip)
 
 
 [**Entity Templates**](https://github.com/TargetProcess/MashupsLibrary/tree/master/NumberOfAssignments)
@@ -69,8 +68,6 @@ for the description of the following entities in TargetProcess:
 -   Requests
 -   Test Cases
 
-[(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Entity%20Templates.zip)
-
 
 [**OnDemand Entity Templates**](https://github.com/TargetProcess/MashupsLibrary/OnDemand%20Entity%20TEmplates)
 
@@ -83,21 +80,20 @@ TargetProcess.
 The Done Entities By Month Report mashup adds a report to TargetProcess that 
 provides a visual way to see how many stories, bugs, issues, and features were 
 completed or closed over the past year grouped by months.
-[(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/DoneEntitiesByMonthReport.zip)
 
 
 [**DetailsHider**](https://github.com/TargetProcess/MashupsLibrary/tree/master/DetailsHider)
 
 The Details Hider Mashup is a very, very, very simple that removes the system 
 messages at the bottom of each page (such as page generation time, the Whats New link, 
-and the free version notification).  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/DetailsHider.zip)
+and the free version notification). 
 
 
 [**Kanban Board Column Grouper**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Kanban%20Board%20Column%20Grouper)
 
 The Kanban Board column grouper Mashup allows you to group together 
 swimlanes on your Kanban board and have grouped WIP limits for your 
-swimlanes in aggregate.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Board%20Column%20Grouper.zip)
+swimlanes in aggregate.  
 
 
 [**Kanban Board Tag and Custom Field Card Colorer**](https://github.com/TargetProcess/MashupsLibrary/tree/master/KanbanTagCustomFieldColorer)
@@ -106,14 +102,14 @@ The Kanban Board Tag and Custom Field Card Colorer mashup colors the cards on yo
 according to both tags and custom fields.  This mashup will determine a base color for your cards based on the 
 first match of either tags and custom fields that it finds.  The cards are ultimately colored a particular shade of 
 this base color, depending on the entity's business value or priority.  There are also some fail-safe mechanisms that 
-will ensure that you are never given black text over a dark-colored card. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/KanbanTagCustomFieldColorer.zip)
+will ensure that you are never given black text over a dark-colored card. 
 
 
 [**Kanban Board Comment Counts**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Kanban%20Board%20Comment%20Counts)
 
 The Kanban Board comment count Mashup adds an icon with the current comment 
 count to each of your cards in similar fashion as to the task and bug count 
-icons. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Board%20Comment%20Counts.zip)
+icons. 
 
 
 [**Extra Time Sheet Info**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Extra%20Time%20Sheet%20Info)
@@ -121,46 +117,52 @@ icons. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Ka
 The Extra Time Sheet Info Mashup is a simple Mashup for TargetProcess that adds
 more information to the listings in your time sheet.  Currently, the Mashup only adds the entity 
 ID to the row, but can be easily expanded to display more information, such as custom 
-fields. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Extra%20Time%20Sheet%20Info.zip)
+fields. 
 
 
 [**Kanban Custom Priority Colorer**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Kanban%20Custom%20Priority%20Colorer)
 
 The Kanban Board Custom Priority Colorer mashup is a simple Mashup for TargetProcess that allows you to customize the 
-priority colors of cards.  [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Custom%20Priority%20Colorer.zip)
+priority colors of cards.  
 
 
 [**Tag Linker**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Tag%20Linker)
 
 The Tag Linker Mashup allows you to link to other entities in TargetProcess through the use of tags.  Simply put `#(entity ID)` as a tag name 
-(for example: `requires#208`) and clicking on the tag will take you to that entity. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Tag%20Linker.zip)
+(for example: `requires#208`) and clicking on the tag will take you to that entity. 
 
 
 [**Auto Reply Customer Requests**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Auto%20Reply%20Customer%20Requests)
 
 The Auto Reply Customer Requests mashup is a simple mashup that automatically checks the "Requesters" checkbox for the notification settings on 
-requests. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Auto%20Reply%20Customer%20Requests.zip)
+requests. 
 
 
 [**Kanban Card Rotter**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Kanban%20Card%20Rotter)
 
 The Kanban Card Rotter mashup is an advanced mashup that "rots" cards on your Kanban board according to how long they have been in progress.  
 The more a card has exceeded your threshold, the more brown the cards will look.  If they have fully exceeded a maximum threshold, the mashup 
-will have them pulsate red.  The mashup allows you to visualize which cards have been in progress for long periods of time. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Card%20Rotter.zip)
+will have them pulsate red.  The mashup allows you to visualize which cards have been in progress for long periods of time. 
 
 
 [**Kanban Board Auto Assignment**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Kanban%20Board%20Auto%20Assignment)
 
 The Kanban Board Auto Assignment mashup is a simple mashup that will automatically assign entities on the Kanban board as their states 
-are changed.  The cards will be automatically assigned to the currently logged in user if there is no assignment for the upcoming state. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Kanban%20Board%20Auto%20Assignment.zip)
+are changed.  The cards will be automatically assigned to the currently logged in user if there is no assignment for the upcoming state. 
 
 
 [**Assigned Effort Report**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Assigned%20Effort%20Report)
 
 The Assigned Effort Report is a simple report that shows the total amount of open effort assigned to users across all projects and all roles.  You can then expand each user to see 
-a list of the assignments and their associated effort values and roles. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Assigned%20Effort%20Report.zip)
+a list of the assignments and their associated effort values and roles. 
 
 
 [**Easy Tag Search**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Easy%20Tag%20Search)
 
-The Easy Tag Search Mashup is a super simple mashup that allows you to quickly search for entities with a particular tag by clicking on the tag. [(Download)](https://github.com/downloads/TargetProcess/MashupsLibrary/Easy%20Tag%20Search.zip)
+The Easy Tag Search Mashup is a super simple mashup that allows you to quickly search for entities with a particular tag by clicking on the tag.
+
+
+[**Task Board Card Colorer**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Task%20Board%20Card%20Colorer)
+
+The Task Board Card Colorer mashup is a simple mashup for your task board that colors task cards based on either tags or values of your 
+custom fields.  It is the Task Board equivalent of the [KanbanTagCustomFieldColorer mashup](https://github.com/TargetProcess/MashupsLibrary/tree/master/KanbanTagCustomFieldColorer)
