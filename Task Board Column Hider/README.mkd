@@ -1,0 +1,34 @@
+Task Board Column Hider
+=======================
+
+The Task Board Column Hider mashup is a simple mashup for your task board that hides User Stories (rows) that are in particular states.  This is 
+handy if you do not want to see information about New, Backlog, or Completed stories on your Task Board.
+
+
+Customizing the Hidden Columns
+------------------------------
+
+In order to hide the columns, you need to let the Mashup know what states are to be hidden.  You can customize this via this line in the 
+top of the Mashup:
+
+```
+       // Put states' names that you want to hide here
+       var statesToHide = ["Testing"];
+```
+
+Simply set this variable to an array holding the names of the states you wish to hide.  Be aware that this is *case sensititive*!
+
+
+Installing the Mashup with TargetProcess
+----------------------------------------
+
+1. In your TP site, navigate to ```Settings > (System Settings) > Mashups```
+2. Click "Add New Mashup"
+3. In the "Name" field, enter a name unique to this Mashup - for example "Task Board Colorer"
+4. In the "Placeholders" field, enter ```Project_Tracking_TaskBoard_TaskBoard```
+5. Copy and paste the contents of the [Column Hider.js](https://github.com/TargetProcess/MashupsLibrary/raw/master/Task%20Board%20Column%20Hider/Column%20Hider.js) file in the "Code" box.
+6. Update your columns to hide according to the above instructions
+7. Click Save
+8. ?
+9. Profit
+
