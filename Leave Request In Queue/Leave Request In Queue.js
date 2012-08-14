@@ -54,14 +54,14 @@ tau.mashups
 				},
 				_isRestCommentCreatedForRequest: function (jqXHROptions, d) {
 					if (jqXHROptions.url && jqXHROptions.url.indexOf(this.restCommentUrl) === 0) {
-						d = d || JSON.parse(decodeURIComponent(jqXHROptions.data));
+						d = d || JSON.parse(jqXHROptions.data);
 						return d.general && (typeById[d.general.id] === 'request' || location.hash && location.hash.indexOf('#request/' + d.general.id) === 0);
 					}
 					return false;
 				},
 				_isSoapCommentCreatedForRequest: function (jqXHROptions, d) {
 					if (jqXHROptions.url && jqXHROptions.url.indexOf(this.soapCommentUrl) === 0 && (location.protocol + '//' + location.host + location.pathname).indexOf(this.requestViewUrl) === 0) {
-						d = d || JSON.parse(decodeURIComponent(jqXHROptions.data));
+						d = d || JSON.parse(jqXHROptions.data);
 						return d.comment && location.search.indexOf('RequestID=' + d.comment.GeneralID) > 0;
 					}
 					return false;
@@ -71,7 +71,7 @@ tau.mashups
 			var r = new requestAddCommentHook($('#' + config.placeholderId));
 			$.ajaxTransport('+', $.proxy(function (options, originalOptions, jqXHR) {
 				if (options.postponed === true) {
-					var questionHolder, isRestComment, isSoapComment, d = JSON.parse(decodeURIComponent(options.data));
+					var questionHolder, isRestComment, isSoapComment, d = JSON.parse(options.data);
 					if (isRestComment = this._isRestCommentCreatedForRequest(options, d)) {
 						questionHolder = $($('div.updating')[0]).children('div.ui-comment-body');
 					} else if (isSoapComment = this._isSoapCommentCreatedForRequest(options)) {
@@ -91,7 +91,7 @@ tau.mashups
 							var f = $.proxy(function (e, xhr, settings) {
 								if (settings.isRequestNotReplied != null && settings.isRequestNotReplied === true) {
 									placeholder.off('ajaxSuccess', f);
-									var generalId, d = JSON.parse(decodeURIComponent(settings.data));
+									var generalId, d = JSON.parse(settings.data);
 									if (this._isRestCommentCreatedForRequest(settings, d)) {
 										generalId = d.general.id;
 									} else if (this._isSoapCommentCreatedForRequest(settings, d)) {
