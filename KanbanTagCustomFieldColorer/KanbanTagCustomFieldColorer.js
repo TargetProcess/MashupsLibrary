@@ -48,7 +48,7 @@ tau.mashups
      *  the first color in the swatch is returned, if greater then the second is returned
      */
     var safeColor = function(c,t,s) {
-        if (m == null) m = ['#ffffff','#333333'];
+        if (s == null) s = ['#ffffff','#333333'];
         if (t == null) t = 128;
         var colorInt = parseInt(c.match(/^#?([0-9a-f]{6})$/)[1],16);
         var R = (colorInt & 0xFF0000) >> 16;
