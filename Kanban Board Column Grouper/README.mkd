@@ -126,3 +126,4 @@ Troubleshooting
 
 1. Make sure that you are running TargetProcess version 2.22 or newer.
 2. By default, this folder can be found at _C:\inetpub\wwwroot\TargetProcess2\wwwroot\JavaScript\Mashups_
+3. Do not add [Final] state to any of the groups to prevent problems with drag-n-drop state transitions
