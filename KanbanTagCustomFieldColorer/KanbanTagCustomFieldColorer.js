@@ -112,7 +112,7 @@ tau.mashups
                             if (resp.CustomFields[i].Name == f) {
                                 if (v[resp.CustomFields[i].Value] != null) {
                                     colorTheCard(item,v[resp.CustomFields[i].Value]);
-                                    break;
+                                    return;
                                 }
                             }
                         }
@@ -120,7 +120,7 @@ tau.mashups
                     $.each(tagColors, function(t,color) {
                         if (resp.Tags.indexOf(t) != -1) {
                             colorTheCard(item,color);
-                            break;
+                            return;
                         }
                     });
                 }
