@@ -1,0 +1,19 @@
+UserStory Merge Mashup
+======================
+
+The UserStory Merge Mashup is a Mashup for 
+[TargetProcess](http://www.targetprocess.com) that provides user the 
+ability to merge together two User Stories.
+
+
+Installing the Mashup with TargetProcess 
+----------------------------------------
+
+1. In your TP site, navigate to ```Settings > (System Settings) > Mashups```
+2. Click "Add New Mashup"
+3. In the "Name" field, enter a name unique to this Mashup - for example "Details Hider"
+4. In the "Placeholders" field, enter ```Project_Planning_UserStory_List```
+5. Copy and paste the contents of the [UserStoryMerge.js](https://raw.github.com/TargetProcess/MashupsLibrary/master/User%20Story%20Merge/User%20Story%20Merge.js) file in the "Code" box.
+6. Click Save
+7. ??
+8. PROFIT!
