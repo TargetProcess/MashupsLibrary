@@ -11,7 +11,7 @@ tau.mashups
 				setTimeout(function() {
 					$.ajax({
 		                type: 'GET',
-		                url: appHostAndPath+'/storage/v1/Signatures/Sigs',
+		                url: appHostAndPath+'/storage/v1/Signatures/'+loggedUser.id,
 		                contentType: 'application/json; charset=utf8',
 						success: function(data) {
 							try {
@@ -52,7 +52,7 @@ tau.mashups
 				$.ajax({
                     type: 'POST',
                     async: false,
-                    url: appHostAndPath+'/storage/v1/Signatures/Sigs',
+                    url: appHostAndPath+'/storage/v1/Signatures/'+loggedUser.id,
                     data: JSON.stringify({
                         'scope'     : 'Private',
                         'publicData': null,
@@ -65,7 +65,7 @@ tau.mashups
 			/* get the existing value (if any) */
 			$.ajax({
                 type: 'GET',
-                url: appHostAndPath+'/storage/v1/Signatures/Sigs',
+                url: appHostAndPath+'/storage/v1/Signatures/'+loggedUser.id,
                 contentType: 'application/json; charset=utf8',
 				success: function(data) {
 					try {
