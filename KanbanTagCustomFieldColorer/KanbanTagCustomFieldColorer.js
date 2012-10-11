@@ -34,7 +34,7 @@ tau.mashups
      *  color stepping value
      */
     var shade = function(c, s) {
-        var colorInt = parseInt(c.match(/^#?([0-9a-f]{6})$/)[1],16);
+        var colorInt = parseInt(c.match(/^#?([0-9a-f]{6})$/i)[1],16);
         var R = ((colorInt & 0xFF0000) >> 16) + Math.floor((s/255)*((colorInt & 0xFF0000) >> 16));
         var G = ((colorInt & 0x00FF00) >> 8) + Math.floor((s/255)*((colorInt & 0x00FF00) >> 8));
         var B = ((colorInt & 0x0000FF) >> 0) + Math.floor((s/255)*((colorInt & 0x0000FF) >> 0));
