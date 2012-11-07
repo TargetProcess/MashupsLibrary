@@ -11,6 +11,7 @@ function (config) {
 			var storiesToMerge = $find('ctl00_mainArea_us_USSelection')._args;
 			storiesToMerge.shift(); /* first element is always blank */
 			var targetStory = prompt("Ready to merge.  Which story should be the main/master story? [" + storiesToMerge.join(',') + "]", Math.min.apply(null, storiesToMerge));
+			if (!targetStory) return;
 			overlay = $('<div></div>').prependTo('body').attr('id', 'page-overlay');
 			message = $('<div></div>').prependTo('body').attr('id', 'overlay-msg').html('Please wait...<br/>Hardcore merge action in progress...');
 			storiesToMerge.splice(storiesToMerge.indexOf(targetStory),1);
