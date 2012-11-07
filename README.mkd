@@ -166,3 +166,9 @@ The Easy Tag Search Mashup is a super simple mashup that allows you to quickly s
 
 The Task Board Card Colorer mashup is a simple mashup for your task board that colors task cards based on either tags or values of your 
 custom fields.  It is the Task Board equivalent of the [KanbanTagCustomFieldColorer mashup](https://github.com/TargetProcess/MashupsLibrary/tree/master/KanbanTagCustomFieldColorer)
+
+
+[**Assign People Point/Hour Availability**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Assign%20People%20Point%20Availability)
+
+The Assign People Point Availability mashup is an advanced Mashup that adds hourly availability information to your assign people screen 
+*if you're using points*.  This information is otherwise unavailable if you're estimating stories in points.

@@ -1,0 +1,17 @@
+Assign People Point/Hourly Availability
+=======================================
+
+The Assign People Point Availability mashup is an advanced Mashup for [TargetProcess](http://www.targetprocess.com) 
+that adds hourly availability information to your assign people screen *if you're using points*.  This information is 
+otherwise unavailable if you're estimating stories in points.
+
+
+Installing the Mashup with TargetProcess
+----------------------------------------
+
+1. In your TP site, navigate to ```Settings > (System Settings) > Mashups```
+2. Click "Add New Mashup"
+3. In the "Name" field, enter a name unique to this Mashup - for example "Assign People Availability"
+4. In the "Placeholders" field, enter ```Project_Planning_Iteration_CurrentPlanDevelopers```
+5. Copy and paste the contents of the [AssignPeopleAvailability.js](https://github.com/TargetProcess/MashupsLibrary/raw/master/Assign%20People%20Point%20Availability/AssignPeopleAvailability.js) file in the "Code" box.
+6. Click Save
