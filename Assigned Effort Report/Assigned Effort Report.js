@@ -2,20 +2,19 @@ tau.mashups
     .addDependency('libs/jquery/jquery').addMashup(function() {
 
         function showReport() {
-            $('head').append('<style type="text/css"> \
-                table.board-efforts tr.hoverHi:hover {background: #E3F5D7 !important} \
-                table.board-efforts tr {border-bottom: 1px dotted #eee !important} \
-                table.board-efforts td {height: 20px; } \
-                table.board-efforts td em {font-size: smaller;} \
-                table.board-efforts {border-collapse: collapse} \
-                table.board-efforts td.more {background: url("'+appHostAndPath+'/img/icons/plus-small.png") center center no-repeat; width: 10px; } \
-                table.board-efforts td.more.less {background: url("'+appHostAndPath+'/img/icons/minus-small.png") center center no-repeat !important;} \
-                table.board-efforts td.bar {background: #819f56; margin-top: 2px; border: 1px solid #8ACB29; color: white; overflow: hidden; position: absolute; font: 11px Arial; height: 12px; border-radius: 3px; padding: 0; color: white; font-weight: bold; font-size: 11px;} \
-                table.board-efforts td.bar div.innerBar {background: #ACD473; height: 100%; overflow: visible; padding: 0 0 0 2px;} \
-                table.board-efforts tr.innerData {height: 0px; overflow: hidden; display: none;} \
-                table.board-efforts-inner {float: right; width: 90%;} \
-                </style> \
-            ');
+            $('head').append('<style type="text/css">'
+                +'table.board-efforts tr.hoverHi:hover {background: #E3F5D7 !important}'
+	            +'table.board-efforts tr {border-bottom: 1px dotted #eee !important}'
+                +'table.board-efforts td {height: 20px; }'
+                +'table.board-efforts td em {font-size: smaller;}'
+                +'table.board-efforts {border-collapse: collapse;}'
+                +'table.board-efforts td.more {background: url("'+appHostAndPath+'/img/icons/plus-small.png") center center no-repeat; width: 10px; }'
+	            +'table.board-efforts td.more.less {background: url("'+appHostAndPath+'/img/icons/minus-small.png") center center no-repeat !important;}'
+                +'table.board-efforts td.bar {background: #819f56; margin-top: 2px; border: 1px solid #8ACB29; color: white; overflow: hidden; position: absolute; font: 11px Arial; height: 12px; border-radius: 3px; padding: 0; color: white; font-weight: bold; font-size: 11px;}'
+                +'table.board-efforts td.bar div.innerBar {background: #ACD473; height: 100%; overflow: visible; padding: 0 0 0 2px;}'
+                +'table.board-efforts tr.innerData {height: 0px; overflow: hidden; display: none;}'
+                +'table.board-efforts-inner {float: right; width: 90%;}'
+	            +'</style>');
             $('td.col-two > div:first').fadeOut('slow', 
                 function() { 
                     $(this).html('').append(
