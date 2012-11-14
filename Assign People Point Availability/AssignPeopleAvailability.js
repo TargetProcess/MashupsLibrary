@@ -21,10 +21,11 @@ function ($, config) {
 		observer: null,
 		
 		gatherAvailabilities: function () {
+			var acid = window.location.search.match(/acid=([0-9A-F]{32})/)[1];
 			$.ajax({
 				dataType: 'json',
 				data: {format: 'json'},
-				url: appHostAndPath+'/api/v1/Context'+window.location.search,
+				url: appHostAndPath+'/api/v1/Context'+(acid)?'?acid='+acid:'',
 				success: function(context_data) {
 					console.log(context_data);
 					if (context_data.SelectedProjects.Items.length != 1) return;
