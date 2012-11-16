@@ -25,7 +25,7 @@ function ($, config) {
 			$.ajax({
 				dataType: 'json',
 				data: {format: 'json'},
-				url: appHostAndPath+'/api/v1/Context'+(acid)?'?acid='+acid:'',
+				url: appHostAndPath+'/api/v1/Context'+((acid)?'?acid='+acid:''),
 				success: function(context_data) {
 					console.log(context_data);
 					if (context_data.SelectedProjects.Items.length != 1) return;
@@ -37,15 +37,30 @@ function ($, config) {
 							context: panel,
 							data: {
 								format: 'json',
+								include: '[WeeklyAvailableHours,Project[Iterations[Duration,StartDate]]]',
 								where: "(User.LastName eq '"+userName.match(/\w+\s(\w+)/)[1]+"') and (Project.Id eq "+project_id+")"
 							},
 							url: appHostAndPath+'/api/v1/ProjectMembers',
 							success: function(data) {
 								var availability = data.Items[0].WeeklyAvailableHours;
 								PersonalAvailabilityData[userName] = availability;
+								/* gather sprint data */
+								$.each(data.Items[0].Project.Iterations.Items, function(k,v) {
+									/* calculate the days remaining for the sprint */
+									var fullDuration = v.Duration;
+									var startDate = new Date(Number(v.StartDate.match(/Date\((\d+)[-\+](\d+)\)/)[1]));
+									var daysElapsed = Math.floor((new Date().getTime() - startDate) / (1000 * 60 * 60 * 24 /* one day */));
+									if (daysElapsed > fullDuration)
+										SprintDurations[v.Id] = 0;
+									else
+										SprintDurations[v.Id] = fullDuration - daysElapsed;
+								});
 								var allocatedPanel = $(panel).parent('td:first').find('div:nth(1)');
 								var hours = $(allocatedPanel).find('b:contains("h")');
 								if (!hours) return;
+								var currentIteration = $('select#ctl00_mainArea_rptProjectUnassignedItems_ctl00_projectUnassignedItems_lstIterations').val();
+								if (SprintDurations[currentIteration] != null)
+									availability = (availability / 7) * SprintDurations[currentIteration];
 								hours = hours.html().match(/(\d+).*/)[1];
 								console.log('User '+userName+' has '+hours+'h assigned of '+availability);
 								var span = $('<span></span>');
@@ -81,6 +96,9 @@ function ($, config) {
 				var hours = $(panel).parent('td:first').find('div:nth(1) > b:contains("h")');
 				var availability = PersonalAvailabilityData[userName];
 				if ((!hours) && (!availability)) return;
+				var currentIteration = $('select#ctl00_mainArea_rptProjectUnassignedItems_ctl00_projectUnassignedItems_lstIterations').val();
+				if (SprintDurations[currentIteration] != null)
+					availability = (availability / 7) * SprintDurations[currentIteration];
 				hours = hours.html().match(/(\d+).*/)[1];
 				console.log('User '+$(panel).parent('td:first').find('div:first > b').html().trim()+' now has '+hours+'h assigned of '+availability);
 				/* remove a span if we have it already */
@@ -105,3 +123,4 @@ Math.round = function(number, precision)
 	return Math._round(number*coefficient)/coefficient;
 }
 var PersonalAvailabilityData = {};
+var SprintDurations = {};
