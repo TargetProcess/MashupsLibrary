@@ -1,10 +1,13 @@
 tau.mashups
-	.addDependency("libs/jquery/jquery")
-	.addMashup(function(config) {
+.addDependency(	'tp/userStory/view')
+	.addDependency('tp/task/view')
+	.addDependency('tp/request/view')
+	.addDependency('tp/bug/view')
+	.addDependency("jQuery")
+	.addMashup(function(storyView, taskView, requestView, bugView, $, config) {
 
         
        function renderTagLinks() {
-           $('#main').unbind('DOMSubtreeModified', renderTagLinks);
             var API_BASE = appHostAndPath + '/api/v1/Generals/{0}?include=[EntityType]&format=json';
             $('li[rel="tag"]:not(".linkz0red")').each(function() {
                 $(this).addClass('linkz0red');
@@ -26,11 +29,13 @@ tau.mashups
                     });
                 };
             });
-            $('#main').bind('DOMSubtreeModified', renderTagLinks);
         }
+		
+		storyView.onRender(renderTagLinks);
+		taskView.onRender(renderTagLinks);
+		requestView.onRender(renderTagLinks);
+		bugView.onRender(renderTagLinks);
 
-        /* this is ugly. TODO: this should probably be changed once there's a real event to bind to */ 
-        $('#main').bind('DOMSubtreeModified', renderTagLinks);
         $(document).ready(renderTagLinks);
     }
 );
