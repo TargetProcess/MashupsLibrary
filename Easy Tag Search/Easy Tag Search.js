@@ -1,17 +1,23 @@
 tau.mashups
-	.addDependency("libs/jquery/jquery")
-	.addMashup(function(config) {
+	.addDependency('tp/userStory/view')
+	.addDependency('tp/task/view')
+	.addDependency('tp/request/view')
+	.addDependency('tp/bug/view')
+	.addDependency("jQuery")
+	.addMashup(function(storyView, taskView, requestView, bugView, $, config) {
 
         function searchifyTags() {
-            $('#main').unbind('DOMSubtreeModified',searchifyTags);
-            $('li[rel="tag"]:not(".search-linked")').each(function() {
+           	$('li[rel="tag"]:not(".search-linked")').each(function() {
                 $(this).addClass('search-linked').find('span:eq(0)').html('<a href="{0}/Search/Search.aspx?SearchString=tag%253a{1}">{1}</a>'.f(
                     appHostAndPath, $(this).find('span:eq(0)').html()));
             });
-            $('#main').bind('DOMSubtreeModified',searchifyTags);
         }
 
-        $('#main').bind('DOMSubtreeModified', searchifyTags);
+		storyView.onRender(searchifyTags);
+		taskView.onRender(searchifyTags);
+		requestView.onRender(searchifyTags);
+		bugView.onRender(searchifyTags);
+		
         $(document).ready(searchifyTags);
     }
 );
