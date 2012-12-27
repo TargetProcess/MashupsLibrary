@@ -103,6 +103,16 @@ tau.mashups.addDependency('libs/jquery/jquery').addMashup(
                 /* and hook into the data load event */
                 Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(beginImpendingDoom);                
                 beginImpendingDoom();
+                $.each(Tp.controls.kanbanboard.KanbanboardManager.getInstance().kanbanBoards, function() {
+                    /* bind to reload button */            
+                    $(this)[0].controller.uxKanbanBoardPanel.on('reload', function() {
+                        beginImpendingDoom();
+                    }); 
+                    /* and bind to when cards change columns */
+                    $(this)[0].controller.on('statechanged', function(b, c) {
+                        beginImpendingDoom();
+                    });
+                });
             },
         }
         /* make it happen! */
