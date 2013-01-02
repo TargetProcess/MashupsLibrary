@@ -1,6 +1,9 @@
 tau.mashups
     .addDependency('libs/jquery/jquery').addMashup(function() {
 
+		/* change this to true if you only want to show efforts from the current sprint */
+		var SHOW_ONLY_CURRENT_ITERATION = false;
+
         function showReport() {
             $('head').append('<style type="text/css">'
                 +'table.board-efforts tr.hoverHi:hover {background: #E3F5D7 !important}'
@@ -27,7 +30,7 @@ tau.mashups
         var api_base = appHostAndPath+"/api/v1/";
 
         function loadData() {
-            $.getJSON(api_base+"Assignables?include=[Assignments[GeneralUser[FirstName,LastName,Role],Role],RoleEfforts[Effort,EffortToDo,TimeSpent,TimeRemain,Role],EntityType,EntityState,Name]&where=(EntityState.IsFinal%20eq%20'false')%20and%20(Effort%20gt%200)&format=json&take=1000", formatResult);
+            $.getJSON(api_base+"Assignables?include=[Assignments[GeneralUser[FirstName,LastName,Role],Role],RoleEfforts[Effort,EffortToDo,TimeSpent,TimeRemain,Role],EntityType,EntityState,Name]&where=(EntityState.IsFinal%20eq%20'false')%20and%20(Effort%20gt%200)"+(SHOW_ONLY_CURRENT_ITERATION?"%20and%20(Iteration.IsCurrent%20is%20true)":"")+"&format=json&take=1000", formatResult);
         }
 
         function formatResult(data) {
