@@ -52,7 +52,7 @@ tau.mashups
                         }
                     }
                     var roleEffortItem = getRoleEffortItem(item, asmt.Role.Id);
-                    console.log(roleEffortItem);
+					if (roleEffortItem == null) return;
                     fmtData.users[asmt.GeneralUser.Id].TotalEffort += roleEffortItem.Effort;
                     fmtData.users[asmt.GeneralUser.Id].TotalToDo += roleEffortItem.EffortToDo;
                     fmtData.users[asmt.GeneralUser.Id].TotalTimeSpt += roleEffortItem.TimeSpent;
@@ -70,7 +70,6 @@ tau.mashups
                     });
                 });
             });
-            console.log(fmtData);
             drawChart(fmtData);
         }
 
@@ -94,7 +93,6 @@ tau.mashups
                 tr.append("<td>{0}, {1} <em>({2})</em></td>".f(user.FirstName, user.LastName, user.DefaultRole));
                 var width = (user.TotalEffort / data.overallEffort) * 100;
                 var innerWidth = (user.TotalToDo / user.TotalEffort) * 100;
-                console.log(innerWidth);
                 var innerBar = $('<div></div>').addClass('innerBar').css('width', innerWidth+"%").html(user.TotalEffort);
                 tr.append($('<td></td>').addClass('bar').css('width', width+"%").append(innerBar));
                 table.append(tr);
