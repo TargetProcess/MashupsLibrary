@@ -7,9 +7,8 @@ tau.mashups
 	.addMashup(function(storyView, taskView, requestView, bugView, $, config) {
 
        function renderTagLinks() {
-			window.setTimeout(function() {
+			setTimeout(function() {
 	            $('li[rel="tag"]:not(".linkz0red")').each(function() {
-					console.log($(this));
 	                $(this).addClass('linkz0red');
 	                var capture = /#(\d+)/.exec($(this).find('span:eq(0)').html());
 	                if (capture != null) {
