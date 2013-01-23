@@ -11,6 +11,8 @@ tau.mashups
 	var columnConfiguration = {
         /* Project matching RegEx -> Project configuration */
         'Private Universe #[0-9]+'   : {
+			/* Columns to hide */
+			'_Hidden_'		: ['Waiting']
             /* Grouped Column Name */
             'Development'   : {
                 /* Grouped limit */
@@ -87,6 +89,17 @@ tau.mashups
             var tableHead = $(this).find('thead:first');
             var config = getColumnConfig(getProjectName(this));
             if ((tableHead != null) && (config != null)) {
+				/* remove columns we don't want */
+				for (var i = 0; i < config['_Hidden_'].length; i++) {
+				    var header = $(".kanban-swimlane-header-wrap span:contains('"+config['_Hidden_'][i]+"')").filter(function() {
+				        return $(this).text().match("^"+config['_Hidden_'][i]) != null;
+				    }).parent();
+				    //use header Id to construct column Id
+				    var col = $("#" + header.id().replace("header-", ""));
+				    //hide everything
+				    header.remove();
+				    col.remove();
+				}
                 /* remove the original "WIP" header */
                 $(tableHead).find('th.kanban-swimlane-wip-header').remove();
                 /* modify the "planned" state if one exists */
