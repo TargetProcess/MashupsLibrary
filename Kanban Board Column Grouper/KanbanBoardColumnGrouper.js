@@ -11,8 +11,6 @@ tau.mashups
 	var columnConfiguration = {
         /* Project matching RegEx -> Project configuration */
         'Private Universe #[0-9]+'   : {
-			/* Columns to hide */
-			'_Hidden_'		: ['Waiting']
             /* Grouped Column Name */
             'Development'   : {
                 /* Grouped limit */
@@ -27,7 +25,13 @@ tau.mashups
             'Release'       : {
                 'limit'     : 6,
                 'columns'   : ['Ready for Release', 'Staging']
-            }
+            },
+			/* to hide a group, prefix the group name with a hyphen */
+			'-Hidden'		: {
+				/* a limit field is still required for hidden groups */
+				'limit'		: null,
+				'columns'	: ['Waiting']
+			}
         }
 	};
 
@@ -86,20 +90,10 @@ tau.mashups
 	var redrawKanbanBoardHeaders = function() {
         $('table.kanban-swimlanes-table').each(function() {
             /* gather our reusable table <thead> and configuration object */
+			var kanbanBoard = $(this);
             var tableHead = $(this).find('thead:first');
             var config = getColumnConfig(getProjectName(this));
             if ((tableHead != null) && (config != null)) {
-				/* remove columns we don't want */
-				for (var i = 0; i < config['_Hidden_'].length; i++) {
-				    var header = $(".kanban-swimlane-header-wrap span:contains('"+config['_Hidden_'][i]+"')").filter(function() {
-				        return $(this).text().match("^"+config['_Hidden_'][i]) != null;
-				    }).parent();
-				    //use header Id to construct column Id
-				    var col = $("#" + header.id().replace("header-", ""));
-				    //hide everything
-				    header.remove();
-				    col.remove();
-				}
                 /* remove the original "WIP" header */
                 $(tableHead).find('th.kanban-swimlane-wip-header').remove();
                 /* modify the "planned" state if one exists */
@@ -107,12 +101,20 @@ tau.mashups
                 var columnOrder = [];
                 /* and place our new grouped headers */
                 $.each(config, function(column, setup) {
-                    var newTR = $('<th></th>');
-                    newTR.addClass('kanban-swimlane-wip-header').html(column).attr('colspan', setup.columns.length);
-                    if (setup.limit)
-                        newTR.html(newTR.html().concat(' (Limit ',setup.limit,')'));
-                    $(tableHead).find('tr:first').append(newTR);
-                    $.merge(columnOrder, setup.columns);
+					if (column.match(/^\-/) != null) {
+						/* hidden column */
+						for (var i = 0; i < setup.columns.length; i++) {
+							getSwimlaneByName(kanbanBoard,setup.columns[i]).remove();
+							getHeaderByName(kanbanBoard,setup.columns[i]).remove();
+						};
+					} else {
+	                    var newTR = $('<th></th>');
+	                    newTR.addClass('kanban-swimlane-wip-header').html(column).attr('colspan', setup.columns.length);
+	                    if (setup.limit)
+	                        newTR.html(newTR.html().concat(' (Limit ',setup.limit,')'));
+	                    $(tableHead).find('tr:first').append(newTR);
+                    	$.merge(columnOrder, setup.columns);
+					}
                 });
                 columnOrder = columnOrder.reverse();
                 /* rearrange our column according to our grouping setup */
