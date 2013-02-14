@@ -92,13 +92,15 @@ tau.mashups
 							.replace(" 2012", "")
 							.replace(" 2013", ""); })
 						.y(function(d) { return d.value; })
-							.tooltips(true);
+						.tooltips(true)
+						.color(['#6498d8', '#d86464']);
 
 						chart.yAxis
 							.tickFormat(d3.format(',f'));
 
 						d3.select(container)
 							.append('svg')
+							.attr('class', 'nv-svg')
 							.datum([{key: "US" ,values: usData},{key: "Bug", values: bugData}])
 							.transition().duration(500)
 							.call(chart);
@@ -139,6 +141,10 @@ tau.mashups
 			topmenu
 				.addItem('Metrics')
 				.onClick($.proxy(this._show, this));
+
+			context.onChange($.proxy(function(d) {
+				this._popup = null;
+			}, this));
 		};
 
 		new metrics();
