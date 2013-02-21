@@ -2,11 +2,11 @@ tau.mashups
 	.addDependency('tp3/mashups/topmenu')
 	.addDependency('tp3/mashups/popup')
 	.addDependency('tp3/mashups/context')
-	.addDependency('libs/d3/d3')
-	.addDependency('libs/nvd3/nvd3')
-	.addMashup(function(topmenu, popup, context, d3, nvd3) {
+	.addMashup(function(topmenu, popup, context) {
 
-		var metrics = function() {
+		require(['http://code.highcharts.com/highcharts.js'], function() {
+
+			var metrics = function() {
 
 			this._popup = null;
 
@@ -20,7 +20,7 @@ tau.mashups
 					mon.setDate(currendDate.getDate() - day + 1);
 
 					var sun = (new Date(currendDate.getFullYear(), currendDate.getMonth(), currendDate.getDate()));
-					sun.setDate(currendDate.getDate() + (7 - day));
+					sun.setDate(currendDate.getDate() + (14 - day));
 
 					weeks.push({
 						range_name: 'week ' + (weeksCount - i),
@@ -28,7 +28,7 @@ tau.mashups
 						range_end: sun
 					});
 
-					currendDate.setDate(currendDate.getDate() - 7);
+					currendDate.setDate(currendDate.getDate() - 14);
 				}
 				return weeks.reverse();
 			};
@@ -36,7 +36,7 @@ tau.mashups
 			this._getVelocity = function(dataType) {
 				var dfr = $.Deferred();
 
-				var ranges = this._getWeeks(25);
+				var ranges = this._getWeeks(12);
 				var buildUrl = function(appPath, type, acid, start, end) {
 					var searchGTthan = new Date(start.getTime());
 					searchGTthan.setDate(searchGTthan.getDate() - 1);
@@ -49,9 +49,15 @@ tau.mashups
 						'and (' +
 						"EndDate lt '" + searchLTthan.getFullYear() + '-' + (searchLTthan.getMonth() + 1) + '-' + searchLTthan.getDate() + "')" +
 						'&acid=' + acid +
-						'&include=[Name,EndDate]' +
 						'&format=json' +
 						'&take=1000';
+
+					if (type == 'UserStories') {
+						url += '&include=[Name,EndDate,Bugs-Count]';
+					}
+					else {
+						url += '&include=[Name,EndDate]';
+					}
 					return url;
 				};
 
@@ -68,12 +74,18 @@ tau.mashups
 							}).success(function(data) {
 									this.dfr.resolve({'index': index, 'data': data});
 								});
-
 						});
 
 						$.when.apply(null, dfrs).then(function() {
 							$.each(arguments, function(index, result) {
+
 								ranges[result.index].value = result.data.Items.length;
+								ranges[result.index].bugsCount = result.data.Items.reduce(
+									function(sum, value) {
+										return value['Bugs-Count'] ? sum + value['Bugs-Count'] : sum;
+									},
+									0
+								);
 							})
 							dfr.resolve(ranges);
 						});
@@ -85,29 +97,68 @@ tau.mashups
 			};
 
 			this._renderVelocity = function(container, usData, bugData) {
-				nvd3.addGraph(function() {
-					var chart = nvd3.models.multiBarChart()
-						.x(function(d) { return d.range_start.toDateString()
-							.replace("Mon ", "")
-							.replace(" 2012", "")
-							.replace(" 2013", ""); })
-						.y(function(d) { return d.value; })
-						.tooltips(true)
-						.color(['#6498d8', '#d86464']);
 
-						chart.yAxis
-							.tickFormat(d3.format(',f'));
+				var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+				var categories =  usData.map(function(v) { return '' + v.range_start.getDate() + ' ' + month[v.range_start.getMonth()]; });
+				var doneStories =  usData.map(function(v) { return v.value; });
+				var doneBugs =  bugData.map(function(v) { return v.value; });
 
-						d3.select(container)
-							.append('svg')
-							.attr('class', 'nv-svg')
-							.datum([{key: "US" ,values: usData},{key: "Bug", values: bugData}])
-							.transition().duration(500)
-							.call(chart);
+				var doneStoriesBugCount =  usData.map(function(v) { return v.bugsCount || 0; });
 
-						nvd3.utils.windowResize(chart.update);
+				var chart = new Highcharts.Chart({
+					chart: {
+						renderTo: container,
+						type: 'column'
+					},
+					title: {
+						text: 'Done US/Bug per 2 weeks'
+					},
+					xAxis: {
+						'categories': categories,
+						//type: 'datetime',
 
-						return chart;
+					},
+					yAxis: {
+						min: 0,
+							title: {
+							text: '(count)'
+						}
+					},
+					legend: {
+						layout: 'vertical',
+							backgroundColor: '#FFFFFF',
+							align: 'left',
+							verticalAlign: 'top',
+							x: 50,
+							y: 0,
+							floating: true,
+							shadow: true
+					},
+					tooltip: {
+						formatter: function() {
+							return '' + this.y + '';
+						}
+					},
+					plotOptions: {
+						column: {
+							pointPadding: 0.2,
+								borderWidth: 0
+						}
+					},
+					series: [{
+						name: 'UserStories',
+						data: doneStories
+
+					},{
+						name: 'Bugs',
+						data: doneBugs
+
+					},{
+						type: 'spline',
+						name: 'Bug Count in Done US',
+						data: doneStoriesBugCount
+
+					}]
 				});
 			};
 
@@ -116,7 +167,7 @@ tau.mashups
 				mertricsPopup.showLoading();
 				var $container = mertricsPopup.$container;
 
-				var $velocityContainer = $('<div><div><b>Velocity per week</b></div></div>');
+				var $velocityContainer = $('<div></div>');
 				$velocityContainer.attr('style', 'height: 200px');
 				$velocityContainer.appendTo($container);
 
@@ -146,6 +197,7 @@ tau.mashups
 				this._popup = null;
 			}, this));
 		};
+			new metrics();
+		});
 
-		new metrics();
 	});
