@@ -2,26 +2,25 @@ tau.mashups
     .addDependency('libs/jquery/jquery').addMashup(function() {
 
         function showReport() {
-            $('head').append('<style type="text/css"> \
-table.board-efforts tr.hoverHi:hover {background: #E3F5D7 !important} \
-table.board-efforts tr {border-bottom: 1px dotted #eee !important} \
-table.board-efforts td {height: 20px; } \
-table.board-efforts td em {font-size: smaller;} \
-table.board-efforts {border-collapse: collapse} \
-table.board-efforts td.more {background: url("'+appHostAndPath+'/img/icons/plus-small.png") center center no-repeat; width: 10px; } \
-table.board-efforts td.more.less {background: url("'+appHostAndPath+'/img/icons/minus-small.png") center center no-repeat !important;} \
-table.board-efforts td.bar {background: #819f56; margin-top: 2px; border: 1px solid #8ACB29; color: white; overflow: hidden; position: absolute; font: 11px Arial; height: 12px; border-radius: 3px; padding: 0; color: white; font-weight: bold; font-size: 11px;} \
-table.board-efforts td.bar div.innerBar {background: #ACD473; height: 100%; overflow: visible; padding: 0 0 0 2px;} \
-table.board-efforts tr.innerData {height: 0px; overflow: hidden; display: none;} \
-table.board-iterations-inner {float: right; width: 97%;} \
-table.board-states-inner {float: right; width: 93%;} \
-table.board-efforts-inner {float: right; width: 90%;} \
-</style> \
-');
+            $('head').append('<style type="text/css">' +
+							'table.board-efforts tr.hoverHi:hover {background: #E3F5D7 !important}' +
+							'table.board-efforts tr {border-bottom: 1px dotted #eee !important} ' +
+							'table.board-efforts td {height: 20px; } ' +
+							'table.board-efforts td em {font-size: smaller;} ' +
+							'table.board-efforts {border-collapse: collapse} ' +
+							'table.board-efforts td.more {background: url("'+appHostAndPath+'/img/icons/plus-small.png") center center no-repeat; width: 10px; } ' +
+							'table.board-efforts td.more.less {background: url("'+appHostAndPath+'/img/icons/minus-small.png") center center no-repeat !important;} ' +
+							'table.board-efforts td.bar {background: #819f56; margin-top: 2px; border: 1px solid #8ACB29; color: white; overflow: hidden; position: absolute; font: 11px Arial; height: 12px; border-radius: 3px; padding: 0; color: white; font-weight: bold; font-size: 11px;} ' +
+							'table.board-efforts td.bar div.innerBar {background: #ACD473; height: 100%; overflow: visible; padding: 0 0 0 2px;} ' +
+							'table.board-efforts tr.innerData {height: 0px; overflow: hidden; display: none;} ' +
+							'table.board-iterations-inner {float: right; width: 97%;} ' +
+							'table.board-states-inner {float: right; width: 93%;} ' +
+							'table.board-efforts-inner {float: right; width: 90%;} ' +
+						'</style>');
             $('td.col-two > div:first').fadeOut('slow',
                 function() {
                     $(this).html('').append(
-                        $('<span class="tableTitle">Total effort assigned to users</span><br/><!--select id="iteration-select"></select--><br/><div id="assigned-effort-report"><div class="ui-wait-icon"></div></div>')
+                        $('<span class="tableTitle">Total effort assigned to users in the past week</span><br/><!--select id="iteration-select"></select--><br/><div id="assigned-effort-report"><div class="ui-wait-icon"></div></div>')
                     ).fadeIn('slow', loadData);
                 }
             );
@@ -33,7 +32,7 @@ table.board-efforts-inner {float: right; width: 90%;} \
             $.getJSON(api_base+"Assignables?include=[Assignments[GeneralUser[FirstName,LastName,Role],Role],RoleEfforts[Effort,EffortToDo,TimeSpent,TimeRemain,Role],EntityType,EntityState,Name,Iteration[Name,StartDate,EndDate]]&where=(EntityState.IsFinal%20eq%20'false')%20and%20(Iteration%20is%20not%20null)%20and%20(Effort%20gt%200)&format=json&take=1000", formatResult);
         }
 
-        // build a structure that can be used for iteration / building the tables
+        /* build a structure that can be used for iteration / building the tables */
         function formatResult(data) {
             var minDate = getMinDate();
     				          	
@@ -57,7 +56,7 @@ table.board-efforts-inner {float: right; width: 90%;} \
                               'Iterations' : {}
                           }
                       }
-                      // assignables are ordered by iteration
+                      /* assignables are ordered by iteration */
                       if(fmtData.users[asmt.GeneralUser.Id].Iterations[item.Iteration.Id] == null){
                         fmtData.users[asmt.GeneralUser.Id].Iterations[item.Iteration.Id] = {
                           'Name' : item.Iteration.Name,
@@ -71,7 +70,7 @@ table.board-efforts-inner {float: right; width: 90%;} \
                         }
 	                fmtData.users[asmt.GeneralUser.Id].Items.push(item.Iteration.Id);
                       }
-                      // and by state
+                      /* and by state */
                       if(fmtData.users[asmt.GeneralUser.Id].Iterations[item.Iteration.Id].States[item.EntityState.Name] == null){
                         fmtData.users[asmt.GeneralUser.Id].Iterations[item.Iteration.Id].States[item.EntityState.Name] = {
                           'Name' : item.EntityState.Name,
@@ -83,24 +82,23 @@ table.board-efforts-inner {float: right; width: 90%;} \
                         }
                       }
                       var roleEffortItem = getRoleEffortItem(item, asmt.Role.Id);
-                      console.log(roleEffortItem);
-                      // sum up efforts for user
+                      /* sum up efforts for user */
                       fmtData.users[asmt.GeneralUser.Id].TotalEffort += roleEffortItem.Effort;
                       fmtData.users[asmt.GeneralUser.Id].TotalToDo += roleEffortItem.EffortToDo;
                       fmtData.users[asmt.GeneralUser.Id].TotalTimeSpt += roleEffortItem.TimeSpent;
                       fmtData.users[asmt.GeneralUser.Id].TotalTimeRem += roleEffortItem.TimeRemain;
                       fmtData.overallEffort += roleEffortItem.Effort;
-                      // sum up efforts for iteration
+                      /* sum up efforts for iteration */
                       fmtData.users[asmt.GeneralUser.Id].Iterations[item.Iteration.Id].TotalEffort += roleEffortItem.Effort;
                       fmtData.users[asmt.GeneralUser.Id].Iterations[item.Iteration.Id].TotalToDo += roleEffortItem.EffortToDo;
                       fmtData.users[asmt.GeneralUser.Id].Iterations[item.Iteration.Id].TotalTimeSpt += roleEffortItem.TimeSpent;
                       fmtData.users[asmt.GeneralUser.Id].Iterations[item.Iteration.Id].TotalTimeRem += roleEffortItem.TimeRemain;
-                      // sum up efforts for state
+                      /* sum up efforts for state */
                       fmtData.users[asmt.GeneralUser.Id].Iterations[item.Iteration.Id].States[item.EntityState.Name].TotalEffort += roleEffortItem.Effort;
                       fmtData.users[asmt.GeneralUser.Id].Iterations[item.Iteration.Id].States[item.EntityState.Name].TotalToDo += roleEffortItem.EffortToDo;
                       fmtData.users[asmt.GeneralUser.Id].Iterations[item.Iteration.Id].States[item.EntityState.Name].TotalTimeSpt += roleEffortItem.TimeSpent;
                       fmtData.users[asmt.GeneralUser.Id].Iterations[item.Iteration.Id].States[item.EntityState.Name].TotalTimeRem += roleEffortItem.TimeRemain;
-                      // add the assignable to the state
+                      /* add the assignable to the state */
                       fmtData.users[asmt.GeneralUser.Id].Iterations[item.Iteration.Id].States[item.EntityState.Name].Items.push({
                           'EntityId' : item.Id,
                           'Name' : item.Name,
@@ -114,11 +112,10 @@ table.board-efforts-inner {float: right; width: 90%;} \
                   });
                 }
             });
-            console.log(fmtData);
             drawIterationChart(fmtData);
         }
 
-        // get the effort of the given role from the given item
+        /* get the effort of the given role from the given item */
         function getRoleEffortItem(item, roleId) {
             for (var i = 0; i < item.RoleEfforts.Items.length; ++i) {
                 if (item.RoleEfforts.Items[i].Role.Id == roleId)
@@ -126,7 +123,7 @@ table.board-efforts-inner {float: right; width: 90%;} \
             }
         }
 
-        // parse the data and draw the tables for all users / iterations / states
+        /* parse the data and draw the tables for all users / iterations / states */
         function drawIterationChart(data){
             var table = $('<table class="board-efforts" style="width: 100%;"></table>');
             table.append($('<tr><th colspan="2" style="width: 25%;">User</th><th style="width: 75%;">Total Effort</th></tr>'));
@@ -145,10 +142,10 @@ table.board-efforts-inner {float: right; width: 90%;} \
                 var innerBar = $('<div></div>').addClass('innerBar').css('width', innerWidth+"%").html(user.TotalEffort);
                 tr.append($('<td></td>').addClass('bar').css('width', width+"%").append(innerBar));
                 table.append(tr);
-                // we need a single td for the open / close button
+                /* we need a single td for the open / close button */
                 var iterTr = $('<tr class="innerData"></tr>');
                 var iter = $('<td></td>').attr('colspan','3');
-                // table for all iterations
+                /* table for all iterations */
                 var iterTable = $('<table class="board-iterations-inner"></table>');
                 /* iterate through all iterations :) */
                 iterTable.append($('<tr><th style="width: 20;"></th><th>Iteration</th><th>StartDate</th><th>EndDate</th><th>Total Effort</th><th>Total Time Spent</th><th>Total Remaining</th></tr>'));
@@ -163,7 +160,7 @@ table.board-efforts-inner {float: right; width: 90%;} \
                   tr.append("<td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td></tr>".f(iteration.Name, getDateString(iteration.StartDate), getDateString(iteration.EndDate), iteration.TotalEffort, iteration.TotalTimeSpt, iteration.TotalTimeRem));
                   iterTable.append(tr);
 
-                  // table for all states
+                  /* table for all states */
                   var stateTr = $('<tr class="innerData"></tr>');
                   var stateTd = $('<td></td>').attr('colspan','7');
                   var stateTable = $('<table class="board-states-inner"></table>');
@@ -192,14 +189,11 @@ table.board-efforts-inner {float: right; width: 90%;} \
                 iter.append(iterTable);
                 iterTr.append(iter);
                 table.append(iterTr);
-//                tr = $('<tr style="border-top: 1px solid #66666;"></tr>');
-//                tr.append("<td colspan='2'></td><td>Effort:{0}  Time Spent:{1}  Remaining:{2}</td>".f(user.TotalEffort, user.TotalTimeSpt, user.TotalTimeRem));
-//                table.append(tr);
             });
             $('div#assigned-effort-report').html('').append(table);
         }
       
-        // Build a link to open User Story, Task or Bug with the given id
+        /* Build a link to open User Story, Task or Bug with the given id */
       	function getTypeLink(entityType, entityID){
           var myLink = appHostAndPath+"/Project/";
           if(entityType == "UserStory")
@@ -214,17 +208,17 @@ table.board-efforts-inner {float: right; width: 90%;} \
           return myLink;
 	}
       
-        // Simple date formatter
+        /*Simple date formatter */
       	function getDateString(date){
           return date.getDate()+"."+(date.getMonth()+1)+"."+date.getFullYear();
       	}
       
-        // Numeric sort function
+        /* Numeric sort function */
         function Numsort (a, b) {
   	  return a - b;
 	}
       
-      	// calculate start date of last iteration 
+      	/* calculate start date of 7 days ago */
         function getMinDate(){
           var now = new Date();
 	  var subMilliSeconds = (now.getDay()+7) * 86400000;
@@ -237,7 +231,7 @@ table.board-efforts-inner {float: right; width: 90%;} \
       
         /* add the link */
         $(document).ready(function() {
-            $('a:contains("Time By Person")').after($('<a id="allocation-link" href="#">Filtered Assigned Effort</a>').click(showReport));
+            $('a:contains("Time By Person")').after($('<a id="allocation-link" href="#">Weekly Assigned Effort</a>').click(showReport));
         });
     }
 );
