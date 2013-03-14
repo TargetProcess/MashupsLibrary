@@ -62,19 +62,17 @@ tau.mashups
 
     /** and the real magic **/
 
-    var colorTheCard = function(i,c) {
-        pri = i.attr('class').match(/kanban-item-priority-(\d+)/)[1];
-        i.css({"-moz-user-select":"none",'background-color':i.css('background-color')});
+    var colorTheCard = function(item, priority, color) {
+        item.css({"-moz-user-select":"none",'background-color':item.css('background-color')});
         /* we have to remove the kanban-item-priority class to get rid of the background-color
          * so that it can be overridden - the style is copied by the line above so we don't see
          * snapping
          */
-        i[0].className = i[0].className.replace(/\bkanban-item-priority-\d+\b/g,'');
-        var newColor = shade(c,(-1*priorityShadeStepping*pri));
+        var newColor = shade(color,(-1*priorityShadeStepping*priority));
         /* and some pretty animations */
-        i.animate({'background-color':newColor},1000);
-        i.find('div.name:first').animate({'color':safeColor(newColor)},1000);
-        i.find('a.kanban-item-id:first').animate({'color':safeColor(newColor,60,['#94a1c5','#28428B'])},1000);
+        item.animate({'background-color':newColor},1000);
+        item.find('div.name:first').animate({'color':safeColor(newColor)},1000);
+        item.find('a.kanban-item-id:first').animate({'color':safeColor(newColor,60,['#94a1c5','#28428B'])},1000);
     }
 
 	var colorItems = function() {
@@ -100,18 +98,19 @@ tau.mashups
             /* AJAX call to the REST API to gather the due date custom field information */
             $.ajax({
                 type: 'GET',
-                url: appHostAndPath+'/api/v1/'+restCall+'/'+itemId+'?include=[CustomFields,Tags]&format=json',
+                url: appHostAndPath+'/api/v1/'+restCall+'/'+itemId+'?include=[CustomFields,Tags,Priority[Importance]]&format=json',
                 context: $(this)[0],
                 contentType: 'application/json',
                 dataType: 'json',
                 success: function(resp) {
+					var priority = resp.Priority.Importance;
                     /* scan through all of our custom fields to find the one called 'Story Type',
                      * and then use the value of that field to determine color */
                     $.each(customFieldMappings, function(f,v) {
                         for (var i = 0; i < resp.CustomFields.length; ++i) {
                             if (resp.CustomFields[i].Name == f) {
                                 if (v[resp.CustomFields[i].Value] != null) {
-                                    colorTheCard(item,v[resp.CustomFields[i].Value]);
+                                    colorTheCard(item, priority, v[resp.CustomFields[i].Value]);
                                     return;
                                 }
                             }
@@ -119,7 +118,7 @@ tau.mashups
                     });
                     $.each(tagColors, function(t,color) {
                         if (resp.Tags.indexOf(t) != -1) {
-                            colorTheCard(item,color);
+                            colorTheCard(item, priority, color);
                             return;
                         }
                     });
