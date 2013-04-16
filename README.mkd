@@ -38,6 +38,9 @@ of time remaining for the card.
 Clors cards on the Kanban board according to tags.  For example, stories or bugs tagged _urgent_ can be colored red and 
 all stories and bugs tagged _sup_ are colored yellow.  Colors and tags are customizable in the _.js_ file. 
 
+[**Board Class Of Services**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Board Class Of Services)
+
+The same as Class Of Services but for TP3 board
 
 [**Highlighter**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Highlighter)
 
