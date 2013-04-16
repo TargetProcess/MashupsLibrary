@@ -12,9 +12,15 @@ tau.mashups
                 var self = this;
 
                 this.tagMapping = {
-                    'reopen':'box-shadow: 0 1px 2px green;',
-                    'urgent':'box-shadow: 0 1px 2px red;',
-                    '.net':'box-shadow: 0 1px 2px gray;'
+                 'PIT Web CEPAL':'background: #fdfadb',
+                  'urgent':'background: #f9d9d1',
+                  '.net':'background: #d2e0ef;',
+                  'regression':'background: #ffe1b3;',
+                  'today':'background: #d2e0ef;',
+                  'mb_wip':'background: #d2e0ef;',
+                  'performance' : 'background: #e2eece',
+                  '1week': 'background: #f9f5bd',
+                  'when have time': 'background: #A1D9D6'
                 };
                 this.taggedCards = {};
                 this.cards = [];
