@@ -40,7 +40,7 @@ all stories and bugs tagged _sup_ are colored yellow.  Colors and tags are custo
 
 [**Board Class Of Services**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Board Class Of Services)
 
-The same as Class Of Services but for TP3 board
+The same as Class Of Services but for TP3 board.
 
 [**Highlighter**](https://github.com/TargetProcess/MashupsLibrary/tree/master/Highlighter)
 
