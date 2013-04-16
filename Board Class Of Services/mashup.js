@@ -71,7 +71,7 @@ tau.mashups
                         for(var i = 0; i < data.items.length; i++) {
                             var id = data.items[i].id;
                             var tags = data.items[i].tags.split(',');
-                            $.each(tags, function(i, v) { tags[i] = $.trim(tags[i]); })
+                            $.each(tags, function(i, v) { tags[i] = $.trim(tags[i].toLowerCase()); })
                             this.taggedCards[id] = tags;
                         }
                         this.refreshAll();
