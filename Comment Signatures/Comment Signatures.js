@@ -21,7 +21,7 @@ tau.mashups
 						} catch (e) { console.log(e); }
 					}
 	            });
-			}, self));
+			}, this));
 		});
 		
 		/* block that renders the personal settings signature form */
