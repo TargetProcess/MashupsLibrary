@@ -1,39 +1,28 @@
 tau.mashups
-	.addDependency('tp/userStory/view')
-	.addDependency('tp/task/view')
-	.addDependency('tp/request/view')
-	.addDependency('tp/bug/view')
 	.addDependency("jQuery")
-	.addMashup(function(storyView, taskView, requestView, bugView, $, config) {
+	.addDependency('app.bus')
+	.addMashup(function($, $deferred, config) {
 		/* our reused placement function */
-		var placeSignature = function($element) {
-			$element.delegate('span.ui-comments-add-link', 'click', function() {
-				setTimeout(function() {
-					$.ajax({
-		                type: 'GET',
-		                url: appHostAndPath+'/storage/v1/Signatures/'+loggedUser.id,
-		                contentType: 'application/json; charset=utf8',
-						success: function(data) {
-							try {
-								if (data.userData) {
-									var editor = $('span.ui-comments-add-link').parent('div').find('div.ui-richeditor span:first').id().match(/^(?:cke_)?(.*)/)[1];
-									/* place the signature */
-									CKEDITOR.instances[editor].setData('<br/><br/>'+unescape(data.userData.sig));
-									/* reset focus to the front of the editor */
-									CKEDITOR.instances[editor].focus();
-								}
-							} catch (e) {}
-						}
-		            });
-				}, 750);
-			});
-		}
-	
-		/* go through our views and attach our placement function */
-		storyView.onRender(placeSignature);
-		taskView.onRender(placeSignature);
-		requestView.onRender(placeSignature);
-		bugView.onRender(placeSignature);
+		$deferred.then(function(bus) {
+			bus.on('editorCreated', $.proxy(function(e, obj, data) {
+				$.ajax({
+	                type: 'GET',
+	                url: appHostAndPath+'/storage/v1/Signatures/'+loggedUser.id,
+	                contentType: 'application/json; charset=utf8',
+					success: function(data) {
+						try {
+							if (data.userData) {
+								var editor = obj.editorElement.find('span:first').attr('id').match(/^(?:cke_)?(.*)/)[1];
+								/* place the signature */
+								CKEDITOR.instances[editor].setData('<br/><br/>'+unescape(data.userData.sig));
+								/* reset focus to the front of the editor */
+								CKEDITOR.instances[editor].focus();
+							}
+						} catch (e) { console.log(e); }
+					}
+	            });
+			}, self));
+		});
 		
 		/* block that renders the personal settings signature form */
 		$(document).ready(function() {
