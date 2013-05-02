@@ -11,7 +11,7 @@ Installing the Mashup with TargetProcess
 2. Click "Add New Mashup"
 3. In the "Name" field, enter a name unique to this Mashup - for example "Activity"
 4. In the "Placeholders" field, enter ```restui_board```
-5. Copy and paste the contents of the [Kanban Card Rotter.js](https://raw.github.com/TargetProcess/MashupsLibrary/master/TP3%20Latest%Activity/activity.js) file in the "Code" box.
+5. Copy and paste the contents of the [activity.js](https://raw.github.com/TargetProcess/MashupsLibrary/master/TP3%20Latest%Activity/activity.js) file in the "Code" box.
 6. Open TP3 UI, find Acitivy link on top. Click it :)
 
 
