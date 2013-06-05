@@ -2,9 +2,11 @@ tau.mashups
     .addDependency('tp/mashups')
     .addDependency('user/mashups')
     .addDependency('jQuery')
+    .addDependency('Underscore')
+    .addDependency('tp3/mashups/context')
     .addDependency('tau/core/bus.reg')
     .addDependency('tau/configurator')
-    .addMashup(function (m, um, $, busRegistry, configurator) {
+    .addMashup(function (m, um, $, _, context, busRegistry, configurator) {
 
         var colorer = function() {
             this.init = function() {
@@ -12,57 +14,50 @@ tau.mashups
                 var self = this;
 
                 this.tagMapping = {
-                 'PIT Web CEPAL':'background: #fdfadb',
-                  'urgent':'background: #f9d9d1',
-                  '.net':'background: #d2e0ef;',
-                  'regression':'background: #ffe1b3;',
-                  'today':'background: #d2e0ef;',
-                  'mb_wip':'background: #d2e0ef;',
-                  'performance' : 'background: #e2eece',
-                  '1week': 'background: #f9f5bd',
-                  'when have time': 'background: #A1D9D6'
+					'PIT Web CEPAL':'background: #fdfadb',
+					'in progress':'background: #fdfadb', // you can use state name
+					'urgent':'background: #f9d9d1',
+					'.net':'background: #d2e0ef;',
+					'regression':'background: #ffe1b3;',
+					'today':'background: #d2e0ef;',
+					'mb_wip':'background: #d2e0ef;',
+					'performance' : 'background: #e2eece',
+					'1week': 'background: #f9f5bd',
+					'when have time': 'background: #A1D9D6'
                 };
                 this.taggedCards = {};
                 this.cards = [];
 
-                busRegistry.on('create', function(eventName, sender) {
-                    if (sender.bus.name == 'application board') {
-                        var acidStore = configurator.getAppStateStore();
-                        acidStore.get({
-                            fields:['acid'],
-                            callback: function (r) {
-                                self.getTaggedCards(r.acid);
-                            }
-                        });
-                        acidStore.bind({
-                            fields:['acid'],
-                            listener:self,
-                            callback:function (r) {
-                                window.console.log('acid changed=' + r.acid);
-                                self.getTaggedCards(r.acid);
-                            }
-                        });
-                    }
+				context.onChange(function(ctx) {
+					self.setContext(ctx);
+					self.refresh(ctx);
+				});
 
+				busRegistry.on('create', function(eventName, sender) {
                     if (sender.bus.name == 'board_plus')
                     {
                         sender.bus.on('start.lifecycle', _.bind(function(e) { this.cards = []; }, self));
                         sender.bus.on('view.card.skeleton.built', _.bind(self.cardAdded, self));
                     }
-
                 });
             };
 
-            this.cardAdded = function(eventName, sender) {
-                this.cards.push(sender.element);
-                this.refreshCard(sender.element);
-            };
+			this._ctx = {};
+			this.setContext = function(ctx) {
+				this._ctx = ctx;
+			};
 
-            this.getTaggedCards = function(acid) {
-                var whereStr = this.getFilter(this.tagMapping);
+			this.refresh = function(ctx) {
 
-                //var requestUrl = configurator.getApplicationPath() + '/api/v1/Assignables.asmx?where=(tags contains \'urgent\') and (EntityState.IsFinal eq \'false\')&include=[Id,Tags]&format=json&acid=' + acid;
-                var requestUrl = configurator.getApplicationPath() + '/api/v2/Assignable?take=1000&where=TagObjects.Count('+whereStr+')>0&select={id,Tags}&acid=' + acid;
+				var acid = ctx.acid;
+                var whereTagStr = this.getFilter(this.tagMapping);
+				var whereIdsStr = this.cards.map($.proxy(function(c){ return this._getCardId(c); }, this)).join(',');
+
+				if (whereIdsStr == '') {
+					whereIdsStr = '0';
+				}
+
+                var requestUrl = configurator.getApplicationPath() + '/api/v2/Assignable?take=1000&where=TagObjects.Count('+whereTagStr+')>0 or (id in ['+whereIdsStr+'] and EntityState.isFinal==false)&select={id,Tags,EntityState.Name as state}&acid=' + acid;
                 $.ajax({
                     url: requestUrl,
                     context: this
@@ -71,16 +66,28 @@ tau.mashups
                         for(var i = 0; i < data.items.length; i++) {
                             var id = data.items[i].id;
                             var tags = data.items[i].tags.split(',');
+							tags.push(data.items[i].state)
                             $.each(tags, function(i, v) { tags[i] = $.trim(tags[i].toLowerCase()); })
                             this.taggedCards[id] = tags;
                         }
-                        this.refreshAll();
+                        this.renderAll();
                     });
             };
 
-            this.refreshCard = function(card) {
+			this.refreshDebounced = _.debounce(this.refresh, 100, false);
+
+			this.cardAdded = function(eventName, sender) {
+				this.cards.push(sender.element);
+				this.refreshDebounced(this._ctx);
+			};
+
+			this._getCardId = function (card) {
+				return card.attr('data-entity-id');
+			};
+
+            this.renderCard = function(card) {
                 var self = this;
-                var id = card.attr('data-entity-id');
+                var id = this._getCardId(card);
                 var cardData = this.taggedCards[id];
              
                 if (cardData) {
@@ -92,10 +99,10 @@ tau.mashups
                 }
             };
 
-            this.refreshAll = function() {
+            this.renderAll = function() {
                 var self = this;
                 $.each(this.cards, function(index, card) {
-                    self.refreshCard(card);
+                    self.renderCard(card);
                 });
             };
 
