@@ -1,0 +1,1 @@
+This mashup shows in a visual way what projects people are working on, when they started and when they are going to leave projects.
