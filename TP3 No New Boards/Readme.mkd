@@ -11,7 +11,7 @@ Installing the Mashup with TargetProcess
 2. Click "Add New Mashup"
 3. In the "Name" field, enter a name unique to this Mashup - for example "Activity"
 4. In the "Placeholders" field, enter ```restui_board```
-5. Copy and paste the contents of the [NoNewBoards.js]() file in the "Code" box.
+5. Copy and paste the contents of the [NoNewBoards.js](https://raw.github.com/TargetProcess/MashupsLibrary/master/TP3%20No%20New%20Boards/NoNewBoards.js) file in the "Code" box.
 6. List roles or ID's of users to apply mashup in code.
 I.e.:  roles: ['Developer'] - apply Mashup to all developers
  ids: [20, 25] - to apply Mashup to users with IDs 20 and 25.
@@ -26,4 +26,4 @@ Troubleshooting for On-Site installation
 Please contact support at support@targetprocess.com
 
 
-Mashup code © Konstantin Krivlenia 
+Mashup code ï¿½ Konstantin Krivlenia 
