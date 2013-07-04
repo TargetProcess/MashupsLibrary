@@ -1,0 +1,29 @@
+No new boards
+==================
+
+Disables creation of new Boards for some of the users. List of users can be defined. 
+
+
+Installing the Mashup with TargetProcess
+----------------------------------------
+
+1. In your TP site, navigate to ```Settings > (System Settings) > Mashups```
+2. Click "Add New Mashup"
+3. In the "Name" field, enter a name unique to this Mashup - for example "Activity"
+4. In the "Placeholders" field, enter ```restui_board```
+5. Copy and paste the contents of the [NoNewBoards.js]() file in the "Code" box.
+6. List roles or ID's of users to apply mashup in code.
+I.e.:  roles: ['Developer'] - apply Mashup to all developers
+ ids: [20, 25] - to apply Mashup to users with IDs 20 and 25.
+  
+
+Troubleshooting for On-Site installation
+--------------------------
+
+**I don't have a _JavaScript/Mashups/_ folder in my TP install path!**
+
+1. By default, this folder can be found at _C:\inetpub\wwwroot\TargetProcess2\wwwroot\JavaScript\Mashups_
+Please contact support at support@targetprocess.com
+
+
+Mashup code © Konstantin Krivlenia 
