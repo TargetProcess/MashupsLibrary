@@ -12,7 +12,7 @@ Installing the Mashup with TargetProcess
 2. Click "Add New Mashup"
 3. In the "Name" field, enter a name unique to this Mashup - for example "Inner Boards"
 4. In the "Placeholders" field, enter ```restui_board```
-5. Copy and paste the contents of the [inner_board.js](https://raw.github.com/TargetProcess/MashupsLibrary/master/TP3%20Inner%20Boards/inner_board.js) file into "Code" box.
+5. Copy and paste the contents of the [inner_board.js](inner_board.js) file into "Code" box.
 6. Open TP3 UI, select some stories and find inner board button at the bottom
 
 
