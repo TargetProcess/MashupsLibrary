@@ -1,4 +1,4 @@
-Inner Boards
+Drop File To Add Entities 
 ==================
 
 Adds inner board button for selected cards (for example Tasks Board for selected stories). Clicking on the button leads to openning inner board popup
