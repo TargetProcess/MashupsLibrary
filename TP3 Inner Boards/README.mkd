@@ -3,7 +3,7 @@ Inner Boards
 
 Adds inner board button for selected cards (for example Tasks Board for selected stories). Clicking on the button leads to openning inner board popup
 
-
+[Inner Boards Mashup](inner_boards.png)
 
 Installing the Mashup with TargetProcess
 ----------------------------------------
