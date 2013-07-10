@@ -13,7 +13,7 @@ Installing the Mashup with TargetProcess
 3. In the "Name" field, enter a name unique to this Mashup - for example "Drop To Board"
 4. In the "Placeholders" field, enter ```restui_board```
 5. Copy and paste the contents of the [drop2board.js](drop2board.js) file into "Code" box.
-6. Open TP3 UI, open some board and drop file with entity names to desired cell
+6. Open TP3 UI, open some board and drop file with entity names to desired cell 
 
 
 Troubleshooting
