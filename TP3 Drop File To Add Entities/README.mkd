@@ -1,7 +1,7 @@
 Drop File To Add Entities 
 ==================
 
-Allows batch creation of entities from file
+This mashup will create new entities (User Stories, Tasks, Bugs, etc.) from the list of names in a .txt file
 
 ![ScreenShot](drop2board.png)
 
