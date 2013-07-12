@@ -113,8 +113,6 @@ var signUp = function (appBus, eventHelper, $) {
                 return;
             }
 
-            console.log(data.element);
-
             var self = this;    
 
             var $button = $('<button id="btnFullScreen" data-title="Fullscreen" class="tau-extension-board-tooltip tau-btn" ' 
