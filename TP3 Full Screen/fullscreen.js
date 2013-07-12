@@ -68,8 +68,6 @@
 var signUp = function (appBus, eventHelper, $) {
     var isFullScreen = false;
     var wrapperTop = null;  
-
-    var fullScreenIcon = '<div style="-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-ms-transform: rotate(45deg);">↕</div>';   
   
     var toggleFullScreen = function() {
         isFullScreen = !isFullScreen;    
@@ -119,7 +117,7 @@ var signUp = function (appBus, eventHelper, $) {
 
             var self = this;    
 
-            var $button = $('<button id="btnFullScreen" data-title="Enter full screen" class="tau-extension-board-tooltip tau-btn" ' 
+            var $button = $('<button id="btnFullScreen" data-title="Fullscreen" class="tau-extension-board-tooltip tau-btn" ' 
                 + 'style="float: right; width: 24px; padding: 0; text-align: center; background: url(\'../javascript/tau/css.board/images/icons-general.svg?v=2.15.0.15001\') no-repeat -815px -155px;" alt="Toggle full screen" ' 
                 + '></button>');
 
