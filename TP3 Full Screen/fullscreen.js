@@ -1,8 +1,75 @@
+(function() {
+    var
+        fullScreenApi = {
+            supportsFullScreen: false,
+            isFullScreen: function() { return false; },
+            requestFullScreen: function() {},
+            cancelFullScreen: function() {},
+            fullScreenEventName: '',
+            prefix: ''
+        },
+        browserPrefixes = 'webkit moz o ms khtml'.split(' ');
+ 
+    // check for native support
+    if (typeof document.cancelFullScreen != 'undefined') {
+        fullScreenApi.supportsFullScreen = true;
+    } else {
+        // check for fullscreen support by vendor prefix
+        for (var i = 0, il = browserPrefixes.length; i < il; i++ ) {
+            fullScreenApi.prefix = browserPrefixes[i];
+ 
+            if (typeof document[fullScreenApi.prefix + 'CancelFullScreen' ] != 'undefined' ) {
+                fullScreenApi.supportsFullScreen = true;
+ 
+                break;
+            }
+        }
+    }
+ 
+    // update methods to do something useful
+    if (fullScreenApi.supportsFullScreen) {
+        fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+ 
+        fullScreenApi.isFullScreen = function() {
+            switch (this.prefix) {
+                case '':
+                    return document.fullScreen;
+                case 'webkit':
+                    return document.webkitIsFullScreen;
+                default:
+                    return document[this.prefix + 'FullScreen'];
+            }
+        }
+        fullScreenApi.requestFullScreen = function(el) {
+            return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+        }
+        fullScreenApi.cancelFullScreen = function(el) {
+            return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+        }
+    }
+ 
+    // jQuery plugin
+    if (typeof jQuery != 'undefined') {
+        jQuery.fn.requestFullScreen = function() {
+ 
+            return this.each(function() {
+                if (fullScreenApi.supportsFullScreen) {
+                    fullScreenApi.requestFullScreen(this);
+                }
+            });
+        };
+    }
+ 
+    // export api
+    window.fullScreenApi = fullScreenApi;
+})();
+
+
 var signUp = function (appBus, eventHelper, $) {
     var isFullScreen = false;
-    var wrapperTop = null;	
+    var wrapperTop = null;  
 
-    var fullScreenIcon = '<div style="-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-ms-transform: rotate(45deg);">↕</div>'; 	
+    var fullScreenIcon = '<div style="-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-ms-transform: rotate(45deg);">↕</div>';   
   
     var toggleFullScreen = function() {
         isFullScreen = !isFullScreen;    
@@ -30,6 +97,7 @@ var signUp = function (appBus, eventHelper, $) {
                  bus.fire('resize.executed', { onlyHeaders: false });
             }); 
         });
+
     };
 
     var turboListener = {
@@ -42,7 +110,7 @@ var signUp = function (appBus, eventHelper, $) {
             }
         },
 
-      	"bus afterRender": function (evt,  data) {
+        "bus afterRender": function (evt,  data) {
             if (evt.caller.name !== 'board.toolbar') {
                 return;
             }
@@ -56,10 +124,29 @@ var signUp = function (appBus, eventHelper, $) {
                 + '></button>');
 
             $button.click(function () {
+                
                 toggleFullScreen();
+
+                var element = $button[0];
+
+                if (window.fullScreenApi.supportsFullScreen) {
+
+                    element.addEventListener(fullScreenApi.fullScreenEventName, function() {
+                        if (!fullScreenApi.isFullScreen()) {
+                            console.log('reload');
+                            document.location.reload();
+                        }
+                    }, true);
+
+
+                    window.fullScreenApi.requestFullScreen(element);
+                }
             });
 
+
+
             $button.insertBefore($('.tau-board-name', data.element));
+
         }
         
     };
