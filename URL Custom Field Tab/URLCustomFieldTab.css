@@ -1,0 +1,12 @@
+.url-custom-field-tab-frame {
+    width: 100%;
+    height: 700px;
+    overflow: scroll;
+    border: 1px solid #CCCCCC;
+}
+
+.url-custom-field-empty {
+    color: #BBBBBB;
+    font-size: 11px;
+    display: block;
+}
