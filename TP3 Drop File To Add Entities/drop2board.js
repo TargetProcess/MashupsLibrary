@@ -188,6 +188,7 @@ require([
                 $(this).fileupload({
                     sequentialUploads: true,
                     dropZone: $(this),
+                    pastZone: null,  
                     url: url,
 
                     add: function (e, data) {
