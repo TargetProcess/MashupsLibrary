@@ -103,7 +103,7 @@ tau.mashups
                 }, this));
             },
             _getEntityCFDefinition: function(tabConfig, cfDefinitions){
-                return _.filter(cfDefinitions, function(cfDefinition){
+                return _.find(cfDefinitions, function(cfDefinition){
                     return tabConfig.customFieldName.toLowerCase() === cfDefinition.name.toLowerCase()
                         && tabConfig.entityTypeName.toLowerCase() === cfDefinition.entityType.name.toLowerCase();
                 });
