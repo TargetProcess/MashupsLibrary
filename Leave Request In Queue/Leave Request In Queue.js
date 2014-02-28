@@ -10,12 +10,20 @@ tau.mashups
 				store = c.getStore();
 			}
 			gb.get().on('beforeInit', function (e) {
-				if (e.data.config && e.data.config.entity && !typeById[e.data.config.entity.id]) {
-					for (var prop in typeById) {
-						if (typeById.hasOwnProperty(prop))
-							delete typeById[prop];
+				if (e.data.config && e.data.config.action === 'show') {
+					var type, id;
+					if (typeof e.data.config.entity === 'object' && e.data.config.entity.type) {
+						type = e.data.config.entity.type.toLowerCase(), id = e.data.config.entity.id;
+					} else if (typeof e.data.config.entity === 'string') {
+						type = e.data.config.entity.toLowerCase(), id = e.data.config.id;
 					}
-					typeById[e.data.config.entity.id] = e.data.config.entity.type;
+					if(type && id && !typeById[id]){
+						for (var prop in typeById) {
+							if (typeById.hasOwnProperty(prop))
+								delete typeById[prop];
+						}
+						typeById[id] = type;
+					}
 				}
 			});
 
