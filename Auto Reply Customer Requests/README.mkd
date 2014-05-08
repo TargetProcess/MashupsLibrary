@@ -7,8 +7,6 @@ notification settings is automatically checked when adding a comment to a custom
 **Important! This mashup will work only in TP2 old look.**
 For TP2 new look and TP3 please install [a new version of this mashup](https://github.com/TargetProcess/MashupsLibrary/tree/master/Auto%20Reply%20Customer%20Requests%20(TP3)
 
-[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/Auto%20Reply%20Customer%20Requests.zip)
-
 
 Installing the Mashup with TargetProcess
 ----------------------------------------
