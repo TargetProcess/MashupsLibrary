@@ -5,7 +5,7 @@ The Auto Reply Customer Requests mashup is a simple mashup that ensures that the
 notification settings is automatically checked when adding a comment to a customer request.
 
 **Important! This mashup will work only in TP2 old look.**
-For TP2 new look and TP3 please install [a new version of this mashup](https://github.com/TargetProcess/MashupsLibrary/tree/master/Auto%20Reply%20Customer%20Requests%20for%20TP3
+For TP2 new look and TP3 please install [a new version of this mashup](https://github.com/TargetProcess/MashupsLibrary/tree/master/Auto%20Reply%20Customer%20Requests%20for%20TP3)
 
 
 Installing the Mashup with TargetProcess
