@@ -30,7 +30,7 @@ tau.mashups
 
 			var requestAddCommentHook = function () {
 				this.question = 'Leave Request in Queue?';
-				this.answeres = [ //unique id, text, css class
+				this.answeres = [ //unique id, css class, text
 								['keep-in-queue', 'primary', 'Keep in queue'],
 								['remove-and-close', '', 'Remove and close, as usual'],
 								['remove-keep-open', 'danger', 'Remove but keep open']];
@@ -97,29 +97,44 @@ tau.mashups
 									});
 								}
 
-								var removeAssignments = function (generalId) {
-									$.ajax({
-										url: appPath.get() + '/api/v1/Requests/' + generalId + '/Assignments?include=[Id]',
-										headers: { 'Content-Type': 'application/json' },
-										success: function (ids) {
-											ids.Items.every(function (id) {
-												$.ajax({
-													url: appPath.get() + '/api/v1/Requests/' + generalId + '/Assignments/' + id.Id,
-													headers: {
-														'Content-Type': 'application/json',
-														'x-http-method-override': 'DELETE'
-													},
-													success: function () { },
-													error: function () { },
-													dataType: 'json',
-													type: 'POST'
-												});
-											});
-										},
-										error: function () { },
-										dataType: 'json',
-										type: 'GET'
-									});
+								var removeAssignments = function (generalId, close) {
+								    $.ajax({
+								        url: appPath.get() + '/api/v1/Requests/' + generalId + '?include=[Project[Process[Id]],Assignments]&resultFormat=json',
+								        headers: { 'Content-Type': 'application/json' },
+								        success: function (result) {
+								            //close request
+								            if (close == true) {
+								                var processId = result.Project.Process.Id;
+								                $.ajax({
+								                    url: appPath.get() + '/api/v1/processes/' + processId + '/entitystates?where=(IsFinal eq 1)and(EntityType.Name eq %27Request%27)&include=[Id]&resultFormat=json',
+								                    headers: { 'Content-Type': 'application/json' },
+								                    success: function (stateId) {
+								                        updateRequest(generalId, JSON.stringify({ IsReplied: true, EntityState: { Id: stateId.Items[0].Id, Name: "Closed" } }));
+								                    },
+								                    error: function () { },
+								                    dataType: 'json',
+								                    type: 'GET'
+								                });
+								            }
+								            //remove all assignments
+								            result.Assignments.Items.forEach(function (id) {
+								                $.ajax({
+								                    url: appPath.get() + '/api/v1/Requests/' + generalId + '/Assignments/' + id.Id,
+								                    headers: {
+								                        'Content-Type': 'application/json',
+								                        'x-http-method-override': 'DELETE'
+								                    },
+								                    success: function () { },
+								                    error: function () { },
+								                    dataType: 'json',
+								                    type: 'POST'
+								                });
+								            });
+								        },
+								        error: function () { },
+								        dataType: 'json',
+								        type: 'GET'
+								    });
 								}
 
 								var f = $.proxy(function (e, xhr, settings) {
@@ -131,17 +146,16 @@ tau.mashups
 											generalId = d.comment.GeneralID;
 										}
 										switch (settings.selectedChoise) {
-											case 'keep-in-queue':
-												updateRequest(generalId, JSON.stringify({ IsReplied: false }));
-												break;
-											case 'remove-and-close':
-												updateRequest(generalId, JSON.stringify({ IsReplied: true, EntityState: { Id: 66, Name: "Closed" } }));
-												removeAssignments(generalId);
-												break;
-											case 'remove-keep-open':
-												updateRequest(generalId, JSON.stringify({ IsReplied: true }));
-												removeAssignments(generalId);
-												break;
+										    case 'keep-in-queue':
+										        updateRequest(generalId, JSON.stringify({ IsReplied: false }));
+										        break;
+										    case 'remove-and-close':
+										        removeAssignments(generalId, true);
+										        break;
+										    case 'remove-keep-open':
+										        updateRequest(generalId, JSON.stringify({ IsReplied: true }));
+										        removeAssignments(generalId, false);
+										        break;
 										}
 								}, this);
 								if (isRestComment) {
