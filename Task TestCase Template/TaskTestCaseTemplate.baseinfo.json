@@ -1,0 +1,6 @@
+{
+	"ShortDescription": "Create templates for tasks and test cases to apply to multiple user stories.",
+	"CompatibleTpVersion": {
+		"Minimum": "2.24.6"
+	}		
+}
