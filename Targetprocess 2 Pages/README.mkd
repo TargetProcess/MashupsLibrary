@@ -1,0 +1,30 @@
+Targetprocess 2 Pages
+=======================
+
+This mashup allows a specific set of Targetprocess 2 pages to be available in Targetprocess 3. This may be useful when you really like some particular page in Targetprocess 2 and have not switched to Targetprocess 3 because of this.
+
+The mashup also restricts access to Targetprocess 2. Only the pages, which are specified in the mashup config, will be shown under the TP2 link now.
+
+![TP2 Pages](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Targetprocess%202%20Pages/TP2Pages.png)
+
+How to activate it:
+
+1. Install the mashup from the Targetprocess Mashups Library.
+2. Edit the ```uris``` section in the mashup code.
+
+``` 
+uris: {
+                'Dashboard': '/Default.aspx',
+                'Time Sheet': '/Default/TimeSheet.aspx',
+                'Assign People Page': '/Project/Planning/Iteration/CurrentPlanDevelopers.aspx'
+            }
+```
+
+This section specifies which Targetprocess 2 pages you'd like to have access to in Targetprocess 3.
+
+![TP2 Pages Configuration](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Targetprocess%202%20Pages/TP2PagesConfiguration.png)
+
+1. Specify a Targetprocess 2 Page Name. If it contains special symbols or consists of several words, enclosed it in single quotes.
+2. Specify a Targetprocess 2 page URL, enclosing it in single quotes.
+
+

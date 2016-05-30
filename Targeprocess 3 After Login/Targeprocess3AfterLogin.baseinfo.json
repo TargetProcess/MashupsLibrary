@@ -1,0 +1,6 @@
+{
+  "ShortDescription": "This mashup redirects to Targetprocess 3 new user interface after login.",
+  "CompatibleTpVersion": {
+    "Minimum": "2.24.0"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "ShortDescription": "This mashup allows users to see Targetprocess 2 pages in Targetprocess 3. It also restricts access to Targetprocess 2.",
+  "CompatibleTpVersion": {
+    "Minimum": "3.0.11"
+  }
+}

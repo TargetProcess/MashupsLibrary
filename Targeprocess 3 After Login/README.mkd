@@ -1,0 +1,14 @@
+Targetprocess 3 After Login
+==================
+
+The Targetprocess 3 After Login mashup simply redirects people to a new Targetprocess 3 user interface when they log into Targetprocess. It can be used if you do not want to see Targetprocess 2 interface anymore.
+
+How to activate it:
+
+1. Install the mashup from the Targetprocess Mashups Library
+2. Specify your Targetprocess URL istead of 'localhost' in the following line of the mashup code:
+
+```
+ window.location.href = 'http://localhost/restui/board.aspx';
+```
+To do that please select the installed mashup in the mashups list, edit the code and save the changes.
