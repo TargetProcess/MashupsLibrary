@@ -1,28 +1,37 @@
 tau.mashups
 	.addDependency("jQuery")
 	.addDependency('app.bus')
-	.addMashup(function($, $deferred, config) {
+	.addMashup(function($, appBus, config) {
 		/* our reused placement function */
-		$deferred.then(function(bus) {
-			bus.on('editorCreated', $.proxy(function(e, obj, data) {
-				$.ajax({
-	                type: 'GET',
-	                url: appHostAndPath+'/storage/v1/Signatures/'+loggedUser.id,
-	                contentType: 'application/json; charset=utf8',
-					success: function(data) {
-						try {
-							if (data.userData) {
-								var editor = obj.editorElement.find('span:first').attr('id').match(/^(?:cke_)?(.*)/)[1];
-								/* place the signature */
-								CKEDITOR.instances[editor].setData('<br/><br/>'+unescape(data.userData.sig));
-								/* reset focus to the front of the editor */
-								CKEDITOR.instances[editor].focus();
-							}
-						} catch (e) { console.log(e); }
-					}
-	            });
-			}, this));
-		});
+
+        function subscribe(bus) {
+            bus.on('editorCreated', $.proxy(function (e, obj, data) {
+                $.ajax({
+                    type: 'GET',
+                    url: appHostAndPath + '/storage/v1/Signatures/' + loggedUser.id,
+                    contentType: 'application/json; charset=utf8',
+                    success: function (data) {
+                        try {
+                            if (data.userData) {
+                                var editor = obj.editorElement.find('span:first').attr('id').match(/^(?:cke_)?(.*)/)[1];
+                                /* place the signature */
+                                CKEDITOR.instances[editor].setData('<br/><br/>' + unescape(data.userData.sig));
+                                /* reset focus to the front of the editor */
+                                CKEDITOR.instances[editor].focus();
+                            }
+                        } catch (e) {
+                            console.log(e);
+                        }
+                    }
+                });
+            }, this));
+        }
+
+		if (appBus.then) {
+			appBus.then(subscribe);
+		} else {
+			subscribe(appBus);
+		}
 		
 		/* block that renders the personal settings signature form */
 		$(document).ready(function() {
