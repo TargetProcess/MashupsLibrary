@@ -29,7 +29,7 @@ tau.mashups.addDependency('tp/userStory/view')
     .addDependency('app.bus')
     .addDependency('tau/configurator')
     .addDependency('tau/core/bus.reg')
-    .addMashup(function ($deferred, configurator,r) {
+    .addMashup(function (appBus, configurator,r) {
 
 
 var applyTemplate = function() {
@@ -53,34 +53,36 @@ var applyTemplate = function() {
         this.init = function() {
 
             this._userstoryid = 0;
-            $deferred.then(function(bus) {
 
-
-                bus.on('afterRenderAll', function(evt, data) {
+            function susbscribeOnGlobalBus(bus) {
+                bus.on('afterRenderAll', function (evt, data) {
 
                     if (evt.caller.name == "container") {
 
                         if (typeof data.data.context.entity !== 'undefined') {
                             debug("=== Start Event Information");
-                                        debug(evt);
-                                        debug(data.data.children);
-                                        debug(data.data.children.length);
-                                        debug("=== End Event Information");
+                            debug(evt);
+                            debug(data.data.children);
+                            debug(data.data.children.length);
+                            debug("=== End Event Information");
 
-                                            if(data.data.children.length > 0){
-                                                                if( data.data.children[0].name.indexOf("Template") != -1) {
-                                                                        //Only run on the template tab
+                            if (data.data.children.length > 0) {
+                                if (data.data.children[0].name.indexOf("Template") != -1) {
+                                    //Only run on the template tab
                                     startApplyTemplate(data);
-                                                }
-                                            }
+                                }
+                            }
                         }
                     }
 
                 });
+            }
 
-
-            })
-
+            if (appBus.then) {
+                appBus.then(susbscribeOnGlobalBus);
+            } else {
+                susbscribeOnGlobalBus(appBus);
+            }
         };
 
 
