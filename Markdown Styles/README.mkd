@@ -23,6 +23,9 @@ Installing the Mashup with TargetProcess
 7. ?
 8. Profit`
 
+Screenshot: 
+-----------
+![Markdown Styles Screenshot](https://github.com/ayurmedia/MashupsLibrary/raw/master/Markdown%20Styles/screenshot_markdown_styles.png)
 
 
 Changes
