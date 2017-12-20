@@ -23,6 +23,10 @@ Installing the Mashup with TargetProcess
 7. ?
 8. Profit`
 
+Screenshot:
+-----------
+
+![Zoom Buttons Screenshot](https://raw.githubusercontent.com/ayurmedia/MashupsLibrary/master/Zoom%20Buttons/screenshot_zoom_buttons.png)
 
 
 Changes`
