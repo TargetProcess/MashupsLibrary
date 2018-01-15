@@ -8,6 +8,8 @@ tau.mashups
                    //$element.find('input[value=Owner]').prop('checked', true);
                    //$element.find('input[value=Assigned]').prop('checked', true);
                    //$element.find('input[value=Team]').prop('checked', true);
+                   //$element.find('input[value=isPinned]').prop('checked', true);
+                   //$element.find('input[value=isPrivate]').prop('checked', true);
                }, 0);
            })
        }
