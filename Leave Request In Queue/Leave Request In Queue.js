@@ -29,11 +29,12 @@ tau.mashups
             question: 'Leave Request in Queue?',
             answers: [
                 //unique id, css class, text
-                ['keep-in-queue', 'primary', 'Keep in queue'],
-                ['remove-and-close', '', 'Remove and close, as usual'],
-                ['remove-keep-open', 'danger', 'Remove but keep open']
+                ['keep-in-queue', '', 'Keep in queue'],
+                ['remove-and-close', 'tau-primary', 'Remove and close, as usual'],
+                ['remove-keep-open', 'tau-danger', 'Remove but keep open']
             ],
-            skipedTypes: ['Idea'],
+            skippedTypes: ['Idea'],
+            skippedProjects: [14272], //DevOps
             requestViewUrl: appPath.get() + '/Project/HelpDesk/Request/View.aspx',
             soapCommentUrl: (appPath.get() + '/Services/CommentsControl.asmx/Create').replace(location.protocol + '//' + location.host, ''),
             restCommentUrl: appPath.get() + '/api/v1/comments.asmx/?',
@@ -81,7 +82,7 @@ tau.mashups
             var questionHolder, isRestComment, isSoapComment, d;
             if (isRestComment = requestAddCommentHook._isRestCommentCreatedForRequest(options)) {
                 d = JSON.parse(options.data);
-                questionHolder = $('div.updating:first div.ui-comment-body');
+                questionHolder = $('div.ui-richeditor__controls__status_message:first');
             } else if (isSoapComment = requestAddCommentHook._isSoapCommentCreatedForRequest(options)) {
                 d = JSON.parse(options.data);
                 questionHolder = d.comment.ParentID ? $('button:contains("Reply").ui-add-comment') : $('button:contains("Comment").ui-add-comment');
@@ -99,10 +100,10 @@ tau.mashups
 
                 var layout = '<div class="tau-bubble" style="z-index: 1; display: block;">' +
                     '<div class="tau-bubble__inner" style="margin: -2px 1px -2px 1px !important;"><div style="padding: 10px;">' +
-                    '<p style="margin: 0px !important;">' + this.question + '</p><div class="button-group">';
+                    '<p style="margin: 0px !important;">' + this.question + '</p><div class="tau-buttons">';
                 for (var i = 0; i < this.answers.length; i++) {
-                    layout += '<button id="' + this.answers[i][0] + '" class="button ' +
-                        this.answers[i][1] + '" type="button">' + this.answers[i][2] + '</button>';
+                    layout += '<div class="tau-buttons__control"><button id="' + this.answers[i][0] + '" class="tau-btn ' +
+                        this.answers[i][1] + '" type="button">' + this.answers[i][2] + '</div></button>';
                 }
                 layout += '</div></div></div><div class="tau-bubble__arrow" data-orientation="bottom" style="display: block;"></div></div>';
                 q.after(layout);
@@ -201,10 +202,11 @@ tau.mashups
             }, this);
 
             if (isRestComment) {
-                store.evictProperties(d.general.id, 'request', ['requestType']);
-                store.get('request', {id: d.general.id, fields: [{'requestType': ['id', 'name']}]}, {
+                store.evictProperties(d.general.id, 'request', ['requestType', 'project']);
+                store.get('request', {id: d.general.id, fields: [{'requestType': ['name']},{'project':['id']}]}, {
                     success: function(res) {
-                        if ($.inArray(res.data.requestType.name, requestAddCommentHook.skipedTypes) === -1) {
+                        if ($.inArray(res.data.requestType.name, requestAddCommentHook.skippedTypes) === -1 && 
+                            $.inArray(res.data.project.id, requestAddCommentHook.skippedProjects) === -1) {
                             showQuestion(questionHolder.eq(0));
                         } else {
                             options.postponed = false;
