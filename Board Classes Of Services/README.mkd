@@ -1,0 +1,129 @@
+# Board Classes Of Services
+
+The Board Class of Services mashup will set a color for a card based on Tags, Custom Fields, States or Business Values (Priorities).
+
+For example, all the urgent bugs, user stories or other entity cards marked with the tag `urgent` will be highlighted in red on the boards. In the same fashion, all the entities with the `.net` tag can be highlighted in blue.  
+
+The mashup can use several colors on card if there are several tags configured to be highlighted.
+
+![Board Class Of Services](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Board%20Classes%20Of%20Services/BoardClassOfServices.png)
+
+## How to activate it
+
+1. Install the mashup from the Targetprocess Mashups Library
+2. Edit the `BoardClassOfServices.config.js` file or simply open mashup in Settings - Mashups section.
+
+## Configuration
+
+### colorType
+
+Set type of background which will be applied.
+
+Type: `String`
+
+Values: `'gradient'` or `'single'`
+
+If `single` is set, only first matched rule's color will be applied as background.
+
+### colors
+
+Map value of field to color
+
+Type: `Object`
+
+Values: nested map of entity type name to field name to field values to colors in any web format. Configs are extended by entity types hierarchy.
+
+All field values should be converted to string format, i.e. you should use `'true'` instead of `true`.
+
+You can use boolean `match()` function to check field properties. The rule will be applied only if `match()` returns `true`.
+
+#### Examples
+
+##### Any entity with type Assignable (including Bug, User Story, etc) with tag 'regression' will have '#ffe1b3' as background
+
+```js
+Assignable: {
+    tags: {
+        'regression': '#ffe1b3',
+        'performance': '#e2eece'
+    }
+}
+```
+
+##### Bug with final state will have black background
+
+```js
+Bug: {
+    entityState: {
+        isFinal: {
+            'true': 'black'
+        }
+    }
+}
+```
+
+##### User Story with 'kanban' process will have orange background
+
+You can use deeply nested properties too.
+
+```js
+UserStory: {
+    entityState: {
+        process: {
+            name: {
+                'kanban': '#ff5400'
+            }
+        }
+    }
+}
+```
+
+##### Bug with final state will have black background and will have '#ffe1b3' background when it has 'urgent' tag.
+
+You can use hierarchy of types of entities to set cascade of rules.
+
+```js
+Assignable: {
+    tags: {
+        'urgent': '#ffe1b3'
+    }
+},
+Bug: {
+    entityState: {
+        isFinal: {
+            'true': 'black'
+        }
+    }
+}
+```
+
+##### Custom fields
+
+- Entity with checkbox-type 'hasTests' custom field will have red background if its value is false and green otherwise.
+- Entity with custom field 'source' will have background that depends on the value of this field.
+
+```js
+General: {
+    customField: [
+        {
+            match: function(customField) {
+                return customField.name === 'hasTests' && customField.type.toLowerCase() === 'checkbox';
+            },
+            value: {
+                'false': 'rgb(255, 0, 0)',
+                'true': 'rgb(0, 255, 0)'
+            }
+        },
+        {
+            match: function(customField) {
+                return customField.name === 'source';
+            },
+            value: {
+                'github': 'grey',
+                'googlecode': 'blue',
+                'bitbucket': 'yellow'
+            }
+        }
+    ]
+}
+```

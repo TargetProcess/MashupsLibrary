@@ -1,0 +1,6 @@
+{
+  "ShortDescription": "This mashup will color task cards according to the time remaining based on a Due Date custom field.",
+  "CompatibleTpVersion": {
+    "Minimum": "3.0.5"
+  }
+}
