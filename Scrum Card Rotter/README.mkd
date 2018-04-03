@@ -1,0 +1,9 @@
+Scrum Card Rotter
+==================
+
+The Scrum Card Rotter will "rot" task cards that have been in the state "In Progress" too long. Depending on the StartDate of the
+ task card, the rotting will start as defined in the head of the script. There are three stages of rotting, a light warning,
+ a medium warning and the full panic state. The default configuration is 2 days are ok, 5 days are kind of critical and
+ after 8 days we really should finish this task.
+
+![Scrum Card Rotter](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Scrum%20Card%20Rotter/scrumcardrotter.png)

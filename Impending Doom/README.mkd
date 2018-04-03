@@ -1,0 +1,17 @@
+Impending Doom
+==============
+
+Impending Doom is an advanced Mashup for Targetprocess that colors cards on the board according 
+to your planned end date. The Mashup colors cards any color depending on the days remaining (according 
+to your planned end date).  The date ranges and colors are fully customizable.
+
+To customize the coloring behavior of the mashup, look at the _DoomConfig_ variable at the top of 
+the file.  This is our configuration object mapping the name of a process (case insensitive) to
+another object mapping days due to colors.  Specifying a wildcard (*) for the process name will apply 
+the coloring to all cards who do not match previous process names (a catch-all).
+
+It is important that the day to color map is sorted properly by the days remaining - the mashup will use the _first_ color 
+that it finds (iterating over the object from top down) applicable to any card - subsequent colors will 
+not be condiered.
+
+![Impending Doom](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Impending%20Doom/impending_doom.png)
