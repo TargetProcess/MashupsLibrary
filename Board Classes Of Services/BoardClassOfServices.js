@@ -24,18 +24,16 @@ tau.mashups
             if (type.parent) {
                 var parentType = types[type.parent];
                 return [parentType].concat(getParents(parentType.name));
-            } else {
-                return [];
             }
+
+            return [];
         };
 
         var whenList = function(defs) {
             return $.whenList(defs).then(function() {
-                var items = _.toArray(arguments).reduce(function(res, v) {
+                return _.toArray(arguments).reduce(function(res, v) {
                     return res.concat(v);
                 }, []);
-
-                return items;
             });
         };
 
@@ -271,7 +269,8 @@ tau.mashups
                         while (part.length) {
                             defs.push(load(getCollection(entityTypeName), {
                                 include: '[' + TreeFormat.stringify(fields) + ']',
-                                where: '(id in (' + part.join(',') + '))'
+                                where: '(id in (' + part.join(',') + '))',
+                                take: take
                             })
                                 .then(processResult)
                                 .then(function(items) {
