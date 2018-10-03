@@ -11,7 +11,7 @@ Sample mashup config:
 ```
 {
     // Name of project's process custom field which mashup will use to decide project is portfolio or not.
-    // Should be added only to processes which are for portfolio projects, DO NOT it to work processes.
+    // Should be added only to processes which are for portfolio projects, DO NOT add it to work processes.
     "portfolioTypeCustomFieldName": "PortfolioType",
     // All portfolio configurations.
     "portfolios": [
