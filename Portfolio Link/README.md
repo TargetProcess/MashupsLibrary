@@ -249,10 +249,10 @@ Sample mashup config:
 ```
 
 Portfolio/Work hierarchy:
-![PortfolioTab](https://github.com/TargetProcess/MashupsLibrary/raw/master/Portfolio Link/PortfolioTab.png)
+![PortfolioTab](https://raw.githubusercontent.com/TargetProcess/MashupsLibrary/master/Portfolio%20Link/PortfolioTab.png)
 
 Work/Product hierarchy:
-![ProductHierarchy](https://github.com/TargetProcess/MashupsLibrary/raw/master/Portfolio Link/ProductHierarchy.png)
+![ProductHierarchy](https://raw.githubusercontent.com/TargetProcess/MashupsLibrary/master/Portfolio%20Link/ProductHierarchy.png)
 
 How To Install and Use the Mashup
 ---------------------------------
