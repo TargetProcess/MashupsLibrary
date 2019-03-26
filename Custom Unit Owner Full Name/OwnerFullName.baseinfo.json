@@ -1,0 +1,6 @@
+{
+  "ShortDescription": "The Custom Units mashup adds a new unit with full name of entity Owner to the Customize Cards.",
+  "CompatibleTpVersion": {
+    "Minimum": "3.2.8"
+  }
+}

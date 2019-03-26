@@ -1,0 +1,5 @@
+# Custom Unit - Last Comment
+
+The mashup adds a new custom unit with the entities Last Comment to the Customize Cards tab in a View Setup area.
+
+Only first 150 symbols of Comment are displayed. 

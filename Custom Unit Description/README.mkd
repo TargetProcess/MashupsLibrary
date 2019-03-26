@@ -1,0 +1,10 @@
+# Custom Unit - Description
+
+The mashup adds a new  custom unit with entity Description to the Customize Cards tab in a View Setup area.
+ 
+This unit works for Projects, Features, Epics, User Stories, Tasks, Bugs and Requests.  
+Only first 150 symbols of Description are displayed. 
+
+![Description](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Custom%20Unit%20Description/CustomUnitDescription.png?raw=true)
+
+

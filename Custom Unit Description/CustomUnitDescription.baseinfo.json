@@ -1,0 +1,6 @@
+{
+  "ShortDescription": "The Custom Unit Description mashup adds a new unit with entity Description to the Customize Cards.",
+  "CompatibleTpVersion": {
+    "Minimum": "3.2.8"
+  }
+}
