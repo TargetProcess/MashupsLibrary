@@ -1,0 +1,7 @@
+{
+    "Name": "Solutions Gallery",
+    "ShortDescription": "Gives access to the Solutions Gallery - a place where you can find collections of views to satisfy a particular use case and try them with one click.",
+    "CompatibleTpVersion": {
+        "Minimum": "3.5.0"
+    }
+}
