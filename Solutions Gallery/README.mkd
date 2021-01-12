@@ -1,0 +1,18 @@
+# Solutions Gallery
+
+The mashup gives access to the Solutions Gallery - a place where you can find different solutions - or collections of views - to satisfy a particular use case and allows to apply the solution or a view, which fits your requirements best, with just one click.
+
+![SolutionsGallery](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Solutions%20Gallery/readme1.png)
+
+## How to activate it:
+
+Install the mashup from the Targetprocess Mashups Library.
+
+## How to use it:
+
+1.  Click `+ Create` button in the bottom left corner of Targetprocess 3
+2.  Select `Browse Solutions Gallery` option
+3.  Find an appropriate solution or view in the gallery
+4.  Click `Try the view` or `Try the solution` to create a similar view or a set of views in your Targetprocess account
+
+![SolutionsGallery](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Solutions%20Gallery/readme2.png)
