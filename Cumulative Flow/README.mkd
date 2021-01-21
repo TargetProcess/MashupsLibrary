@@ -1,0 +1,50 @@
+Cumulative Flow
+===============
+
+The Cumulative Flow mashup produces a CFD from the history
+of entities, from the REST API.
+
+This will require a little editing to suit project/team specifics.
+
+
+    $('.tau-dashboard-page').initialize(function() {
+        $('<div>').prependTo($(this).find('#dashboard-column-1 .tau-dashboard-widgets')).cfd({
+            chart: { title: 'Team 1 CFD' },
+            filter: "UserStory.Team.Name eq 'Team 1'",
+            start: new Date(2015, 0, 1),
+            ignore: ['Backlog'],
+        });
+    });
+
+Configuration
+=============
+
+The `cfd` method understands a few configuration properties
+
+    {
+        // typically UserStory or Bug
+        type: 'UserStory',
+        // when to start looking at data
+        start: new Date(2015, 0, 1),
+        // when to end looking at data
+        end: new Date(),
+        // a filter to limit which entities to include
+        filter: "Team.Name eq 'Development'",
+        // states to ignore, typically `Backlog` or `To Do`
+        ignore: [],
+        chart: {
+            // the title of the chart
+            title: 'Cumulative Flow Diagram',
+    }
+
+Issues
+======
+
+I've found no simple way to target which element(s) to use as a display trigger.
+I've opted to provide an example which includes a CFD at the top of a dashboard
+column, but it's not ideal. You're left choose where to display the diagram.
+
+Incorporating results for multiple entity types, such as `UserStory` and `Bug`,
+has issues relating to the `EntityState`s not necessarily being share.
+
+Debugging. Is. Very. Slow. :(
