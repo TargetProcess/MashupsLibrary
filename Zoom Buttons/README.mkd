@@ -1,0 +1,36 @@
+Zoom Buttons
+==============================
+
+This mashup adds buttons to the action toolbar like in TP2 instead of inside the action-menu.
+
+It will add buttons (Min)(XS)(S)(M)(L)(XL) ( 1..6 ) to the toolbar.
+
+The zoomer is synchronized with switching boards and changing the slider.
+
+The currently active Zoomlevel ist highlighted by using .tau-checked class.
+
+
+
+Installing the Mashup with TargetProcess
+----------------------------------------
+
+1. In your TP site, navigate to ```Settings > (System Settings) > Mashups```
+2. Click "Add New Mashup"
+3. In the "Name" field, enter a name unique to this Mashup - for example "Markdown Styles"
+4. In the "Placeholders" field keep  ```footerplaceholder```
+5. Copy and paste the contents of the ```zoom_buttons.js``` file in the "Code" box.
+6. Click Save
+7. ?
+8. Profit`
+
+Screenshot:
+-----------
+
+![Zoom Buttons Screenshot](https://raw.githubusercontent.com/ayurmedia/MashupsLibrary/master/Zoom%20Buttons/screenshot_zoom_buttons.png)
+
+
+Changes`
+-------
+v1.0 Init
+
+
