@@ -1,0 +1,7 @@
+{
+    "Name": "Share View",
+    "ShortDescription": "Share boards to users, who don’t have access to Targetprocess. Note: Targetprocess has to be accessible from the internet.",
+    "CompatibleTpVersion": {
+        "Minimum": "3.9.4"
+    }
+}

@@ -1,0 +1,6 @@
+{
+  "ShortDescription": "The Card Focus mashup provides an easy way to focus on particular cards.",
+  "CompatibleTpVersion": {
+    "Minimum": "3.2.8"
+  }
+}

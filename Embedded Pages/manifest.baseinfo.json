@@ -1,0 +1,7 @@
+{
+    "Name": "Embedded Pages",
+    "ShortDescription": "This mashup reflects the pages you've specified in URL or Template URL custom fields as an embedded page on an entity view.",
+    "CompatibleTpVersion": {
+        "Minimum": "2.24.6"
+    }
+}
