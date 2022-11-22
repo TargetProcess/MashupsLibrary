@@ -1,0 +1,6 @@
+{
+  "ShortDescription": "The Entity Templates Mashup adds the option to set a default description, which is automatically applied when a new entity is created.",
+  "CompatibleTpVersion": {
+    "Minimum": "3.2.8"
+  }
+}

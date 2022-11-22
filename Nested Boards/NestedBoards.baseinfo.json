@@ -1,0 +1,6 @@
+{
+  "ShortDescription": "This mashup will show nested boards for the lower-level entities based on the selection of parent entities.",
+  "CompatibleTpVersion": {
+    "Minimum": "3.3.0"
+  }
+}

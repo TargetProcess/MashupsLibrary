@@ -1,0 +1,7 @@
+{
+    "Name": "Browser Performance Monitor",
+    "ShortDescription": "Provides simple charts to help monitor your JavaScript performance.",
+    "CompatibleTpVersion": {
+        "Minimum": "2.24.1"
+    }
+}
