@@ -1,0 +1,23 @@
+Share View
+==================
+
+Install the mashup from the Targetprocess Mashups Library to active it.
+
+__In order to share views the Targetprocess instance has to be publicly accessible (available from another computer over the internet)__
+
+__Note__: Targetprocess customers have this mashup enabled by default, there is no need to install it a second time.
+
+The Mashup will add a Share View button into the Actions menu on any view in Targetprocess. Press it to share the given view:
+
+![Share View Link](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Share%20View/ShareBoardLink.png)
+
+
+You’ll be able to copy the public link to the view or manage your public views list. Remove the link from the list when sharing is no longer required.
+
+![Share View Manage](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Share%20View/ShareBoardManage.png)
+
+The mashup provides external users with the details shown on the view. Card details can be customized using the Customize Cards feature. Click on cards to open a pop-up with entity details. The pop-up displays only basic details. Your view settings determine the look of the shared view, so if you have medium cards selected with the To-Do column collapsed, the same will be displayed on your shared view. To prevent unwanted changes to your shared views, we recommend not sharing views that you use for your daily work. Instead, create a new view specifically to be shared.
+
+You’re welcome to remove the view from shared views list at anytime. When the link is removed from public views list, it is no longer accessible by external users and the view is no longer shared.
+
+The mashup shares only the board and timeline view mode. It is not possible to share the one-by-one or list modes at the moment.

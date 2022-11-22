@@ -1,52 +1,64 @@
-Entity Templates Mashup
-=======================
+# Entity Templates Mashup
 
-The Entity Templates Mashup is a simple Mashup for 
-[TargetProcess](http://www.targetprocess.com) that pulls the
-contents of a template file and gives that as a starting point 
-for the description of the following entities in TargetProcess:
+The Entity Templates Mashup adds the option to set a default description, which is automatically applied when a new entity is created.
 
--   User Stories
--   Bugs
--   Features
--   Tasks
--   Requests
--   Test Cases
+## How to activate it
 
-*This Mashup is _not_ compatible with TargetProcess OnDemand*
+1. Install the mashup from the Targetprocess Mashups Library
+2. Edit the settings by opening the mashup in the Mashups Manager.  On-site users can also edit the `EntityTemplates.config.js` file.
 
-[Download the Mashup's ZIP Archive](https://github.com/downloads/TargetProcess/MashupsLibrary/Entity%20Templates.zip)
+## Configuration
 
-How To Install and Use the Mashup
----------------------------------
+### templates
 
-1. Download the Mashup file either by cloning this repository or
-   downloading a ZIP.
-2. Extract/copy the "UserStory Template" folder to your 
-   _<TargetProcess Install Path>/JavaScript/Mashups/_ folder.
-3. Add your templates as HTML files in the _/JavaScript/Mashups/Entity Templates_ folder.  
-   Create the file with the name of the entity you wish to add a template to, for example 
-   _UserStory.html_, _Feature.html_, _Bug.html_, _Task.html_, or _Request.html_.  Ensure 
-   that your files are named accordingly.  HTML markup is 100% supported.
-   **An important note on Test Cases:** Test Cases require **two** HTML files to fully
-   apply a template - one for the steps box and one for the success box.  These files should 
-   be called _TestCaseSteps.html_ and _TestCaseSuccess.html_, respectively.
-5. Sit back and enjoy!
-
-Troubleshooting
----------------
-
-**I don't have a _JavaScript/Mashups/_ folder in my TP install path!**
-
-1. Make sure that you are running TargetProcess version 2.22 or newer.
-2. By default, this folder can be found at _C:\inetpub\wwwroot\TargetProcess2\wwwroot\JavaScript\Mashups_
+The Templates collection is a key-value dictionary, which uses an HTML string as a template for a particular entity type or [term](https://guide.targetprocess.com/settings/how-can-i-give-a-new-name-to-an-entity.html). This gives you the freedom to use different templates for different projects. To skip template of entity type for special term set its value to `null`.
 
 
-**The description field is still blank when I go to add a new <whatever>!**
+#### Examples
 
-1. Make sure you're running TargetProcess version 2.22 or newer.
-2. Ensure that the name of the folder in _JavaScript/Mashups/_ is **exactly**
-   _Entity Templates_.  Also ensure the template file is named accordingly. 
-   Adjust any file/folder names accordingly.
-3. Check your browser for any JavaScript errors.  If you find one, feel free 
-   to report the error so that it can be corrected.
+##### Development project
+
+```js
+        var templates = {
+            'UserStory': 'As a <i>type of user</i>, I want <i>some goal</i> so that <i>some reason</i>',
+            'Feature': '<table border="1"><caption>Features and Benefits matrix</caption>' +
+				'<thead><tr><th scope="col">Features</th><th scope="col">Benefits</th></tr></thead>' +
+				'<tbody><tr>' +
+				'<td><em>A short phrase, giving a name and some implied context to the feature</em></td>' +
+				'<td><em>A short description which describes the benefit to the user and the business. There may be multiple benefits per feature which are highlighted here</em></td>' +
+				'</tr>' +
+				'<tr><td><em>...</em></td><td><em>...</em></td></tr>' +
+				'<tr><td>...</td><td>...</td></tr>' +
+				'</tbody></table>',
+            'Bug': '<p><strong>Steps to Reproduce:</strong><em> Minimized, easy-to-follow steps that will trigger the bug. Include any special setup steps.</em></p>' +
+				'<p><strong>Actual Results:</strong><em> What the application did after performing the above steps.</em></p>' +
+				'<p><strong>Expected Results:</strong><em> What the application should have done, were the bug not present.</em></p>',
+            'Scrum Bug': null
+        };
+```
+![New Bug](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Entity%20Templates/new-bug.png)
+
+##### Marketing project
+
+![Terms](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Entity%20Templates/terms.png)
+
+```js
+        var templates = {
+            'Campaign': '<table border="1"><caption>Main goals of the campaign</caption>' +
+				'<thead><tr><th scope="col">Goals</th><th scope="col">Notes</th></tr></thead>' +
+				'<tbody><tr>' +
+				'<td><em>A short description of a goal</em></td>' +
+				'<td><em>Notes</em></td>' +
+				'</tr>' +
+				'<tr><td><em>...</em></td><td><em>...</em></td></tr>' +
+				'<tr><td>...</td><td>...</td></tr>' +
+				'</tbody></table>',
+            'Advertisement': '<p><strong>Main idea:</strong><em> Breif description of the main idea.</em></p>' +
+				'<p><strong>Target Audience:</strong><em> Who do we want to reach with it.</em></p>' +
+				'<p><strong>Expected Results:</strong><em> What results do we expect from it.</em></p>',
+            'Blocker': '<p>As a <i>type of user</i>, I cannot proceed with <i>a task</i> because of <i>some reason</i></p>'+
+              	'<p>If the issue is not urgently resolved, it will cause <i>the consequences</i>'
+        };
+```
+
+![New Blocker](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Entity%20Templates/new-blocker.png)

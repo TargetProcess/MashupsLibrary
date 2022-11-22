@@ -1,0 +1,52 @@
+.nestedboardsframe {
+    width:100%;
+    height:100%;
+    margin:0;
+    border:0;
+}
+
+.tau-inline-group-nestedboardstoolbar {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+body.fullscreen {
+    background: #e5e9ee;
+}
+
+body.fullscreen .tau-app-header,
+body.fullscreen .tau-board-header,
+body.fullscreen .app-header,
+body.fullscreen .tau-board-settings,
+body.fullscreen .tau-app-secondary-pane,
+body.fullscreen .tau-boardclipboard,
+body.fullscreen .i-role-axis-mark-selector,
+body.fullscreen .tau-board-view-switch  {
+    display: none !important;
+}
+
+body.fullscreen .tau-app-main-pane,
+body.fullscreen .tau-board-body,
+body.fullscreen .tau-board {
+    left: 0 !important;
+    top: 0 !important;
+    height: 100% !important;
+    border-bottom-width: 0 !important;
+}
+
+.tau-inline-group-nestedboardstoolbar {
+    display: -ms-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+
+    vertical-align: middle;
+}
+
+.tau-inline-group-nestedboardstoolbar__control {
+    margin-right: 4px;
+}
+
+.tau-inline-group-nestedboardstoolbar__control:last-child {
+    margin-right: 0;
+}

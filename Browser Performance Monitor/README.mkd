@@ -1,0 +1,13 @@
+# Cross-browser JavaScript Performance Monitor
+
+Provides simple charts to help monitor your JavaScript performance.
+
+* **FPS** Frames rendered per second. The higher the number the better.
+* **MS** Milliseconds needed to render a frame. The lower the number the better.
+* **MEM** Megabytes of memory used by JavaScript. Make sure it doesn't keep incrementing. *(WebKit-based browsers only, when memory info is enabled)*
+
+As soon as the mashup is installed, you'll see performance details at the top left part of the screen.
+
+![Browser Performance Monitor](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Browser%20Performance%20Monitor/1.png)
+
+Uses [stats.js](https://github.com/mrdoob/stats.js)

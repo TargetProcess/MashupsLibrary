@@ -1,0 +1,6 @@
+Card Focus
+==========
+
+The Card Focus mashup allows you to easily focus on selected cards by applying a quick filter and automatically switching your view mode over to the details mode.
+
+![Card Focus](https://github.com/TargetProcess/TP3MashupLibrary/raw/master/Card%20Focus/CardFocus.jpg)
